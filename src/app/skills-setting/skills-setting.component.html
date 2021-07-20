@@ -1,0 +1,28 @@
+<form [formGroup]="addSkillForm" (ngSubmit)="onSaveSkill()">
+  <label for="skill">Compétence à créer</label>
+  <input  id="skill" type="text" required formControlName="formNameSkill">
+  <button type="submit"> Ajouter </button>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Compétences</th>
+    <th>Date Début</th>
+    <th>Date Fin</th>
+    <th>Suppression</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let skill of skillList">
+    <td>{{skill.name | uppercase}}</td>
+    <td>{{skill.startDate}}</td>
+    <td>{{skill.endDate}}</td>
+    <td>
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+             (click)="onDeleteSkillById(skill.skillId)">
+    </td>
+  </tbody>
+  </table>
+
