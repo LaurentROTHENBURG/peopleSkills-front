@@ -2,48 +2,50 @@
 
 <h2>Paramétrage des Compétences</h2>
 
-<form [formGroup]="createSkillForm"
-      (ngSubmit)="onSkillCreate()">
+<div id="formCreateSkill">
+  <form [formGroup]="createSkillForm"
+        (ngSubmit)="onSkillCreate()">
 
-  <input type="hidden" id="skill-id" formControlName="skillId">
-  <label for="skill-name">Compétence</label>
-  <input type="text" id="skill-name" formControlName="name">
-  <label for="skill-date-start">Date Début</label>
-  <input type="text" id="skill-date-start" formControlName="startDate">
-  <label for="skill-date-end">Date de Fin</label>
-  <input type="text" id="skill-date-end" formControlName="endDate">
+    <input type="hidden" id="skill-id" formControlName="skillId">
+    <label for="skill-name">Compétence</label>
+    <input type="text" id="skill-name" formControlName="name">
+    <label for="skill-date-start">Date Début</label>
+    <input type="date" id="skill-date-start" formControlName="startDate">
+    <label for="skill-date-end">Date de Fin</label>
+    <input type="date" id="skill-date-end" formControlName="endDate">
 
-  <button class="btn btn-success mb-2" type="submit">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
-         viewBox="0 0 16 16">
-      <path
-        d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-    </svg>
-    Enregistrer la création
-  </button>
-</form>
+    <button id="btnCreateSkill" class="btn btn-success mb-2" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+           viewBox="0 0 16 16">
+        <path
+          d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+      </svg>
+      Enregistrer la création
+    </button>
+  </form>
+</div>
 
+<div id="formModifSkill">
+  <form [formGroup]="skillForm"
+        (ngSubmit)="onSkillUpdate()">
+    <input type="hidden" id="skill-id" formControlName="skillId">
+    <label for="skill-name">Compétence</label>
+    <input type="text" id="skill-name" formControlName="name">
+    <label for="skill-date-start">Date Début</label>
+    <input type="date" id="skill-date-start" formControlName="startDate">
+    <label for="skill-date-end">Date de Fin</label>
+    <input type="date" id="skill-date-end" formControlName="endDate">
 
-<form [formGroup]="skillForm"
-      (ngSubmit)="onSkillUpdate()">
-  <input type="hidden" id="skill-id" formControlName="skillId">
-  <label for="skill-name">Compétence</label>
-  <input type="text" id="skill-name" formControlName="name">
-  <label for="skill-date-start">Date Début</label>
-  <input type="text" id="skill-date-start" formControlName="startDate">
-  <label for="skill-date-end">Date de Fin</label>
-  <input type="text" id="skill-date-end" formControlName="endDate">
-
-  <button class="btn btn-success mb-2" type="submit">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
-         viewBox="0 0 16 16">
-      <path
-        d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-    </svg>
-    Enregistrer les modifications
-  </button>
-</form>
-
+    <button id = "btnModifSkill" class="btn btn-success mb-2" type="submit">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+           viewBox="0 0 16 16">
+        <path
+          d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+      </svg>
+      Enregistrer les modifications
+    </button>
+  </form>
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -60,7 +62,7 @@
     <td><span id="name" contenteditable>{{skill.name | uppercase}}</span></td>
     <td><span id="startDate" contenteditable>{{skill.startDate}}</span></td>
     <td><span id="endDate" contenteditable>{{skill.endDate}}</span></td>
-    <button class="btn btn-primary mb-2" type="submit" (click)="onSkillEdit(skill)">
+    <button id="btn-modifSkill" class="btn btn-primary mb-2" type="submit" (click)="onSkillEdit(skill)">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
            viewBox="0 0 16 16">
         <path

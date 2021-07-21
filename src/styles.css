@@ -34,3 +34,6 @@ h2{
   font-size: 1.1em;
 }
 
+#formModifSkill, #formCreateSkill{
+  display: none;
+}
