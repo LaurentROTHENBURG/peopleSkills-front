@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
+import {LogicalFileSystem} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 
 @Component({
@@ -11,15 +12,26 @@ import {FormBuilder} from "@angular/forms";
 })
 export class SkillsSettingComponent implements OnInit {
 
-
-  skill: Skill | undefined;
-  skillList: Skill[] = [];
-
-  addSkillForm = this.formBuilder.group({formNameSkill: ''});
-
   constructor(private skillService: SkillService,
               private formBuilder: FormBuilder,) {
   }
+
+
+  skillList: Skill[] = [];
+
+  skillForm = this.formBuilder.group({
+    skillId: 0,
+    name: '',
+    startDate: '',
+    endDate: ''
+  });
+
+  createSkillForm = this.formBuilder.group({
+    skillId: 0,
+    name: '',
+    startDate: '',
+    endDate: ''
+  });
 
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
@@ -32,14 +44,41 @@ export class SkillsSettingComponent implements OnInit {
     this.skillService.deleteSkillById(skillId);
   }
 
-  onSaveSkill() {
-    console.log("j'appui sur le bouton avant le  if");
-    console.log(this.addSkillForm.get('formNameSkill')?.value);
-    if (this.skill) {
-      this.skill.name = this.addSkillForm.get('formNameSkill')?.value;
-      this.skillService.createSKill(this.skill);
-
-      console.log(this.skill);
-    }
+  onSkillEdit(skill: Skill) {
+    this.skillForm.patchValue({
+      skillId: skill.skillId,
+      name: skill.name,
+      startDate: skill.startDate,
+      endDate: skill.endDate
+    });
   }
-}
+
+  skill: Skill | undefined;
+
+  onSkillUpdate() {
+    this.skill = this.skillForm.value;
+    this.skillService.updateSKill(this.skill).subscribe();
+    this.skillForm.reset({
+      skill_name: '',
+      startDate: '',
+      endDate:''
+    })
+  }
+
+  onSkillCreate() {
+    this.skill = this.createSkillForm.value;
+    console.log(this.skill);
+    this.skillService.createSKill(this.skill).subscribe();
+    this.createSkillForm.reset({
+      skill_name: '',
+      startDate: '',
+      endDate:''
+    })
+  }
+
+
+  ngOnChanges() {
+    console.log("Changement")
+  }
+
+}//end

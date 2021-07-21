@@ -15,13 +15,18 @@ export class SkillService {
 
   getAllSkill() {
     return this.http.get<Skill[]>(this.baseUrl);
-  }
+  };
 
   deleteSkillById(skillId: number) {
     this.http.delete(this.baseUrl + "delete/" + skillId).subscribe();
+  };
+
+  createSKill(skill: Skill | undefined) : Observable<Skill> {
+   return this.http.post<Skill>(this.baseUrl + "post/", skill);
   }
 
-  createSKill(skill: Skill) {
-    this.http.post(this.baseUrl, skill);
+  updateSKill(skill: Skill | undefined): Observable<Skill> {
+    return this.http.put<Skill>(this.baseUrl + "update/", skill);
   }
-}
+
+}//end
