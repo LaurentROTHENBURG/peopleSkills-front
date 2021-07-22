@@ -1,0 +1,19 @@
+<div class="auth">
+
+  <div class="authDetails">
+    <h2>Welcome to</h2>
+    <h2>PEOPLE SKILLS</h2>
+    <button class="btn btn-success"
+            *ngIf="!authStatus" (click)="onSignIn()">
+      Connexion
+    </button>
+  </div>
+
+  <div class="authButton">
+    <button class="btn btn-danger"
+            *ngif="authStatus" (click)="onSignOut()">
+      Déconnexion
+    </button>
+  </div>
+
+</div>

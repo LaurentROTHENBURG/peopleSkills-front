@@ -5,13 +5,18 @@ import {AppComponent} from './app.component';
 import {SkillsSettingComponent} from './skills-setting/skills-setting.component';
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import { SkillsComponent } from './skills/skills.component';
 import { SkillsSearchComponent } from './skills-search/skills-search.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AddSkillComponent } from './add-skill/add-skill.component';
+import { AuthComponent } from './auth/auth.component';
+import {AuthService} from "./services/auth";
 
 const appRoutes = [
   { path: 'skillsSetting', component: SkillsSettingComponent },
+  {path: 'authentification', component: AuthComponent},
   { path: 'skills', component: SkillsComponent },
   { path: 'skillsSearch', component: SkillsSearchComponent },
   { path: '', component: SkillsSettingComponent },
@@ -25,7 +30,9 @@ const appRoutes = [
     SkillsSettingComponent,
     SkillsComponent,
     SkillsSearchComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    AddSkillComponent,
+    AuthComponent
   ],
   imports: [
     HttpClientModule,
@@ -33,7 +40,9 @@ const appRoutes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

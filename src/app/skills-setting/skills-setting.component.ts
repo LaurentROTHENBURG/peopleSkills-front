@@ -2,8 +2,6 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
-import {LogicalFileSystem} from "@angular/compiler-cli/src/ngtsc/file_system";
-
 
 @Component({
   selector: 'app-skills-setting',
