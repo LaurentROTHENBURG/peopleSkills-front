@@ -37,6 +37,9 @@ export class SkillsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.collaboratorService.getAllCollaborator().subscribe(result =>{
+      this.collaboratorList = result;
+    })
   }
 
   onSelectCollaborator() {

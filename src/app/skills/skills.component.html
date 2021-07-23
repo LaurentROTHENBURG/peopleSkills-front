@@ -1,19 +1,10 @@
-<table>
-  <thead>
-  <tr>Entete</tr>
-  </thead>
-  <body>
-  <tr *ngfor="let collaborator of collaboratorList">
-    <td> {{ collaborator.firstName | uppercase}}</td>
-  </tr>
-  </body>
-</table>
-
-<!--<form [formGroup]="formSelectCollaborator">-->
-<!--  <select formControlName="selectCollaborator" (change) = "onSelectCollaborator"></select>-->
-<!--    <option *ngfor="let collaborator of collaboratorList" value="{{collaborator.collaboratorId}}">-->
-<!--      {{collaborator.name | uppercase}}</option>-->
-<!--</form>-->
+<form [formGroup]="formSelectCollaborator">
+  <select formControlName="selectCollaborator" (change) = "onSelectCollaborator()">
+    <option value="0">-- Sélectionner un collaborateur --</option>
+    <option *ngFor="let collaborator of collaboratorList" value="{{collaborator.collaboratorId}}">
+      {{collaborator.name | uppercase}}</option>
+  </select>
+</form>
 
 
 <div class="container">

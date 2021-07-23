@@ -8,7 +8,7 @@ return new Promise(
       ()=>{
         this.isAuth = true;
         resolve(true);
-      }, 2000
+      }, 1000
     );
   }
 );

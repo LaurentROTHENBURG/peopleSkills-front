@@ -35,6 +35,7 @@ const appRoutes = [
     AuthComponent
   ],
   imports: [
+    CommonModule,
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
