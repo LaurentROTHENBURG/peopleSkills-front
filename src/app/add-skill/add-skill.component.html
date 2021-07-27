@@ -6,11 +6,12 @@
   <label for="aereaSelect">Sélectionner un domaine</label>
   <select name="aereaSelect" id="aereaSelect"
           formControlName="aereaSelect"
-          class="form-control">
+          class="form-control"
+          (change)="onAreaChange()">
 
     <option value="0">-- Domaine de Compétences --</option>
     <option *ngFor="let area of areaList" value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
-    <option ></option>
+    <option></option>
   </select>
 
 
@@ -18,7 +19,8 @@
   <label for="skillSelect">Sélectionner une compétence</label>
   <select name="skillSelect" id="skillSelect"
           formControlName="skillSelect"
-          class="form-control">
+          class="form-control"
+          (change)="selectedSkillId(skillSelect.value)" #skillSelect>
 
     <option value="0">-- Compétences --</option>
     <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>

@@ -21,12 +21,18 @@ export class SkillService {
     this.http.delete(this.baseUrl + "delete/" + skillId).subscribe();
   };
 
-  createSKill(skill: Skill | undefined) : Observable<Skill> {
-   return this.http.post<Skill>(this.baseUrl + "post/", skill);
+  createSKill(skill: Skill | undefined): Observable<Skill> {
+    return this.http.post<Skill>(this.baseUrl + "post/", skill);
   }
 
   updateSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.put<Skill>(this.baseUrl + "update/", skill);
   }
+
+  getSkillbyArea(skillAreaId: number): Observable<Skill[]> {
+    return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId)
+  }
+
+
 
 }//end
