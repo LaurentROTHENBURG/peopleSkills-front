@@ -35,23 +35,9 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
       console.log(result);
-
-      const btnModifSkill = document.getElementById("btnModifSkill");
-      console.log(btnModifSkill);
-      const formModifSkill = document.getElementById("formModifSkill");
-      console.log(formModifSkill);
-      btnModifSkill?.addEventListener("click",()=>{
-        // @ts-ignore
-        if(getComputedStyle(formModifSkill).display="none"){
-          // @ts-ignore
-          formModifSkill.style.display="block"
-        } else {
-          // @ts-ignore
-          formModifSkill.style.display="none";
-        }
-      })
-
     })
+    this.displayModifSkill();
+
   }
 
   onDeleteSkillById(skillId: number) {
@@ -90,18 +76,17 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     })
   }
 
-  displayModifSkill(){
-    console.log("affiche")
+  displayModifSkill() {
     const btnModifSkill = document.getElementById("btnModifSkill");
     const formModifSkill = document.getElementById("formModifSkill")
-    btnModifSkill?.addEventListener("click",()=>{
+    btnModifSkill?.addEventListener("click", () => {
       // @ts-ignore
-      if(getComputedStyle(formModifSkill).display="none"){
+      if (getComputedStyle(formModifSkill).display = "none") {
         // @ts-ignore
-        formModifSkill.style.display="block"
+        formModifSkill.style.display = "block"
       } else {
         // @ts-ignore
-        formModifSkill.style.display="none";
+        formModifSkill.style.display = "none";
       }
     })
   }
@@ -109,7 +94,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   ngOnChanges() {
     console.log("Changement")
   }
-
 
 
 }//end

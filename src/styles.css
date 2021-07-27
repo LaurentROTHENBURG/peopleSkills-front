@@ -4,7 +4,9 @@ html {
 }
 
 h1 {
-  color: white;
+  color: rgb(88, 19, 116);
+  padding-left: 10%;
+  font-size: 2em;
 }
 
 h2 {
@@ -34,9 +36,12 @@ h2 {
   font-size: 1.1em;
 }
 
+#formCreateSkill{
+  margin-left: auto;
+}
 
-#formModifSkill, #formCreateSkill {
-  display: none;
+#formModifSkill {
+  /*display: none;*/
 }
 
 .container {
@@ -44,30 +49,14 @@ h2 {
   flex-direction: row;
 }
 
-.collaborator, .favourites {
-  background-color: rgb(230, 230, 230);
-  width: 25%;
-  height: 15em;
-  text-align: center;
-  float:left;
-}
-
-.project, .skills {
-  margin: 60px;
-  background-color: white;
-  width: 75%;
-  float:left;
-}
-
 .auth {
-  width: 30%;
+  width: 50%;
+  margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(230, 230, 230);
   min-height: 45em;
   text-align: center;
   color: rgb(88, 19, 116);
-
 }
 
 .authDetails {
@@ -75,5 +64,10 @@ h2 {
   }
 
 .authButton {
+}
 
+/******************letfPart******************/
+#leftPart{
+  background-color: darkgrey;
+  border-radius: 6px;
 }

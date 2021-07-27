@@ -1,1 +1,27 @@
-<p>add-skill works!</p>
+<!--***** Affichage des liste de valeurs *****-->
+
+<form [formGroup]="addSelectSkillForm">
+
+  <!--Affichage de la liste de valeurs domaine de competences-->
+  <label for="aereaSelect">Sélectionner un domaine</label>
+  <select name="aereaSelect" id="aereaSelect"
+          formControlName="aereaSelect"
+          class="form-control">
+
+    <option value="0">-- Domaine de Compétences --</option>
+    <option *ngFor="let area of areaList" value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
+    <option ></option>
+  </select>
+
+
+  <!--Affichage de la liste de valeurs compétences-->
+  <label for="skillSelect">Sélectionner une compétence</label>
+  <select name="skillSelect" id="skillSelect"
+          formControlName="skillSelect"
+          class="form-control">
+
+    <option value="0">-- Compétences --</option>
+    <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+  </select>
+
+</form>
