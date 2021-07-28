@@ -1,29 +1,59 @@
 <!--***** Affichage des liste de valeurs *****-->
+<div class="addSkill">
 
-<form [formGroup]="addSelectSkillForm">
+  <form [formGroup]="addSelectSkillForm">
 
-  <!--Affichage de la liste de valeurs domaine de competences-->
-  <label for="aereaSelect">Sélectionner un domaine</label>
-  <select name="aereaSelect" id="aereaSelect"
-          formControlName="aereaSelect"
-          class="form-control"
-          (change)="onAreaChange()">
+    <!--Affichage de la liste de valeurs domaine de competences-->
+    <label for="aereaSelect">Sélectionner un domaine</label>
+    <select name="aereaSelect" id="aereaSelect"
+            formControlName="aereaSelect"
+            class="form-control list-space"
+            (change)="onAreaChange()">
 
-    <option value="0">-- Domaine de Compétences --</option>
-    <option *ngFor="let area of areaList" value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
-    <option></option>
-  </select>
+      <option value="0">-- Domaine de Compétences --</option>
+      <option *ngFor="let area of areaList" value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
+      <option></option>
+    </select>
 
 
-  <!--Affichage de la liste de valeurs compétences-->
-  <label for="skillSelect">Sélectionner une compétence</label>
-  <select name="skillSelect" id="skillSelect"
-          formControlName="skillSelect"
-          class="form-control"
-          (change)="selectedSkillId(skillSelect.value)" #skillSelect>
+    <!--Affichage de la liste de valeurs des compétences-->
+    <label for="skillSelect">Sélectionner une compétence</label>
+    <select name="skillSelect" id="skillSelect"
+            formControlName="skillSelect"
+            class="form-control list-space"
+            (change)="selectedSkillId(skillSelect.value)" #skillSelect>
 
-    <option value="0">-- Compétences --</option>
-    <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
-  </select>
+      <option value="0">-- Compétences --</option>
+      <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+    </select>
 
-</form>
+  </form>
+
+
+  <!--***** Affichage des boutons de validation et d'annulation *****-->
+ <div class="addSkillBtn">
+    <button type="button" class="btn btn-success mb-2 btn-space"
+            routerLink="/skill">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+           viewBox="0 0 16 16">
+        <path
+          d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+      </svg>
+      Valider
+    </button>
+
+
+    <!--***** Annulation permet de revenir à la fiche skill *****-->
+
+    <button type="button" class="btn btn-warning mb-2 btn-space"
+            routerLink="/skill">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+           viewBox="0 0 16 16">
+        <path
+          d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+      </svg>
+      Annuler
+    </button>
+  </div>
+</div>
+

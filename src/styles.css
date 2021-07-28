@@ -9,18 +9,12 @@ h1 {
   font-size: 2em;
 }
 
-h2 {
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
 
-.table-striped {
-  margin-top: 2%;
-}
+.container {
+  display: flex;
+  flex-direction: row;}
 
-.btn-primary {
-  margin-right: 3%;
-}
+/******Barre de navigation*****/
 
 .navbar-default {
   margin-top: 1%;
@@ -36,38 +30,62 @@ h2 {
   font-size: 1.1em;
 }
 
-#formCreateSkill{
-  margin-left: auto;
-}
-
-#formModifSkill {
-  /*display: none;*/
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-}
-
-.auth {
+/******Paramétrage des compétences*****/
+.formCreateSkill, .formModifSkill  {
   width: 50%;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-striped {
+  margin-top: 2%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  margin-right: 3%;
+}
+
+/******Authentification******/
+.auth {
+  width: 35%;
   margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
   min-height: 45em;
-  text-align: center;
   color: rgb(88, 19, 116);
 }
 
-.authDetails {
-  padding-top: 20%;
-  }
 
 .authButton {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  text-align: center;
 }
 
-/******************letfPart******************/
-#leftPart{
-  background-color: darkgrey;
-  border-radius: 6px;
+/******add Skill******/
+.addSkill {
+  width: 35%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(88, 19, 116);
+}
+
+.addSkillBtn {
+  margin-top:6%;
+  text-align: center;
+}
+.btn-space {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.list-space
+{
+  margin-bottom: 5%;
 }

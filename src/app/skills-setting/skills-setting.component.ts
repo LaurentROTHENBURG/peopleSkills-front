@@ -31,6 +31,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     endDate: ''
   });
 
+  displaySkillUpdate: boolean = false;
+
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
@@ -50,7 +52,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       name: skill.name,
       startDate: skill.startDate,
       endDate: skill.endDate
-    });
+    })
+    this.displaySkillUpdate = true;
   }
 
   skill: Skill | undefined;

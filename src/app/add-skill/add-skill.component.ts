@@ -51,7 +51,6 @@ export class AddSkillComponent implements OnInit {
       });
       this.newSkillIdEvent.emit(Number(this.addSelectSkillForm.get('skillSelect')?.value));
     }
-
   }
 
-}
+}//end

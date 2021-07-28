@@ -1,26 +1,22 @@
 <div class="auth">
 
-  <div class="form-group row">
-    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
+  <div class="form-group">
+    <label for="email">Entrez votre Email</label>
+    <input type="email" class="form-control" id="email" placeholder="Email">
   </div>
 
-  <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
+  <div class="form-group">
+    <label for="email">Saisissez votre Password</label>
+    <input type="email" class="form-control" id="email" placeholder="Password">
   </div>
 
   <div class="authButton">
-    <button class="btn btn-success"
+    <button class="btn btn-success authButton"
             *ngIf="!authStatus" (click)="onSignIn()">
       Connexion
     </button>
 
-    <button class="btn btn-danger"
+    <button class="btn btn-danger authButton"
             *ngIf="authStatus" (click)="onSignOut()">
       Déconnexion
     </button>
