@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Skill} from "../skill";
+import {CollaboratorSkill} from "../collaboratorSkill";
 
 
 @Injectable({
@@ -17,21 +18,30 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl);
   };
 
-  deleteSkillById(skillId: number) {
-    this.http.delete(this.baseUrl + "delete/" + skillId).subscribe();
+  getSkillbyArea(skillAreaId: number): Observable<Skill[]> {
+    return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId)
   };
 
   createSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.post<Skill>(this.baseUrl + "post/", skill);
-  }
+  };
+
+  createSKillForOnCollaborator(collaboratorSkill: CollaboratorSkill | undefined) : Observable<CollaboratorSkill>{
+    return this.http.post<CollaboratorSkill>(this.baseUrl + "collaborator_skill/", collaboratorSkill )
+
+  };
 
   updateSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.put<Skill>(this.baseUrl + "update/", skill);
-  }
+  };
 
-  getSkillbyArea(skillAreaId: number): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId)
-  }
+  deleteSkillById(skillId: number) {
+    this.http.delete(this.baseUrl + "delete/" + skillId).subscribe();
+  };
+
+
+
+
 
 
 

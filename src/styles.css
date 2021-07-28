@@ -22,7 +22,6 @@ h2{
 /******Barre de navigation*****/
 
 .navbar-default {
-  margin-top: 1%;
   background-color: rgb(88, 19, 116);
   height: 70px;
   color: white;
@@ -94,13 +93,13 @@ h2{
   margin-top: 1%;
 }
 
-.rigtPartSkill {
+.rightPartSkill {
   width: 60%;
   margin-left: 5%;
 }
 
 /******add Skill******/
-.addSkill {
+.addAction {
   width: 35%;
   margin-top: 2%;
   margin-left: auto;

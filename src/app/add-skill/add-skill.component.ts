@@ -5,6 +5,7 @@ import {SkillService} from "../services/skill.service";
 import {Area} from "../area";
 import {AreaService} from "../services/area.service";
 import {Output, EventEmitter} from '@angular/core';
+import {CollaboratorSkill} from "../collaboratorSkill";
 
 @Component({
   selector: 'app-add-skill',
@@ -34,6 +35,15 @@ export class AddSkillComponent implements OnInit {
     skillSelect: 0
   })
 
+  addSkillForOneCollaboratorForm = this.formBuilder.group({
+    collaboratorSkillId: 0,
+    autoRating: '',
+    collaboratorIdx: 1,
+    favouriteSkill: '',
+    obtentionDate: '',
+    skillId: 0,
+  })
+
   ngOnInit(): void {
     //   this.skillService.getAllSkill().subscribe(result => {
     //   this.skillList=result;
@@ -52,5 +62,14 @@ export class AddSkillComponent implements OnInit {
       this.newSkillIdEvent.emit(Number(this.addSelectSkillForm.get('skillSelect')?.value));
     }
   }
+
+  collaboratorSkill: CollaboratorSkill | undefined;
+
+  onAddSkillForOneCollaborator() {
+    console.log("coucou")
+    this.collaboratorSkill = this.addSkillForOneCollaboratorForm.value;
+    this.skillService.createSKillForOnCollaborator(this.collaboratorSkill).subscribe();
+  }
+
 
 }//end

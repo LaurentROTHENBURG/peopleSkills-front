@@ -14,12 +14,14 @@ import {AddSkillComponent} from './add-skill/add-skill.component';
 import {AuthComponent} from './auth/auth.component';
 import {AuthService} from "./services/auth";
 import { AreaSkillComponent } from './area-skill/area-skill.component';
+import { AddProjectComponent } from './add-project/add-project.component';
 
 const appRoutes = [
   {path: 'skillsSetting', component: SkillsSettingComponent},
   {path: 'authentification', component: AuthComponent},
   {path: 'skill', component: SkillsComponent},
   {path: 'addSkill', component: AddSkillComponent},
+  {path: 'addProject', component: AddProjectComponent},
   {path: 'skillsSearch', component: SkillsSearchComponent},
   {path: '', component: SkillsSettingComponent},
   {path: 'not-found', component: FourOhFourComponent},
@@ -35,7 +37,8 @@ const appRoutes = [
     FourOhFourComponent,
     AddSkillComponent,
     AuthComponent,
-    AreaSkillComponent
+    AreaSkillComponent,
+    AddProjectComponent
   ],
   imports: [
     CommonModule,

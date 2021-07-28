@@ -1,5 +1,5 @@
 <!--***** Affichage des liste de valeurs *****-->
-<div class="addSkill">
+<div class="addAction">
 
   <form [formGroup]="addSelectSkillForm">
 
@@ -15,25 +15,42 @@
       <option></option>
     </select>
 
+    <!--    ***** Formulaire pour enregistrement de la compétence *****-->
+<!--    <form [formGroup]="addSkillForOneCollaboratorForm">-->
+<!--      <input type="hidden" id="collaboratorSkillId" formControlName="collaboratorSkillId">-->
+<!--      <input type="hidden" id="collaboratorIdx" formControlName="collaboratorIdx">-->
+<!--      <input type="hidden" id="favouriteSkill" formControlName="favouriteSkill">-->
+<!--      <input type="hidden" id="obtentionDate" formControlName="obtentionDate">-->
 
-    <!--Affichage de la liste de valeurs des compétences-->
-    <label for="skillSelect">Sélectionner une compétence</label>
-    <select name="skillSelect" id="skillSelect"
-            formControlName="skillSelect"
-            class="form-control list-space"
-            (change)="selectedSkillId(skillSelect.value)" #skillSelect>
+      <!--Affichage de la liste de valeurs des compétences-->
+      <label for="skillSelect">Sélectionner une compétence</label>
+      <select name="skillSelect" id="skillSelect"
+              formControlName="skillSelect"
+              class="form-control list-space"
+              (change)="selectedSkillId(skillSelect.value)" #skillSelect>
 
-      <option value="0">-- Compétences --</option>
-      <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
-    </select>
+        <option value="0">-- Compétences --</option>
+        <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+      </select>
 
+      <!--  *****Auto Evaluation *****-->
+      <label for="evaluation">Auto Evaluation de la compétence</label>
+      <input id="evaluation" type="number"
+             placeholder="Renseigner une note sur 5"
+             max=5
+             min=0
+             class="form-control list-space">
+<!--             formControlName="autoRating">-->
+
+<!--    </form>-->
   </form>
 
 
   <!--***** Affichage des boutons de validation et d'annulation *****-->
- <div class="addSkillBtn">
+  <div class="addSkillBtn">
     <button type="button" class="btn btn-success mb-2 btn-space"
-            routerLink="/skill">
+            routerLink="/skill"
+            (click)="onAddSkillForOneCollaborator()">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
            viewBox="0 0 16 16">
         <path
@@ -56,4 +73,3 @@
     </button>
   </div>
 </div>
-

@@ -70,7 +70,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   onSkillCreate() {
     this.skill = this.createSkillForm.value;
-    console.log(this.skill);
     this.skillService.createSKill(this.skill).subscribe();
     this.createSkillForm.reset({
       skill_name: '',
