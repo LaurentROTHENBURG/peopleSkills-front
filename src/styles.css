@@ -9,10 +9,15 @@ h1 {
   font-size: 2em;
 }
 
+h2{
+  color: rgb(88, 19, 116);
+  font-size: x-large;
+}
 
 .container {
   display: flex;
-  flex-direction: row;}
+  flex-direction: row;
+}
 
 /******Barre de navigation*****/
 
@@ -30,8 +35,12 @@ h1 {
   font-size: 1.1em;
 }
 
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: darkgrey;
+}
+
 /******Paramétrage des compétences*****/
-.formCreateSkill, .formModifSkill  {
+.formCreateSkill, .formModifSkill {
   width: 50%;
   margin-top: 1%;
   margin-left: auto;
@@ -43,6 +52,7 @@ h1 {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: scroll
 }
 
 .btn-primary {
@@ -67,6 +77,28 @@ h1 {
   text-align: center;
 }
 
+/******Fiche de compétences du collaborateur*****/
+
+.blocSkill {
+  display: flex;
+  flex-direction: row;
+  font-family: Calibri;
+}
+
+.leftPartSkill {
+  width: 30%;
+  margin-left: 3%;
+  border-radius: 7px ;
+  border: 1px solid #5f6367;
+  padding: 10px;
+  margin-top: 1%;
+}
+
+.rigtPartSkill {
+  width: 60%;
+  margin-left: 5%;
+}
+
 /******add Skill******/
 .addSkill {
   width: 35%;
@@ -77,15 +109,15 @@ h1 {
 }
 
 .addSkillBtn {
-  margin-top:6%;
+  margin-top: 6%;
   text-align: center;
 }
+
 .btn-space {
   margin-right: 15px;
   margin-left: 15px;
 }
 
-.list-space
-{
+.list-space {
   margin-bottom: 5%;
 }

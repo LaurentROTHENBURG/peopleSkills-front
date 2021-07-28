@@ -1,101 +1,122 @@
-<!--Affichage de la liste de valeurs-->
-<form [formGroup]="selectCollaboratorForm">
+<div class="blocSkill">
 
-  <label for="selectCollaborator">Sélectionner un collaborateur</label>
-  <select id="selectCollaborator" name="selectCollaborator"
-          formControlName="selectCollaborator"
-          class="form-control"
-          (change)="onSelectCollaborator(this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList)">
+  <div class="leftPartSkill">
+    <h2>Fiche Collaborateur</h2>
+    <!--    ***** Affichage de la liste de valeurs de sélection de l'utilisateur *****-->
+    <form [formGroup]="selectCollaboratorForm">
 
-    <option value="0">-- collaborateur --</option>
-    <option *ngFor="let collaborator of collaboratorList" value="{{collaborator.collaboratorId}}">
-      {{collaborator.name | uppercase}} {{collaborator.firstName}} </option>
-  </select>
+      <label for="selectCollaborator">Sélectionner un collaborateur</label>
+      <select id="selectCollaborator" name="selectCollaborator"
+              formControlName="selectCollaborator"
+              class="form-control"
+              (change)="onSelectCollaborator(this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList)">
+
+        <option value="0">-- collaborateur --</option>
+        <option *ngFor="let collaborator of collaboratorList" value="{{collaborator.collaboratorId}}">
+          {{collaborator.name | uppercase}} {{collaborator.firstName}} </option>
+      </select>
 
 
-  <!--Affichage du détail du collaborateur-->
-  <div class="form-group">
-    <label for="name">Nom</label>
-    <input id="name" type="text" readonly="disabled" class="form-control" formControlName="collaboratorName">
+      <!--      ***** Affichage du détail du collaborateur *****-->
+      <div class="form-group">
+        <label for="name">Nom</label>
+        <input id="name" type="text" readonly="disabled" class="form-control" formControlName="collaboratorName">
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">Prénom</label>
+        <input id="firstName" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorFirstName">
+      </div>
+
+      <div class="form-group">
+        <label for="profession">Profession</label>
+        <input id="profession" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorProfession">
+      </div>
+
+      <div class="form-group">
+        <label for="mail">Mail</label>
+        <input id="mail" type="text" readonly="disabled" class="form-control" formControlName="collaboratorMail">
+      </div>
+
+      <div class="form-group">
+        <label for="matricule">Matricule</label>
+        <input id="matricule" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorMatricule">
+      </div>
+
+      <div class="form-group">
+        <label for="language">Langue</label>
+        <input id="language" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorLanguage">
+      </div>
+
+
+    </form>
   </div>
 
-  <div class="form-group">
-    <label for="firstName">Prénom</label>
-    <input id="firstName" type="text" readonly="disabled" class="form-control" formControlName="collaboratorFirstName">
+  <!--<div class="form-group">-->
+  <!--  <label for="profession">Prénom</label>-->
+  <!--  <input id="profession" type="text" class="form-control" [formControl]="profession">-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+  <!--  <label for="mail">Mail</label>-->
+  <!--  <input id="mail" type="text" class="form-control" [formControl]="mail">-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+  <!--  <label for="firstName">matricule</label>-->
+  <!--  <input id="firstName" type="text" class="form-control" [formControl]="matricule">-->
+  <!--</div>-->
+
+  <!--<div class="form-group">-->
+  <!--  <label for="language">matricule</label>-->
+  <!--  <input id="language" type="text" class="form-control" [formControl]="language">-->
+  <!--</div>-->
+
+
+  <!--  ***** Affichage expérience projet *****-->
+  <div class="rigtPartSkill">
+    <h2 class="project">Expérience Projet
+      <button class="btn btn-info mb-2" type="submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
+             viewBox="0 0 16 16">
+          <path
+            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+        </svg>
+        Ajouter Projets
+      </button>
+    </h2>
+
   </div>
 
-  <div class="form-group">
-    <label for="profession">Profession</label>
-    <input id="profession" type="text" readonly="disabled" class="form-control"
-           formControlName="collaboratorProfession">
-  </div>
-
-  <div class="form-group">
-    <label for="mail">Mail</label>
-    <input id="mail" type="text" readonly="disabled" class="form-control" formControlName="collaboratorMail">
-  </div>
-
-  <div class="form-group">
-    <label for="matricule">Matricule</label>
-    <input id="matricule" type="text" readonly="disabled" class="form-control" formControlName="collaboratorMatricule">
-  </div>
-
-  <div class="form-group">
-    <label for="language">Langue</label>
-    <input id="language" type="text" readonly="disabled" class="form-control" formControlName="collaboratorLanguage">
-  </div>
-
-
-</form>
-
-
-<!--<div class="form-group">-->
-<!--  <label for="profession">Prénom</label>-->
-<!--  <input id="profession" type="text" class="form-control" [formControl]="profession">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--  <label for="mail">Mail</label>-->
-<!--  <input id="mail" type="text" class="form-control" [formControl]="mail">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--  <label for="firstName">matricule</label>-->
-<!--  <input id="firstName" type="text" class="form-control" [formControl]="matricule">-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--  <label for="language">matricule</label>-->
-<!--  <input id="language" type="text" class="form-control" [formControl]="language">-->
-<!--</div>-->
-
-
-<div>
-  <h3 class="project">Expérience Projet</h3>
-  <button class="btn btn-info mb-2" type="submit">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
-         viewBox="0 0 16 16">
-      <path
-        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-    </svg>
-    Ajouter Projets
-  </button>
 </div>
 
-<div>
-  <h3 class="project">Compétences</h3>
-  <button class="btn btn-info mb-2"
-          type="submit"
-          routerLink="/addSkill">
+<div class="blocSkill">
+  <div class="leftPartSkill">
+    <h2>Favoris</h2>
+  </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
-         viewBox="0 0 16 16">
-      <path
-        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-    </svg>
-    Ajouter Compétences
-  </button>
+  <div class="rigtPartSkill">
+    <!--  ***** Affichage Compétences *****-->
+    <h2 class="project">Compétences
+      <button class="btn btn-info mb-2"
+              type="submit"
+              routerLink="/addSkill">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
+             viewBox="0 0 16 16">
+          <path
+            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+        </svg>
+        Ajouter Compétences
+      </button>
+    </h2>
+  </div>
 </div>
+
 
 
 
