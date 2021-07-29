@@ -38,13 +38,11 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       this.skillList = result;
       console.log(result);
     })
-    this.displayModifSkill();
-
   }
 
   onDeleteSkillById(skillId: number) {
     this.skillService.deleteSkillById(skillId);
-  }
+      }
 
   onSkillEdit(skill: Skill) {
     this.skillForm.patchValue({
@@ -54,6 +52,11 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       endDate: skill.endDate
     })
     this.displaySkillUpdate = true;
+  }
+
+  onCancel() {
+    console.log("coucou cancel")
+    this.displaySkillUpdate = false;
   }
 
   skill: Skill | undefined;
@@ -75,21 +78,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       skill_name: '',
       startDate: '',
       endDate: ''
-    })
-  }
-
-  displayModifSkill() {
-    const btnModifSkill = document.getElementById("btnModifSkill");
-    const formModifSkill = document.getElementById("formModifSkill")
-    btnModifSkill?.addEventListener("click", () => {
-      // @ts-ignore
-      if (getComputedStyle(formModifSkill).display = "none") {
-        // @ts-ignore
-        formModifSkill.style.display = "block"
-      } else {
-        // @ts-ignore
-        formModifSkill.style.display = "none";
-      }
     })
   }
 
