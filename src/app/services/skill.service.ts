@@ -22,6 +22,10 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId)
   };
 
+  getSkillForOneCollaborator() : Observable<Skill[]>{
+    return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator')
+  }
+
   createSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.post<Skill>(this.baseUrl + "post/", skill);
   };
