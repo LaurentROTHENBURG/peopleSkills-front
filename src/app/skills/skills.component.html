@@ -76,9 +76,8 @@
   <!--  <input id="language" type="text" class="form-control" [formControl]="language">-->
   <!--</div>-->
 
-
+  <!--  ***** Affichage Compétences *****-->
   <div class="rightPartSkill">
-    <!--  ***** Affichage Compétences *****-->
     <h2 class="project">Compétences
       <button class="btn btn-primary mb-2 right"
               type="submit"
@@ -95,7 +94,13 @@
 
     <!--  ***** liste des Compétences pour un collaborateur *****-->
     <h3>
-      <span *ngFor="let skill of skillListbyCollaborator" class="badge badge-pill badge-success">{{skill.name}}</span>
+      <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborators">
+        {{skillByCollaborator.name}}
+        <span class="badge badge-light">
+<!--          {{skillByCollaborator.autoRating}}-->
+          4 </span>
+
+      </button>
     </h3>
   </div>
 

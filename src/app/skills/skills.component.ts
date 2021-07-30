@@ -18,7 +18,7 @@ export class SkillsComponent implements OnInit {
               private skillService: SkillService) {
   }
 
-  skillListbyCollaborator: Skill[] = [];
+  skillListbyCollaborators: Skill[] = [];
 
   collaboratorList: Collaborator[] = [];
 
@@ -37,30 +37,31 @@ export class SkillsComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.collaboratorService.getAllCollaborator().subscribe(result => {
-      this.collaboratorList = result;
-      console.log(result);
+    this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
+      this.collaboratorList = resultAllCollaborator;
+      console.log(resultAllCollaborator);
     });
 
-    this.skillService.getSkillForOneCollaborator().subscribe(result => {
-      this.skillListbyCollaborator = result;
-      console.log(result);
+    this.skillService.getSkillForOneCollaborator().subscribe(resultOneCollaborator => {
+      this.skillListbyCollaborators = resultOneCollaborator;
+      console.log(resultOneCollaborator);
     })
   }
 
-  onSelectCollaborator(index: number, collaboratorList: Collaborator[]) {
+  onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
+    //L'identifiant du collaborateur est bien collaboratorId
+    console.log("ceci est l'identifiant  : " + collaboratorId);
 
-    //this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[index].name);
+    //je recherche l'index à partir de l'id
+    let index = collaboratorList.findIndex(i => i.collaboratorId == collaboratorId);
+    console.log("ceci est l'index  : " + index);
 
-    let searchId = collaboratorList.map(function(x) {return x.collaboratorId; }).indexOf(index);
-    console.log(searchId);
-
-    this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[searchId].name);
-    this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(collaboratorList[searchId].firstName);
-    this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(collaboratorList[1].profession);
-    this.selectCollaboratorForm.get('collaboratorMail')?.setValue(collaboratorList[1].mail);
-    this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(collaboratorList[1].matricule);
-    this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(collaboratorList[1].language);
+    this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[index].name);
+    this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(collaboratorList[index].firstName);
+    this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(collaboratorList[index].profession);
+    this.selectCollaboratorForm.get('collaboratorMail')?.setValue(collaboratorList[index].mail);
+    this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(collaboratorList[index].matricule);
+    this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(collaboratorList[index].language);
   };
 
 }
