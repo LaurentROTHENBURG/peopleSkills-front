@@ -22,8 +22,6 @@ export class SkillsComponent implements OnInit {
 
   collaboratorList: Collaborator[] = [];
 
-  collaborator: Collaborator | undefined;
-
   selectCollaboratorForm = this.formBuilder.group({
     selectCollaborator: 0,
     collaboratorName: '',
@@ -42,19 +40,17 @@ export class SkillsComponent implements OnInit {
       console.log(resultAllCollaborator);
     });
 
-    this.skillService.getSkillForOneCollaborator().subscribe(resultOneCollaborator => {
-      this.skillListbyCollaborators = resultOneCollaborator;
-      console.log(resultOneCollaborator);
-    })
+    // this.skillService.getSkillForOneCollaborator().subscribe(resultOneCollaborator => {
+    //   this.skillListbyCollaborators = resultOneCollaborator;
+    //   console.log(resultOneCollaborator);
+    // })
   }
 
-  onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
-    //L'identifiant du collaborateur est bien collaboratorId
-    console.log("ceci est l'identifiant  : " + collaboratorId);
 
-    //je recherche l'index à partir de l'id
+  onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
+
+    //je recherche l'index à partir de collaboratorId
     let index = collaboratorList.findIndex(i => i.collaboratorId == collaboratorId);
-    console.log("ceci est l'index  : " + index);
 
     this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[index].name);
     this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(collaboratorList[index].firstName);
@@ -62,6 +58,12 @@ export class SkillsComponent implements OnInit {
     this.selectCollaboratorForm.get('collaboratorMail')?.setValue(collaboratorList[index].mail);
     this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(collaboratorList[index].matricule);
     this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(collaboratorList[index].language);
+
+    this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultOneCollaborator => {
+      this.skillListbyCollaborators = resultOneCollaborator;
+      console.log(resultOneCollaborator);
+    })
+
   };
 
 }

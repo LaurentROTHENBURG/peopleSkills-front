@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Skill} from "../skill";
 import {CollaboratorSkill} from "../collaboratorSkill";
+import {Collaborator} from "../collaborator";
 
 
 @Injectable({
@@ -22,8 +23,8 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId)
   };
 
-  getSkillForOneCollaborator() : Observable<Skill[]>{
-    return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator')
+  getSkillForOneCollaborator(collaboratorId: number) : Observable<Skill[]>{
+    return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId)
   }
 
   createSKill(skill: Skill | undefined): Observable<Skill> {
