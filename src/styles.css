@@ -52,7 +52,7 @@ h2{
   overflow-x: scroll
 }
 
-.btn-primary {
+.btn-primary, .btn-success{
   margin-right: 3%;
 }
 

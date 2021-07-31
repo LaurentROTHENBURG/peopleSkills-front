@@ -4,6 +4,8 @@ import {CollaboratorService} from "../services/collaborator.service";
 import {Collaborator} from "../collaborator";
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
+import {ProjectService} from "../services/project.service";
+import {Project} from "../project";
 
 @Component({
   selector: 'app-skills',
@@ -15,10 +17,13 @@ export class SkillsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private collaboratorService: CollaboratorService,
-              private skillService: SkillService) {
+              private skillService: SkillService,
+              private pojectService: ProjectService) {
   }
 
-  skillListbyCollaborators: Skill[] = [];
+  skillListbyCollaborator: Skill[] = [];
+
+  projectListbyCollaborator: Project[] = [];
 
   collaboratorList: Collaborator[] = [];
 
@@ -59,10 +64,16 @@ export class SkillsComponent implements OnInit {
     this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(collaboratorList[index].matricule);
     this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(collaboratorList[index].language);
 
-    this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultOneCollaborator => {
-      this.skillListbyCollaborators = resultOneCollaborator;
-      console.log(resultOneCollaborator);
-    })
+    this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultSkillOneCollaborator => {
+      this.skillListbyCollaborator = resultSkillOneCollaborator;
+      console.log(resultSkillOneCollaborator);
+    });
+
+    this.pojectService.getProjectForOneCollaborator(collaboratorId).subscribe(resultProjectOneCollaborator => {
+      this.projectListbyCollaborator = resultProjectOneCollaborator;
+      console.log(resultProjectOneCollaborator);
+    });
+
 
   };
 

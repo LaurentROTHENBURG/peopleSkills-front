@@ -94,10 +94,8 @@
 
     <!--  ***** liste des Compétences pour un collaborateur *****-->
 
-
-<!--    ***** modif du 30/07 *****-->
     <h3>
-      <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborators">
+      <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborator">
         {{skillByCollaborator.name}}
         <span class="badge badge-light">
 <!--          {{skillByCollaborator.autoRating}}-->
@@ -128,7 +126,16 @@
         Ajouter Projets
       </button>
     </h2>
-  </div>
 
+    <!--  ***** liste des projets pour un collaborateur *****-->
+
+    <button type="button" class="btn btn-success" *ngFor="let projectByCollaborator of projectListbyCollaborator">
+      {{projectByCollaborator.name}}
+      <span class="badge badge-light">
+1
+           </span>
+
+    </button>
+  </div>
 </div>
 
