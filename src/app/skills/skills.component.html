@@ -56,26 +56,6 @@
     </form>
   </div>
 
-  <!--<div class="form-group">-->
-  <!--  <label for="profession">Prénom</label>-->
-  <!--  <input id="profession" type="text" class="form-control" [formControl]="profession">-->
-  <!--</div>-->
-
-  <!--<div class="form-group">-->
-  <!--  <label for="mail">Mail</label>-->
-  <!--  <input id="mail" type="text" class="form-control" [formControl]="mail">-->
-  <!--</div>-->
-
-  <!--<div class="form-group">-->
-  <!--  <label for="firstName">matricule</label>-->
-  <!--  <input id="firstName" type="text" class="form-control" [formControl]="matricule">-->
-  <!--</div>-->
-
-  <!--<div class="form-group">-->
-  <!--  <label for="language">matricule</label>-->
-  <!--  <input id="language" type="text" class="form-control" [formControl]="language">-->
-  <!--</div>-->
-
   <!--  ***** Affichage Compétences *****-->
   <div class="rightPartSkill">
     <h2 class="project">Compétences
@@ -129,8 +109,10 @@
 
     <!--  ***** liste des projets pour un collaborateur *****-->
 
-    <button type="button" class="btn btn-success" *ngFor="let projectByCollaborator of projectListbyCollaborator">
+    <button type="button" class="btn btn-success" *ngFor="let projectByCollaborator of projectListbyCollaborator"
+            [routerLink]="['/skill', projectByCollaborator.projectId]">
       {{projectByCollaborator.name}}
+
       <span class="badge badge-light">
 1
            </span>

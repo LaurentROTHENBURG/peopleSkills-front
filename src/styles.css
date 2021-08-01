@@ -4,12 +4,28 @@ h1 {
   font-size: 2em;
 }
 
-h2{
+h2 {
   margin-top: 1%;
   color: rgb(88, 19, 116);
   font-size: x-large;
   font-weight: bold;
 
+}
+
+h3 {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(88, 19, 116);
+}
+
+h4 {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: rgb(88, 19, 116);
+  font-weight: bold;
 }
 
 .container {
@@ -52,8 +68,9 @@ h2{
   overflow-x: scroll
 }
 
-.btn-primary, .btn-success{
+.btn-primary, .btn-success {
   margin-right: 3%;
+
 }
 
 /******Authentification******/
@@ -85,7 +102,7 @@ h2{
 .leftPartSkill {
   width: 30%;
   margin-left: 3%;
-  border-radius: 7px ;
+  border-radius: 7px;
   border: 1px solid #DCDCDC;
   padding: 10px;
   margin-top: 1%;
@@ -94,20 +111,20 @@ h2{
 .rightPartSkill {
   width: 60%;
   margin-left: 3%;
-  border-radius: 7px ;
+  border-radius: 7px;
   border: 1px solid #f8f9fa;
   padding: 10px;
   margin-top: 1%;
   background-color: #f8f9fa;
 }
 
-.badge{
+.badge {
   margin-right: 15px;
   margin-left: 15px;
   font-size: 0.8em;
-  }
+}
 
-.right{
+.right {
   margin-left: 65%;
 }
 
@@ -132,4 +149,19 @@ h2{
 
 .list-space {
   margin-bottom: 5%;
+}
+
+/******Detail projet******/
+.projectDetail {
+  margin-top: 2%;
+  color: rgb(88, 19, 116);
+  font-size: 1.2em;
+  border-radius: 12px;
+  border: 1px solid #f8f9fa;
+  background-color: #f8f9fa;
+  width: 50%;
+  padding: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 25em;
 }

@@ -1,6 +1,7 @@
 export interface Project {
-  ProjectId: number;
-  endDate : Date;
+  projectId: number;
   name : string;
+  description: string
+  endDate : Date;
   startDate : Date;
 }

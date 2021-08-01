@@ -45,10 +45,7 @@ export class SkillsComponent implements OnInit {
       console.log(resultAllCollaborator);
     });
 
-    // this.skillService.getSkillForOneCollaborator().subscribe(resultOneCollaborator => {
-    //   this.skillListbyCollaborators = resultOneCollaborator;
-    //   console.log(resultOneCollaborator);
-    // })
+
   }
 
 
