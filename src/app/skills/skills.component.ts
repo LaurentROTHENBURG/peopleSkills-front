@@ -44,14 +44,10 @@ export class SkillsComponent implements OnInit {
       this.collaboratorList = resultAllCollaborator;
       console.log(resultAllCollaborator);
     });
-
-
   }
-
 
   onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
 
-    //je recherche l'index à partir de collaboratorId
     let index = collaboratorList.findIndex(i => i.collaboratorId == collaboratorId);
 
     this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[index].name);
@@ -70,8 +66,5 @@ export class SkillsComponent implements OnInit {
       this.projectListbyCollaborator = resultProjectOneCollaborator;
       console.log(resultProjectOneCollaborator);
     });
-
-
   };
-
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {ActivatedRoute} from "@angular/router";
 import {Project} from "../project";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-project-detail',
@@ -10,13 +11,12 @@ import {Project} from "../project";
 })
 export class ProjectDetailComponent implements OnInit {
 
-   //projectDetails: Project[]= [];
-
   //Ajout du ! pur dire que l'on est certains que l'objet ne sera pas undefined
   projectDetail !: Project;
 
   constructor(private projectService: ProjectService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private location: Location) {
   }
 
   ngOnInit(): void {
@@ -29,10 +29,12 @@ export class ProjectDetailComponent implements OnInit {
     //this.projectDetail = projectDetails.find(projectDetail => projectId === projectIdfromRoute);
 
     this.projectService.getProjectById(projectIdfromRoute).subscribe(projectDetailResult => {
-    this.projectDetail = projectDetailResult;
-      console.log("detail d'un projet :" + projectDetailResult);
-     });
+      this.projectDetail = projectDetailResult;
+    });
 
   };
 
+  cancel() {
+    this.location.back();
+  }
 }

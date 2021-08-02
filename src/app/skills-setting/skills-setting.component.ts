@@ -3,6 +3,7 @@ import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
 
+
 @Component({
   selector: 'app-skills-setting',
   templateUrl: './skills-setting.component.html',
@@ -11,9 +12,9 @@ import {FormBuilder} from "@angular/forms";
 export class SkillsSettingComponent implements OnInit, OnChanges {
 
   constructor(private skillService: SkillService,
-              private formBuilder: FormBuilder,) {
+              private formBuilder: FormBuilder
+  ) {
   }
-
 
   skillList: Skill[] = [];
 
@@ -33,6 +34,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   displaySkillUpdate: boolean = false;
 
+  //refreshSkill = this.skillService.getAllSkill();
+
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
@@ -40,9 +43,18 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     })
   }
 
+  refreshSkill() {
+    this.skillService.getAllSkill().subscribe(result => {
+      this.skillList = result;
+    })
+  };
+
   onDeleteSkillById(skillId: number) {
-    this.skillService.deleteSkillById(skillId);
-      }
+    this.skillService.deleteSkillById(skillId).subscribe(() => {
+      console.log("Skill " + skillId + " est supprimé");
+      this.refreshSkill();
+    });
+  }
 
   onSkillEdit(skill: Skill) {
     this.skillForm.patchValue({
@@ -55,7 +67,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   }
 
   onCancel() {
-    console.log("coucou cancel")
     this.displaySkillUpdate = false;
   }
 

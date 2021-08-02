@@ -21,7 +21,6 @@ export class AddSkillComponent implements OnInit {
     this.newSkillIdEvent.emit(Number(value));
   }
 
-
   constructor(private formBuilder: FormBuilder,
               private skillService: SkillService,
               private areaService: AreaService) {
@@ -41,13 +40,10 @@ export class AddSkillComponent implements OnInit {
     collaboratorIdx: 1,
     favouriteSkill: '',
     obtentionDate: '',
-    skillId: 0,
+    skillId: 3,
   })
 
   ngOnInit(): void {
-    //   this.skillService.getAllSkill().subscribe(result => {
-    //   this.skillList=result;
-    // });
 
     this.areaService.getAllArea().subscribe(result => {
       this.areaList = result;
@@ -66,7 +62,7 @@ export class AddSkillComponent implements OnInit {
   collaboratorSkill: CollaboratorSkill | undefined;
 
   onAddSkillForOneCollaborator() {
-    console.log("coucou")
+    console.log("Insert into collaborator_skill")
     this.collaboratorSkill = this.addSkillForOneCollaboratorForm.value;
     this.skillService.createSKillForOnCollaborator(this.collaboratorSkill).subscribe();
   }

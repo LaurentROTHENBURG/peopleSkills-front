@@ -58,10 +58,10 @@
 
   <!--  ***** Affichage Compétences *****-->
   <div class="rightPartSkill">
+
     <h2 class="project">Compétences
       <button class="btn btn-primary mb-2 right"
-              type="submit"
-              routerLink="/addSkill">
+             [routerLink]="['/skill/add-skill', 1]">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
              viewBox="0 0 16 16">
@@ -109,8 +109,9 @@
 
     <!--  ***** liste des projets pour un collaborateur *****-->
 
-    <button type="button" class="btn btn-success" *ngFor="let projectByCollaborator of projectListbyCollaborator"
-            [routerLink]="['/skill', projectByCollaborator.projectId]">
+    <button class="btn btn-success"
+            *ngFor="let projectByCollaborator of projectListbyCollaborator"
+            [routerLink]="['/skill/project-detail', projectByCollaborator.projectId]">
       {{projectByCollaborator.name}}
 
       <span class="badge badge-light">

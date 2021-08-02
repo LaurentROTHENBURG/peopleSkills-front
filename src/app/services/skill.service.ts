@@ -13,7 +13,7 @@ export class SkillService {
   constructor(private http: HttpClient) {
   }
 
-  getAllSkill() {
+  getAllSkill(): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.baseUrl);
   };
 
@@ -37,14 +37,8 @@ export class SkillService {
     return this.http.put<Skill>(this.baseUrl + "update/", skill);
   };
 
-  deleteSkillById(skillId: number) {
-    this.http.delete(this.baseUrl + "delete/" + skillId).subscribe();
+  deleteSkillById(skillId: number): Observable<any> {
+    return this.http.delete(this.baseUrl + "delete/" + skillId);
   };
-
-
-
-
-
-
 
 }//end
