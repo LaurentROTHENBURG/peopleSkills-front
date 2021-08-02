@@ -6,6 +6,7 @@ import {Area} from "../area";
 import {AreaService} from "../services/area.service";
 import {Output, EventEmitter} from '@angular/core';
 import {CollaboratorSkill} from "../collaboratorSkill";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-skill',
@@ -23,7 +24,9 @@ export class AddSkillComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private skillService: SkillService,
-              private areaService: AreaService) {
+              private areaService: AreaService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   skillList: Skill[] = [];
@@ -37,17 +40,25 @@ export class AddSkillComponent implements OnInit {
   addSkillForOneCollaboratorForm = this.formBuilder.group({
     collaboratorSkillId: 0,
     autoRating: '',
-    collaboratorIdx: 1,
+    collaboratorIdx: '',
     favouriteSkill: '',
     obtentionDate: '',
     skillId: 3,
   })
+
 
   ngOnInit(): void {
 
     this.areaService.getAllArea().subscribe(result => {
       this.areaList = result;
     });
+
+    //je récupère le collaboratorID depuis la route
+    const routeParams = this.route.snapshot.paramMap;
+    const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
+
+    console.log("id du collaborateur : " + collaboratorIdfromRoute);
+
   }
 
   onAreaChange() {
@@ -59,12 +70,12 @@ export class AddSkillComponent implements OnInit {
     }
   }
 
-  collaboratorSkill: CollaboratorSkill | undefined;
-
   onAddSkillForOneCollaborator() {
-    console.log("Insert into collaborator_skill")
-    this.collaboratorSkill = this.addSkillForOneCollaboratorForm.value;
-    this.skillService.createSKillForOnCollaborator(this.collaboratorSkill).subscribe();
+    const formValue = this.addSkillForOneCollaboratorForm.value;
+    console.log("valeur de autoRating " + formValue['autoRating']);
+
+    this.router.navigate(['/skill']);
+
   }
 
 

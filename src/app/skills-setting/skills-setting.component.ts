@@ -3,7 +3,6 @@ import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
 
-
 @Component({
   selector: 'app-skills-setting',
   templateUrl: './skills-setting.component.html',
@@ -34,7 +33,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   displaySkillUpdate: boolean = false;
 
-  //refreshSkill = this.skillService.getAllSkill();
+
+
 
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {

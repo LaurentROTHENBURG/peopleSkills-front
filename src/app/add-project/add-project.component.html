@@ -1,26 +1,46 @@
 <div class="addAction">
   <form [formGroup]="addSelectProjectForm">
-
-    <label for="codeProject">Code projet</label>
-    <input id="codeProject" type="text"
+    <input type="hidden" id="project-id" formControlName="projectId">
+    <label for="nameProject">Nom du projet</label>
+    <input id="nameProject" type="text"
            placeholder="Renseigner un nom de projet"
-           class="form-control list-space">
+           class="form-control list-space"
+           formControlName="name">
 
-    <label for="functionProject">Poste occupé sur le projet</label>
-    <input id="functionProject" type="text"
-           placeholder="Renseigner votre rôle sur le projet"
-           class="form-control list-space">
+    <label for="descriptionProject">Description du projet</label>
+    <input id="descriptionProject" type="text"
+           placeholder="Renseigner quelques mots pour décrire le projet"
+           class="form-control list-space"
+           formControlName="description">
 
-    <label for="functionProject">Description</label>
-    <input id="functionProject" type="text"
-           placeholder="Brève description du projet et de votre rôle"
-           class="form-control list-space">
+    <label for="startDateProject">Date début</label>
+    <input id="startDateProject" type="date"
+           placeholder="Renseigner la date début d'intervention"
+           class="form-control list-space"
+           formControlName="startDate">
+
+    <label for="endDateProject">Date Fin</label>
+    <input id="endDateProject" type="datetime-local"
+           placeholder="Renseigner la date de fin d'intervention'"
+           class="form-control list-space"
+           formControlName="endDate">
+
+<!--    <label for="functionProject">Poste occupé sur le projet</label>-->
+<!--    <input id="functionProject" type="text"-->
+<!--           placeholder="Renseigner votre rôle sur le projet"-->
+<!--           class="form-control list-space">-->
+
+<!--    <label for="functionProject">Description</label>-->
+<!--    <input id="functionProject" type="text"-->
+<!--           placeholder="Brève description du projet et de votre rôle"-->
+<!--           class="form-control list-space">-->
 
 
     <!--***** Affichage des boutons de validation et d'annulation *****-->
     <div class="addSkillBtn">
       <button type="button" class="btn btn-success mb-2 btn-space"
-              routerLink="/skill">
+              routerLink="/skill"
+              (click)="onAddProject()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
              viewBox="0 0 16 16">
           <path

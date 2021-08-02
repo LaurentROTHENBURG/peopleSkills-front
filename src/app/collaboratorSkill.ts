@@ -1,4 +1,4 @@
-export interface CollaboratorSkill {
+export  interface CollaboratorSkill {
   collaboratorSkillId: number;
   autoRating: number;
   collaboratorIdx: number;

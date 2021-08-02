@@ -29,8 +29,8 @@ export class SkillService {
     return this.http.post<Skill>(this.baseUrl + "post/", skill);
   };
 
-  createSKillForOnCollaborator(collaboratorSkill: CollaboratorSkill | undefined) : Observable<CollaboratorSkill>{
-    return this.http.post<CollaboratorSkill>(this.baseUrl + "collaborator_skill/", collaboratorSkill );
+  createSKillForOneCollaborator(collaboratorSkill: CollaboratorSkill | undefined) : Observable<CollaboratorSkill>{
+    return this.http.post<CollaboratorSkill>("http://localhost:8080/collaborator_skill/post", collaboratorSkill );
   };
 
   updateSKill(skill: Skill | undefined): Observable<Skill> {
