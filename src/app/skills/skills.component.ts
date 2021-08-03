@@ -6,6 +6,7 @@ import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {ProjectService} from "../services/project.service";
 import {Project} from "../project";
+import {CollaboratorSkill} from "../collaboratorSkill";
 
 @Component({
   selector: 'app-skills',

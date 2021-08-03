@@ -7,8 +7,8 @@
 
       <label for="selectCollaborator">Sélectionner un collaborateur</label>
       <select id="selectCollaborator" name="selectCollaborator"
-              formControlName="selectCollaborator"
               class="form-control"
+              formControlName="selectCollaborator"
               (change)="onSelectCollaborator(this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList)">
 
         <option value="0">-- collaborateur --</option>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-group">
-        <label for="profession">Profession</label>
+        <label for="profession">Poste</label>
         <input id="profession" type="text" readonly="disabled" class="form-control"
                formControlName="collaboratorProfession">
       </div>
@@ -61,7 +61,7 @@
 
     <h2 class="project">Compétences
       <button class="btn btn-primary mb-2 right"
-             [routerLink]="['/skill/add-skill', 1]">
+              [routerLink]="['/skill/add-skill', 1]">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
              viewBox="0 0 16 16">

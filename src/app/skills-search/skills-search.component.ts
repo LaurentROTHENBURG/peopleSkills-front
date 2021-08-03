@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {SkillService} from "../services/skill.service";
 import {Skill} from "../skill";
@@ -8,16 +8,16 @@ import {Skill} from "../skill";
   templateUrl: './skills-search.component.html',
   styleUrls: ['./skills-search.component.css']
 })
-export class SkillsSearchComponent implements OnInit {
+export class SkillsSearchComponent implements OnInit, OnChanges {
 
   constructor(private formBuilder: FormBuilder,
               private skillService: SkillService) {
-  }
+  };
 
   skillList: Skill[] = [];
   skillsSearchResult: Skill[] = [];
 
-  searchSkill = this.formBuilder.group({
+  searchSkillForm = this.formBuilder.group({
     skillSelected: ''
   });
 
@@ -29,19 +29,15 @@ export class SkillsSearchComponent implements OnInit {
     })
   }
 
-//   onSkillSelected(skillId: number) {
-// this.skillService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected=>{
-//   this.skillList = resultSkillSelected;
-// })
-//   };
-
-
   onSearchSkillSelected(skillId: number) {
-    console.log("Le skillId est : ");
     this.clickOnSearch = true;
     this.skillService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected => {
       this.skillsSearchResult = resultSkillSelected;
     })
   };
+
+  ngOnChanges() {
+    console.log("Changement")
+  }
 
 }//end
