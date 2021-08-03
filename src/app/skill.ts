@@ -5,6 +5,8 @@ export interface Skill {
   name: string;
   startDate: Date;
   endDate: Date;
-  //collaboratorSkill: CollaboratorSkill;
+  firtsName: string;
+  collaboratorSkill: CollaboratorSkill;
+
   //autoRating: number;
 }

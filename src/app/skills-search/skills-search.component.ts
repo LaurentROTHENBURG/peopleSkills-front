@@ -15,10 +15,13 @@ export class SkillsSearchComponent implements OnInit {
   }
 
   skillList: Skill[] = [];
+  skillsSearchResult: Skill[] = [];
 
-  searchSkill=this.formBuilder.group({
+  searchSkill = this.formBuilder.group({
     skillSelected: ''
   });
+
+  clickOnSearch: boolean = false;
 
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
@@ -33,8 +36,12 @@ export class SkillsSearchComponent implements OnInit {
 //   };
 
 
-  onSkillSelected(){
+  onSearchSkillSelected(skillId: number) {
     console.log("Le skillId est : ");
-  }
+    this.clickOnSearch = true;
+    this.skillService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected => {
+      this.skillsSearchResult = resultSkillSelected;
+    })
+  };
 
 }//end

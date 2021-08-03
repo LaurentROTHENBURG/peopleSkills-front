@@ -31,9 +31,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     endDate: ''
   });
 
+
   displaySkillUpdate: boolean = false;
-
-
 
 
   ngOnInit(): void {

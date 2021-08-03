@@ -12,10 +12,10 @@
       <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
     </select>
 
-<!--Affichage du bouton de validation-->
+    <!--Affichage du bouton de validation-->
     <div class="cancelValidBtn">
       <button type="submit" class="btn btn-success mb-2 btn-space"
-              (click)="onSkillSelected()">
+              (click)="onSearchSkillSelected(this.searchSkill.get('skillSelected')?.value)">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
              viewBox="0 0 16 16">
@@ -27,6 +27,28 @@
     </div>
 
   </form>
+
+  <table class="table table-striped"
+         *ngIf="clickOnSearch">
+
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Profession</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor = "let skillSearchResult of skillsSearchResult" >
+      <td>{{skillSearchResult.name}}</td>
+      <td>prénom</td>
+      <td>profession</td>
+    </tr>
+
+    </tbody>
+
+  </table>
 
 </div>
 
