@@ -1,1 +1,37 @@
-<p>skills-search works!</p>
+<!--Affichage de la liste de valeurs des compétences-->
+
+<div class="form-group centredList">
+  <form [formGroup]="searchSkill">
+
+    <label for="skillSelected">Sélectionner une compétence</label>
+    <select name="skillSelected" id="skillSelected"
+            class="form-control list-space"
+            formControlName="skillSelected">
+
+      <option value="0">-- Compétences --</option>
+      <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+    </select>
+
+<!--Affichage du bouton de validation-->
+    <div class="cancelValidBtn">
+      <button type="submit" class="btn btn-success mb-2 btn-space"
+              (click)="onSkillSelected()">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+             viewBox="0 0 16 16">
+          <path
+            d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+        </svg>
+        Valider
+      </button>
+    </div>
+
+  </form>
+
+</div>
+
+
+
+
+
+
