@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Collaborator} from "../collaborator";
+import {Skill} from "../skill";
 
 
 @Injectable({
@@ -15,6 +16,11 @@ export class CollaboratorService {
   getAllCollaborator(): Observable<Collaborator []>{
     return this.http.get<Collaborator []>(this.baseUrl);
 }
+
+  getSkillsForCollaborators(skillId: number) : Observable<Collaborator[]>{
+    return this.http.get<Collaborator[]>(this.baseUrl + 'search/' + skillId);
+  }
+
 
 }//end
 

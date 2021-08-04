@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {ProjectService} from "../services/project.service";
 import {ActivatedRoute} from "@angular/router";
 import {Project} from "../project";
@@ -37,4 +37,5 @@ export class ProjectDetailComponent implements OnInit {
   cancel() {
     this.location.back();
   }
-}
+
+}//end

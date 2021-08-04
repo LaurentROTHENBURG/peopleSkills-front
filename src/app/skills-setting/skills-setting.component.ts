@@ -40,7 +40,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       this.skillList = result;
       console.log(result);
     })
-  }
+  };
 
   refreshSkill() {
     this.skillService.getAllSkill().subscribe(result => {

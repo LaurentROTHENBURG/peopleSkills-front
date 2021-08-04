@@ -68,4 +68,18 @@ export class SkillsComponent implements OnInit {
       console.log(resultProjectOneCollaborator);
     });
   };
-}
+
+  // test Modal
+  name = "old name";
+
+  showIt = false;
+  showModal() {
+    this.showIt = true;
+  }
+  closeModal(newName: string) {
+    this.showIt = false;
+    if (newName) this.name = newName;
+  }
+
+
+}//end

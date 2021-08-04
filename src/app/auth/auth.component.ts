@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import {AuthService} from "../services/auth";
 import {Router} from "@angular/router";
 
@@ -10,6 +11,8 @@ import {Router} from "@angular/router";
 export class AuthComponent implements OnInit {
 
   authStatus: boolean | undefined;
+
+  @Output() email : EventEmitter<any> = new EventEmitter();
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -30,5 +33,9 @@ export class AuthComponent implements OnInit {
     this.authService.signOut();
     this.authStatus = this.authService.isAuth;
   }
+
+  displayUserLogin(){
+    this.email.emit('Evènement qui affiche Laurent');
+      }
 
 }//end

@@ -2,6 +2,8 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {SkillService} from "../services/skill.service";
 import {Skill} from "../skill";
+import {CollaboratorService} from "../services/collaborator.service";
+import {Collaborator} from "../collaborator";
 
 @Component({
   selector: 'app-skills-search',
@@ -11,11 +13,13 @@ import {Skill} from "../skill";
 export class SkillsSearchComponent implements OnInit, OnChanges {
 
   constructor(private formBuilder: FormBuilder,
-              private skillService: SkillService) {
+              private skillService: SkillService,
+              private collaboratorService: CollaboratorService) {
   };
 
   skillList: Skill[] = [];
-  skillsSearchResult: Skill[] = [];
+  // skillsSearchResult: Skill[] = [];
+  skillsSearchResult: Collaborator[] = [];
 
   searchSkillForm = this.formBuilder.group({
     skillSelected: ''
@@ -31,7 +35,7 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
 
   onSearchSkillSelected(skillId: number) {
     this.clickOnSearch = true;
-    this.skillService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected => {
+    this.collaboratorService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected => {
       this.skillsSearchResult = resultSkillSelected;
     })
   };

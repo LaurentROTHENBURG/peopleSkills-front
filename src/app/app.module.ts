@@ -17,9 +17,12 @@ import { AreaSkillComponent } from './area-skill/area-skill.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { CollaboratorComponent } from './collaborator/collaborator.component';
+
 
 const appRoutes = [
   {path: 'skillsSetting', component: SkillsSettingComponent},
+  {path: 'collabortorSetting', component: CollaboratorComponent},
   {path: 'authentification', component: AuthComponent},
   {path: 'skill', component: SkillsComponent},
   {path: 'addSkill', component: AddSkillComponent},
@@ -44,7 +47,8 @@ const appRoutes = [
     AreaSkillComponent,
     AddProjectComponent,
     ProjectComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    CollaboratorComponent,
   ],
   imports: [
     CommonModule,
