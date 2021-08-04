@@ -76,8 +76,6 @@ export class AddSkillComponent implements OnInit {
 
     this.router.navigate(['/skill']);
 
-
-
   }
 
 

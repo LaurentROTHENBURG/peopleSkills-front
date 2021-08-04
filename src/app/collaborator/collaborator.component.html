@@ -1,16 +1,44 @@
-<!--<div class="formCreateSkill">-->
-<!--  -->
-<!--<form [formGroup]="createCollaboratorForm">-->
-<!--  -->
-<!--  <input type="text" id="collaborator-name" formControlName="collaboratorName">-->
-<!--  <label for="collaborator-name">Nom</label>-->
+<div class="formCreate">
+  <form [formGroup]="createCollaboratorForm"
+        (ngSubmit)="onCollaboratorCreate()">
+    <div class="form-group">
+      <input type="hidden" id="collaboratorId" formControlName="collaboratorId">
+      <input type="hidden" id="endDate" formControlName="endDate">
+      <input type="hidden" id="startDate" formControlName="startDate">
+      <input type="hidden" id="departementIdx" formControlName="departementIdx">
+      <input type="hidden" id="profilIdx" formControlName="profilIdx">
 
-<!--  <input type="text" id="collaborator-firstName" formControlName="collaboratorFirstName">-->
-<!--  <label for="collaborator-name">Prénom</label>-->
 
-<!--</form>-->
+      <label for="firstName">Prénom</label>
+      <input type="nom"   id="firstName" formControlName="firstName">
 
-<!--</div>-->
+      <label for="name">Nom</label>
+      <input type="nom" id="name" formControlName="name">
+
+      <label for="mail">Mail</label>
+      <input type="text" id="mail" formControlName="mail">
+
+      <label for="profession">Poste</label>
+      <input type="text" id="profession" formControlName="profession">
+
+      <label for="matricule">Matricule</label>
+      <input type="text" id="matricule" formControlName="matricule">
+
+      <label for="langage">Langue</label>
+      <input type="text" id="langage" formControlName="language">
+
+      <button class="btn btn-success mb-2 btn-space" type="submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+             viewBox="0 0 16 16">
+          <path
+            d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+        </svg>
+        Enregistrer
+      </button>
+    </div>
+  </form>
+</div>
+
 
 <table class="table table-striped">
   <thead>
@@ -28,17 +56,17 @@
   </tbody>
 </table>
 
+
 <div class="buttonCentred">
-<button class="btn btn-primary mb-2"
-        type="submit"
-        routerLink="/addProject">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
-       viewBox="0 0 16 16">
-    <path
-      d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-  </svg>
-  Add Collaborator
-</button>
+  <button class="btn btn-primary mb-2"
+          type="submit"
+          data-toggle="tooltip"
+          data-placement="bottom" title="Cliquez pour ajouter un collaborateur">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
+         viewBox="0 0 16 16">
+      <path
+        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+    </svg>
+    Add Collaborator
+  </button>
 </div>
-
-

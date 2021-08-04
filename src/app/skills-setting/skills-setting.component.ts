@@ -15,6 +15,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   ) {
   }
 
+  skill: Skill | undefined;
+
   skillList: Skill[] = [];
 
   skillForm = this.formBuilder.group({
@@ -69,9 +71,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     this.displaySkillUpdate = false;
   }
 
-  skill: Skill | undefined;
-
-  onSkillUpdate() {
+    onSkillUpdate() {
     this.skill = this.skillForm.value;
     this.skillService.updateSKill(this.skill).subscribe();
     this.skillForm.reset({

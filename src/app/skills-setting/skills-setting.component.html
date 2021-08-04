@@ -1,14 +1,14 @@
 <!--*****Formulaire pour insérer un compétences - le formulaire est toujours visible *****-->
-<div class="formCreateSkill">
+<div class="formCreate">
   <form [formGroup]="createSkillForm"
         (ngSubmit)="onSkillCreate()">
-    <input type="hidden" id="skill-id" formControlName="skillId">
+    <input type="hidden" id="skillId" formControlName="skillId">
     <label for="skill-name">Compétence</label>
-    <input type="text" id="skill-name" formControlName="name">
+    <input type="text" id="skillName" formControlName="name">
     <label for="skill-date-start">Date Début</label>
-    <input type="date" id="skill-date-start" formControlName="startDate">
+    <input type="date" id="skillDateStart" formControlName="startDate">
     <label for="skill-date-end">Date de Fin</label>
-    <input type="date" id="skill-date-end" formControlName="endDate">
+    <input type="date" id="skillDateEnd" formControlName="endDate">
 
     <button class="btn btn-success mb-2 btn-space" type="submit">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
@@ -35,7 +35,10 @@
     <label for="skill-date-end">Date de Fin</label>
     <input type="date" id="skill-date-end" formControlName="endDate">
 
-    <button id="btnModifSkill" class="btn btn-success mb-2 btn-space" type="submit">
+    <button id="btnModifSkill" class="btn btn-success mb-2 btn-space"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour enregistrer"
+            type="submit">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
            viewBox="0 0 16 16">
         <path
@@ -44,7 +47,10 @@
       Enregistrer
     </button>
 
-    <button id="btnModifSkill" class="btn btn-warning mb-2 btn-space" type="submit"
+    <button id="btnModifSkill" class="btn btn-warning mb-2 btn-space"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour annuler"
+            type="submit"
             (click)="onCancel()">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
            viewBox="0 0 16 16">
@@ -73,7 +79,11 @@
     <td><span id="name" contenteditable>{{skill.name | uppercase}}</span></td>
     <td><span id="startDate" contenteditable>{{skill.startDate}}</span></td>
     <td><span id="endDate" contenteditable>{{skill.endDate}}</span></td>
-    <button id="btn-modifSkill" class="btn btn-primary mb-2" type="submit" (click)="onSkillEdit(skill)">
+    <button id="btn-modifSkill" class="btn btn-primary mb-2"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour mettre à jour une compétence"
+            type="submit"
+            (click)="onSkillEdit(skill)">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
            viewBox="0 0 16 16">
         <path
@@ -81,7 +91,10 @@
       </svg>
       Modifier
     </button>
-    <button class="btn btn-warning mb-2" type="submit" (click)="onDeleteSkillById(skill.skillId)">
+    <button class="btn btn-warning mb-2" type="submit"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour supprimer une commpétence"
+            (click)="onDeleteSkillById(skill.skillId)">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
            viewBox="0 0 16 16">
         <path

@@ -21,6 +21,10 @@ export class CollaboratorService {
     return this.http.get<Collaborator[]>(this.baseUrl + 'search/' + skillId);
   }
 
+  createCollaborator(collaborator: Collaborator | undefined) : Observable<Collaborator>{
+    return this.http.post<Collaborator>(this.baseUrl + 'post/', collaborator);
+  };
+
 
 }//end
 

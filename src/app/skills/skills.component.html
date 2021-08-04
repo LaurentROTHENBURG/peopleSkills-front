@@ -61,6 +61,8 @@
 
     <h2 class="project">Compétences
       <button class="btn btn-primary mb-2 right"
+              data-toggle="tooltip"
+              data-placement="bottom" title="Cliquez pour ajouter une compétence"
               [routerLink]="['/skill/add-skill', 1]">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
@@ -96,6 +98,8 @@
   <div class="rightPartSkill">
     <h2 class="project">Expérience Projet
       <button class="btn btn-primary mb-2 right"
+              data-toggle="tooltip"
+              data-placement="bottom" title="Cliquez pour ajouter un projet"
               type="submit"
               routerLink="/addProject">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
@@ -110,6 +114,8 @@
     <!--  ***** liste des projets pour un collaborateur *****-->
 
     <button class="btn btn-success"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour accéder au détail du projet"
             *ngFor="let projectByCollaborator of projectListbyCollaborator"
             [routerLink]="['/skill/project-detail', projectByCollaborator.projectId]">
       {{projectByCollaborator.name}}
