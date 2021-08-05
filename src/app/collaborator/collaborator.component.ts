@@ -17,21 +17,23 @@ export class CollaboratorComponent implements OnInit {
 
   createCollaboratorForm = this.formBuilder.group({
     collaboratorId: 0,
-    endDate:'',
+    endDate: '',
     firstName: '',
-    language:'',
-    mail:'',
-    matricule:'',
+    language: '',
+    mail: '',
+    matricule: '',
     name: '',
-    profession:'',
-    startDate:'',
-    departementIdx:'',
-    profilIdx:''
+    profession: '',
+    startDate: '',
+    departementIdx: '',
+    profilIdx: ''
   })
 
   collaborator: Collaborator | undefined;
 
   collaboratorList: Collaborator[] = [];
+
+  showCollaboratorModal: boolean = false;
 
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
@@ -40,14 +42,33 @@ export class CollaboratorComponent implements OnInit {
     })
   };
 
+  refreshCollaborator(){
+    this.collaboratorService.getAllCollaborator().subscribe(result =>{
+      this.collaboratorList = result;
+    })
+  }
+
   onCollaboratorCreate() {
     this.collaborator = this.createCollaboratorForm.value;
     this.collaboratorService.createCollaborator(this.collaborator).subscribe();
     this.createCollaboratorForm.reset({
         collaboratorName: '',
         collaboratorFirstName: ''
-      }
+           }
     )
+    this.showCollaboratorModal = false;
+    console.log("j'enregistre et ferme le modal");
+    this.refreshCollaborator();
   };
+
+  openModal() {
+    this.showCollaboratorModal = true;
+    console.log("j'affiche le modal");
+  }
+
+  closeModal() {
+    this.showCollaboratorModal = false;
+    console.log("je ferme le modal");
+  }
 
 }
