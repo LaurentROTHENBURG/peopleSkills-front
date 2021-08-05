@@ -30,12 +30,13 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     skillId: 0,
     name: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    skillAreaIdx: 0
   });
 
 
   displaySkillUpdate: boolean = false;
-
+  showSkillSettingModal: boolean = false;
 
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
@@ -71,7 +72,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     this.displaySkillUpdate = false;
   }
 
-    onSkillUpdate() {
+  onSkillUpdate() {
     this.skill = this.skillForm.value;
     this.skillService.updateSKill(this.skill).subscribe();
     this.skillForm.reset({
@@ -79,6 +80,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       startDate: '',
       endDate: ''
     })
+    this.refreshSkill();
   }
 
   onSkillCreate() {
@@ -89,6 +91,18 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       startDate: '',
       endDate: ''
     })
+    this.showSkillSettingModal = false;
+    this.refreshSkill();
+  }
+
+  openModal() {
+    this.showSkillSettingModal = true;
+    console.log("j'affiche le modal");
+  }
+
+  closeModal() {
+    this.showSkillSettingModal = false;
+    console.log("je ferme le modal");
   }
 
   ngOnChanges() {
