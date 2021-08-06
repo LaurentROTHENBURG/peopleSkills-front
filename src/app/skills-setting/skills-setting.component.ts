@@ -2,6 +2,8 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
+import {Area} from "../area";
+import {AreaService} from "../services/area.service";
 
 @Component({
   selector: 'app-skills-setting',
@@ -11,13 +13,15 @@ import {FormBuilder} from "@angular/forms";
 export class SkillsSettingComponent implements OnInit, OnChanges {
 
   constructor(private skillService: SkillService,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private areaService: AreaService
   ) {
   }
 
   skill: Skill | undefined;
 
   skillList: Skill[] = [];
+  skillAreaList : Area[]= [];
 
   skillForm = this.formBuilder.group({
     skillId: 0,
@@ -43,8 +47,12 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
       console.log(result);
-    })
-  };
+    });
+
+    this.areaService.getAllArea().subscribe(result=>{
+      this.skillAreaList = result;
+    });
+      };
 
   refreshSkill() {
     this.skillService.getAllSkill().subscribe(result => {

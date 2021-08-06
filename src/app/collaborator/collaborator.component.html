@@ -34,6 +34,26 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
+
+            <label for="departmentName">Sélectionner un servive</label>
+            <select name="departmentName" id="departmentName"
+                    formControlName="departmentName"
+                    class="form-control list-space">
+              <option value="0">-- Service --</option>
+              <option *ngFor="let department of departmentList"
+                      value={{department.departmentId}}> {{department.name | uppercase}}</option>
+            </select>
+
+            <label for="profilName">Sélectionner un profil</label>
+            <select name="profilName" id="profilName"
+                    formControlName="profilName"
+                    class="form-control list-space">
+              <option value="0">-- Profil Collaborateur --</option>
+              <option *ngFor="let profil of profilList"
+                      value="{{profil.profilId}}"> {{profil.codification | uppercase}}</option>
+            </select>
+
+
             <label for="mail">Mail :</label>
             <input type="text" id="mail" class="form-control" formControlName="mail">
 
@@ -45,6 +65,8 @@
 
             <label for="langage">Langue :</label>
             <input type="text" id="langage" class="form-control" formControlName="language">
+
+            <!--          Liste de valeurs des profils-->
 
 
             <button type="button" class="btn btn-warning mb-2 cancelValidBtn"

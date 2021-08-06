@@ -21,7 +21,10 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
 
 
 const appRoutes = [
-  {path: 'skillsSetting', component: SkillsSettingComponent},
+  // racine de l'application
+  {path: '', component: AuthComponent},
+
+  // routes
   {path: 'collabortorSetting', component: CollaboratorComponent},
   {path: 'authentification', component: AuthComponent},
   {path: 'skill', component: SkillsComponent},
@@ -30,7 +33,7 @@ const appRoutes = [
   {path: 'addProject', component: AddProjectComponent},
   {path: 'skill/project-detail/:projectId', component: ProjectDetailComponent},
   {path: 'skillsSearch', component: SkillsSearchComponent},
-  {path: '', component: SkillsSettingComponent},
+  {path: 'skillsSetting', component: SkillsSettingComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: '/not-found'}
 ]

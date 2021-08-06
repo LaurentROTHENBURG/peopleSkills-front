@@ -3,6 +3,8 @@ import {FormBuilder} from "@angular/forms";
 import {CollaboratorService} from "../services/collaborator.service";
 import {Skill} from "../skill";
 import {Collaborator} from "../collaborator";
+import {Profil} from "../profil";
+import {Department} from "../department";
 
 @Component({
   selector: 'app-collaborator',
@@ -23,6 +25,8 @@ export class CollaboratorComponent implements OnInit {
     mail: '',
     matricule: '',
     name: '',
+    departmentName:'',
+    profilName:'',
     profession: '',
     startDate: '',
     departementIdx: '',
@@ -32,6 +36,8 @@ export class CollaboratorComponent implements OnInit {
   collaborator: Collaborator | undefined;
 
   collaboratorList: Collaborator[] = [];
+  profilList: Profil[] = [];
+  departmentList: Department[] = [];
 
   showCollaboratorModal: boolean = false;
 
@@ -40,25 +46,38 @@ export class CollaboratorComponent implements OnInit {
       this.collaboratorList = result;
       console.log(result);
     })
+
+// Affichage de la liste des profils
+    this.collaboratorService.getAllProfil().subscribe(result =>{
+      this.profilList = result;
+    })
+
+    // Affichage de la liste des departments
+    this.collaboratorService.getAllDepartement().subscribe(result=>{
+      this.departmentList = result;
+    });
+
   };
 
-  refreshCollaborator(){
-    this.collaboratorService.getAllCollaborator().subscribe(result =>{
+  refreshCollaborator() {
+    this.collaboratorService.getAllCollaborator().subscribe(result => {
       this.collaboratorList = result;
     })
-  }
+  };
 
   onCollaboratorCreate() {
     this.collaborator = this.createCollaboratorForm.value;
+    console.log(this.createCollaboratorForm.value)
     this.collaboratorService.createCollaborator(this.collaborator).subscribe();
     this.createCollaboratorForm.reset({
         collaboratorName: '',
         collaboratorFirstName: ''
-           }
+      }
     )
     this.showCollaboratorModal = false;
     console.log("j'enregistre et ferme le modal");
     this.refreshCollaborator();
+
   };
 
   openModal() {

@@ -1,4 +1,4 @@
-
+<!--***** Bouton pour ajouter une compétence *****-->
 <div class="btnRight">
   <button class="btn btn-primary mb-2"
           (click)="openModal()"
@@ -13,7 +13,7 @@
   </button>
 </div>
 
-<!--*****Formulaire pour insérer un compétences - le formulaire est toujours visible *****-->
+<!--***** Formulaire pour insérer un compétences *****-->
 <div *ngIf="showSkillSettingModal">
   <div class="jw-modal" id="collaboratorModal">
     <div class="jw-modal-body">
@@ -25,11 +25,24 @@
           <input type="hidden" id="skillAreaIdx" formControlName="skillAreaIdx">
 
           <label for="skill-name">Compétence:</label>
-          <input type="text" id="skillName" class="form-control" formControlName="name">
+          <input type="text" id="skillName" class="form-control"
+                 formControlName="name">
+
+          <label for="skilAreaName">Domaine de compétence de rattachement : </label>
+          <select name="skilAreaName" id="skilAreaName"
+                  formControlName="skilAreaName"
+                  class="form-control list-space">
+            <option value="0">-- Domaine de Compétence --</option>
+            <option *ngFor="let area of skillAreaList"
+                    value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
+          </select>
+
           <label for="skill-date-start">Date Début :</label>
-          <input type="date" id="skillDateStart" class="form-control" formControlName="startDate">
+          <input type="date" id="skillDateStart" class="form-control"
+                 formControlName="startDate">
           <label for="skill-date-end">Date de Fin :</label>
           <input type="date" id="skillDateEnd" class="form-control" formControlName="endDate">
+
 
           <button type="button" class="btn btn-warning mb-2 cancelValidBtn"
                   data-toggle="tooltip"
