@@ -61,6 +61,7 @@ export class SkillsComponent implements OnInit {
     this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultSkillOneCollaborator => {
       this.skillListbyCollaborator = resultSkillOneCollaborator;
       console.log(resultSkillOneCollaborator);
+      console.log('id collaborateur ' + collaboratorId);
     });
 
     this.pojectService.getProjectForOneCollaborator(collaboratorId).subscribe(resultProjectOneCollaborator => {

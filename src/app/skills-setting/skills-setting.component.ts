@@ -39,7 +39,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   });
 
 
-  displaySkillUpdate: boolean = false;
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
 
@@ -74,7 +73,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       startDate: skill.startDate,
       endDate: skill.endDate
     })
-    this.displaySkillUpdate = true;
   }
 
   onSkillUpdate() {

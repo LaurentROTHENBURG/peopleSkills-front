@@ -40,6 +40,20 @@ export class CollaboratorComponent implements OnInit {
   departmentList: Department[] = [];
 
   showCollaboratorModal: boolean = false;
+  UpdateCollaboratorModal: boolean = false;
+
+  updateCollaboratorForm = this.formBuilder.group({
+    collaboratorId: 0,
+    endDate: '',
+    firstName: '',
+    startDate: '',
+    name: '',
+    language: '',
+    profession: '',
+    mail: '',
+    matricule: '',
+
+    });
 
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
@@ -58,6 +72,20 @@ export class CollaboratorComponent implements OnInit {
     });
 
   };
+
+  onCollaboratoratorEdit(collaborator: Collaborator) {
+    this.updateCollaboratorForm.patchValue({
+      collaboratorId: collaborator.collaboratorId,
+      endDate: collaborator.endDate,
+      startDate: collaborator.startDate,
+      name: collaborator.name,
+      firstName : collaborator.firstName,
+      profession : collaborator.profession,
+      matricule : collaborator.matricule,
+      mail : collaborator.mail,
+      language : collaborator.language
+    })
+  }
 
   refreshCollaborator() {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
@@ -80,14 +108,37 @@ export class CollaboratorComponent implements OnInit {
 
   };
 
+  onCollaboratorUpdate(){
+    this.collaborator = this.updateCollaboratorForm.value;
+    this.collaboratorService.updateCollaborator(this.collaborator).subscribe();
+    this.updateCollaboratorForm.reset({
+      collaboratorId: '',
+      endDate: '',
+      firstName: '',
+      startDate: '',
+      name: ''
+    })
+   this.UpdateCollaboratorModal=false;
+    this.refreshCollaborator();
+  }
+
+
   openModal() {
     this.showCollaboratorModal = true;
-    console.log("j'affiche le modal");
   }
+
+  openModalUpdate() {
+    this.UpdateCollaboratorModal = true;
+    }
 
   closeModal() {
     this.showCollaboratorModal = false;
-    console.log("je ferme le modal");
   }
+
+  closeModalUpdate() {
+    this.UpdateCollaboratorModal = false;
+  };
+
+
 
 }

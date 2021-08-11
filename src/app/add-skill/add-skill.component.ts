@@ -57,7 +57,7 @@ export class AddSkillComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
 
-    console.log("id du collaborateur : " + collaboratorIdfromRoute);
+    console.log("id du collaborator : " + collaboratorIdfromRoute);
 
   }
 

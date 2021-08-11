@@ -28,11 +28,16 @@ export class CollaboratorService {
 
   getAllProfil(): Observable<Profil []> {
     return this.http.get<Profil []>('http://localhost:8080/profil');
-  }
+  };
 
   getAllDepartement():Observable<Department []> {
     return this.http.get<Department []>('http://localhost:8080/department');
-  }
+  };
+
+  updateCollaborator(collaborator : Collaborator | undefined) : Observable<Collaborator>{
+    return this.http.put<Collaborator>(this.baseUrl + 'update/', collaborator);
+  };
+
 
   //Affichage  modal
 

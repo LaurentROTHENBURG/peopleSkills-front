@@ -34,7 +34,6 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
-
             <label for="departmentName">Sélectionner un servive</label>
             <select name="departmentName" id="departmentName"
                     formControlName="departmentName"
@@ -67,7 +66,6 @@
             <input type="text" id="langage" class="form-control" formControlName="language">
 
             <!--          Liste de valeurs des profils-->
-
 
             <button type="button" class="btn btn-warning mb-2 cancelValidBtn"
                     data-toggle="tooltip"
@@ -106,16 +104,112 @@
   <tr>
     <th>Nom</th>
     <th>Prénom</th>
+    <th>Profession</th>
+    <th>Matricule</th>
+    <th>Mail</th>
+    <th>Langue</th>
+    <th>Date Entrée</th>
+    <th>Date Fin</th>
+    <th>Actions</th>
+
   </tr>
   </thead>
 
   <tbody>
   <tr *ngFor="let collaborator of collaboratorList">
     <td><span id="name" contenteditable>{{collaborator.name | uppercase}}</span></td>
-    <td><span id="FirstName" contenteditable>{{collaborator.firstName}}</span></td>
+    <td><span id="firstName" contenteditable>{{collaborator.firstName}}</span></td>
+    <td><span id="profession" contenteditable>{{collaborator.profession}}</span></td>
+    <td><span id="matricule" contenteditable>{{collaborator.matricule}}</span></td>
+    <td><span id="mail" contenteditable>{{collaborator.mail}}</span></td>
+    <td><span id="language" contenteditable>{{collaborator.language}}</span></td>
+    <td><span id="startDate" contenteditable>{{collaborator.startDate}}</span></td>
+    <td><span id="endDate" contenteditable>{{collaborator.endDate}}</span></td>
+
+    <button id="btn-modif" class="btn btn-primary mb-2"
+            data-toggle="tooltip"
+            data-placement="bottom" title="Cliquez pour mettre à jour un collaborateur"
+            type="submit"
+            (click)="onCollaboratoratorEdit(collaborator)"
+            (click)="openModalUpdate()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
+           viewBox="0 0 16 16">
+        <path
+          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+      </svg>
+      Modifier
+    </button>
+
   </tr>
   </tbody>
 </table>
 
+<!--formulaire de mise à jour du collaborator-->
+
+<div *ngIf="UpdateCollaboratorModal">
+  <div class="jw-modal" id="task-modal">
+    <div class="jw-modal-body">
+      <div class="formCreateSmallLarger">
+
+        <form [formGroup]="updateCollaboratorForm"
+              (ngSubmit)="onCollaboratorUpdate()">
+          <input type="hidden" id="collaborator-id" class="form-control" formControlName="collaboratorId">
+
+          <label for="collaborator-name">Nom du collaborateur : </label>
+          <input type="text" id="collaborator-name" class="form-control" formControlName="name">
+
+          <label for="collaborator-firstName">Prénom du collaborateur : </label>
+          <input type="text" id="collaborator-firstName" class="form-control" formControlName="firstName">
+
+          <label for="collaborator-profession">Profession : </label>
+          <input type="text" id="collaborator-profession" class="form-control" formControlName="profession">
+
+          <label for="collaborator-matricule">Matricule : </label>
+          <input type="text" id="collaborator-matricule" class="form-control" formControlName="matricule">
+
+          <label for="collaborator-mail">Mail : </label>
+          <input type="text" id="collaborator-mail" class="form-control" formControlName="mail">
+
+          <label for="collaborator-language">Langue : </label>
+          <input type="text" id="collaborator-language" class="form-control" formControlName="language">
 
 
+          <label for="collaborator-startDate">date entrée : </label>
+          <input type="text" id="collaborator-startDate" class="form-control" formControlName="startDate">
+
+          <label for="collaborator-endDate">Date Fin : </label>
+          <input type="text" id="collaborator-endDate" class="form-control" formControlName="endDate">
+
+
+          <button id="btnModifSkill" class="btn btn-warning mb-2 cancelValidBtn"
+                  data-toggle="tooltip"
+                  data-placement="bottom" title="Cliquez pour annuler"
+                  (click)="closeModalUpdate()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                 viewBox="0 0 16 16">
+              <path
+                d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+            </svg>
+            Annuler
+          </button>
+
+          <button type="button" id="btnUpdateCollaborator" class="btn btn-success mb-2 cancelValidBtn"
+                  data-toggle="tooltip"
+                  data-placement="bottom" title="Cliquez pour enregistrer"
+                  type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+                 viewBox="0 0 16 16">
+              <path
+                d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+            </svg>
+            Enregistrer
+          </button>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="jw-modal-background"></div>
+</div>

@@ -26,8 +26,6 @@ export class ProjectDetailComponent implements OnInit {
 
     console.log("id du projet : " + projectIdfromRoute);
 
-    //this.projectDetail = projectDetails.find(projectDetail => projectId === projectIdfromRoute);
-
     this.projectService.getProjectById(projectIdfromRoute).subscribe(projectDetailResult => {
       this.projectDetail = projectDetailResult;
     });
