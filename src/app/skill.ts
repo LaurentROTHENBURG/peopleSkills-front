@@ -7,5 +7,5 @@ export interface Skill {
   endDate: Date;
   firstName: string;
   autoRating: number;
-  collaboratorSkill: CollaboratorSkill;
+  // collaboratorSkill: CollaboratorSkill;
 }

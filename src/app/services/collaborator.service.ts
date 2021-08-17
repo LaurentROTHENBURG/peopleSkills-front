@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Collaborator} from "../collaborator";
 import {Profil} from "../profil";
 import {Department} from "../department";
+import {Project} from "../project";
 
 @Injectable({
   providedIn: 'root'
@@ -38,15 +39,9 @@ export class CollaboratorService {
     return this.http.put<Collaborator>(this.baseUrl + 'update/', collaborator);
   };
 
-
-  //Affichage  modal
-
-  private modals: any[] = [];
-
-  add(modal: any) {
-    // add modal to array of active modals
-    this.modals.push(modal);
-  }
+  getCollaboratorById(collaboratorId: number): Observable<Collaborator> {
+    return this.http.get<Collaborator>(this.baseUrl + collaboratorId);
+  };
 
 
 }//end

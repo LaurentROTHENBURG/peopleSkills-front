@@ -5,8 +5,9 @@ import {SkillService} from "../services/skill.service";
 import {Area} from "../area";
 import {AreaService} from "../services/area.service";
 import {Output, EventEmitter} from '@angular/core';
-import {CollaboratorSkill} from "../collaboratorSkill";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Collaborator} from "../collaborator";
+import {CollaboratorService} from "../services/collaborator.service";
 
 @Component({
   selector: 'app-add-skill',
@@ -26,11 +27,14 @@ export class AddSkillComponent implements OnInit {
               private skillService: SkillService,
               private areaService: AreaService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private collaboratorService: CollaboratorService) {
   }
+
 
   skillList: Skill[] = [];
   areaList: Area[] = [];
+  collaboratorDetail !: Collaborator;
 
   addSelectSkillForm = this.formBuilder.group({
     aereaSelect: 0,
@@ -43,7 +47,7 @@ export class AddSkillComponent implements OnInit {
     collaboratorIdx: '',
     favouriteSkill: '',
     obtentionDate: '',
-    skillId: 3,
+    skillId: '',
   })
 
 
@@ -57,7 +61,9 @@ export class AddSkillComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
 
-    console.log("id du collaborator : " + collaboratorIdfromRoute);
+    this.collaboratorService.getCollaboratorById(collaboratorIdfromRoute).subscribe(result => {
+      this.collaboratorDetail = result;
+    })
 
   }
 
@@ -70,9 +76,24 @@ export class AddSkillComponent implements OnInit {
     }
   }
 
+
+
   onAddSkillForOneCollaborator() {
-    const formValue = this.addSkillForOneCollaboratorForm.value;
-    console.log("valeur de autoRating " + formValue['autoRating']);
+    // const formValue = this.addSkillForOneCollaboratorForm.value;
+    // console.log("valeur de autoRating " + formValue['autoRating']);
+
+    //autorating
+    console.log('valeur autorating :  ' + this.addSkillForOneCollaboratorForm.value.autoRating);
+
+    //Id du collaborateur collaborator_idx
+    const routeParams = this.route.snapshot.paramMap;
+    const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
+    console.log('id du collaborateur : ' + collaboratorIdfromRoute)
+
+    //id du skill skill_idx
+    console.log('id du skill : ' + this.addSkillForOneCollaboratorForm.get('skillSelect')?.value.skillList);
+
+
 
     this.router.navigate(['/skill']);
 

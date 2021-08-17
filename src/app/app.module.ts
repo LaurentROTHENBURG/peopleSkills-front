@@ -18,6 +18,7 @@ import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
+import {RouteEventsService} from "./services/route-events.service";
 
 
 const appRoutes = [
@@ -61,7 +62,7 @@ const appRoutes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    AuthService
+    AuthService,RouteEventsService
   ],
   bootstrap: [AppComponent]
 })

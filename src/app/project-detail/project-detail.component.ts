@@ -1,8 +1,10 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {ProjectService} from "../services/project.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Project} from "../project";
 import {Location} from '@angular/common';
+import {RouteEventsService} from "../services/route-events.service";
+
 
 @Component({
   selector: 'app-project-detail',
@@ -10,13 +12,15 @@ import {Location} from '@angular/common';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent implements OnInit {
+  name : string='';
 
-  //Ajout du ! pur dire que l'on est certains que l'objet ne sera pas undefined
+  //Ajout du ! pour dire que l'on est certains que l'objet ne sera pas undefined
   projectDetail !: Project;
 
   constructor(private projectService: ProjectService,
               private route: ActivatedRoute,
-              private location: Location) {
+              private _location: Location,
+              private routeEventsService: RouteEventsService) {
   }
 
   ngOnInit(): void {
@@ -24,16 +28,18 @@ export class ProjectDetailComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const projectIdfromRoute = Number(routeParams.get('projectId'));
 
-    console.log("id du projet : " + projectIdfromRoute);
-
     this.projectService.getProjectById(projectIdfromRoute).subscribe(projectDetailResult => {
       this.projectDetail = projectDetailResult;
     });
 
   };
 
+  router !: Router
+
   cancel() {
-    this.location.back();
+    console.log('url de retour : ' + this.routeEventsService.previousRoutePath.value);
+       this.router.navigate(['http://localhost:4200/'+ this.routeEventsService.previousRoutePath.value]);
   }
+
 
 }//end

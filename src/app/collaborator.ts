@@ -9,4 +9,5 @@ export interface Collaborator {
   profession: string;
   startDate: Date;
   departmentIdx: number;
+  autoRating: number;
 }
