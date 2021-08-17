@@ -7,6 +7,7 @@ import {SkillService} from "../services/skill.service";
 import {ProjectService} from "../services/project.service";
 import {Project} from "../project";
 import {ActivatedRoute} from "@angular/router";
+import {RouteEventsService} from "../services/route-events.service";
 
 @Component({
   selector: 'app-skills',
@@ -20,7 +21,8 @@ export class SkillsComponent implements OnInit {
               private collaboratorService: CollaboratorService,
               private skillService: SkillService,
               private route: ActivatedRoute,
-              private pojectService: ProjectService) {
+              private pojectService: ProjectService,
+              private routeEventService: RouteEventsService) {
   }
 
   skillListbyCollaborator: Skill[] = [];
@@ -46,12 +48,13 @@ export class SkillsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const projectIdfromRoute = Number(routeParams.get('collaboratorId'));
 
+
+
     this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
       this.collaboratorList = resultAllCollaborator;
       console.log(resultAllCollaborator);
     });
   }
-
 
 
   onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
@@ -68,7 +71,6 @@ export class SkillsComponent implements OnInit {
     this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultSkillOneCollaborator => {
       this.skillListbyCollaborator = resultSkillOneCollaborator;
       console.log(resultSkillOneCollaborator);
-      console.log('id collaborateur ' + collaboratorId);
     });
 
     this.pojectService.getProjectForOneCollaborator(collaboratorId).subscribe(resultProjectOneCollaborator => {

@@ -29,6 +29,7 @@ const appRoutes = [
   {path: 'collaboratorSetting', component: CollaboratorComponent},
   {path: 'authentification', component: AuthComponent},
   {path: 'skill', component: SkillsComponent},
+  {path: 'skill/:collaboratorId', component: SkillsComponent},
   {path: 'addSkill', component: AddSkillComponent},
   {path: 'skill/add-skill/:collaboratorId', component: AddSkillComponent},
   {path: 'addProject', component: AddProjectComponent},
