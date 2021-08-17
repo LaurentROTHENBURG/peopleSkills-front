@@ -46,14 +46,17 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {
 
     const routeParams = this.route.snapshot.paramMap;
-    const projectIdfromRoute = Number(routeParams.get('collaboratorId'));
-
+    const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
 
 
     this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
       this.collaboratorList = resultAllCollaborator;
       console.log(resultAllCollaborator);
     });
+
+
+
+
   }
 
 
