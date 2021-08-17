@@ -1,3 +1,10 @@
+
+<ng-container *ngIf="collaboratorDetail">
+  <H4> Ajout d'expériences projet : {{collaboratorDetail.firstName}}
+    {{collaboratorDetail.name | uppercase }}
+  </H4>
+  <ng-container>
+
 <div class="addAction">
   <form [formGroup]="addSelectProjectForm">
     <input type="hidden" id="project-id" formControlName="projectId">

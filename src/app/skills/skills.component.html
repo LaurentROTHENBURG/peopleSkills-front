@@ -103,7 +103,10 @@
               data-toggle="tooltip"
               data-placement="bottom" title="Cliquez pour ajouter un projet"
               type="submit"
-              routerLink="/addProject">
+              [routerLink]="['/skill/add-project',this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList]">
+
+        <!--        routerLink="/addProject">-->
+
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
              viewBox="0 0 16 16">
           <path
@@ -120,6 +123,8 @@
             data-placement="bottom" title="Cliquez pour accéder au détail du projet"
             *ngFor="let projectByCollaborator of projectListbyCollaborator"
             [routerLink]="['/skill/project-detail', projectByCollaborator.projectId]">
+
+
       {{projectByCollaborator.name}}
 
       <span class="badge badge-light">
