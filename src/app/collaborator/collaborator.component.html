@@ -34,18 +34,18 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
-            <label for="departmentName">Sélectionner un servive</label>
-            <select name="departmentName" id="departmentName"
-                    formControlName="departmentName"
+            <label for="departmentIdx">Sélectionner un servive</label>
+            <select name="departmentIdx" id="departmentIdx"
+                    formControlName="departmentIdx"
                     class="form-control list-space">
               <option value="0">-- Service --</option>
               <option *ngFor="let department of departmentList"
                       value={{department.departmentId}}> {{department.name | uppercase}}</option>
             </select>
 
-            <label for="profilName">Sélectionner un profil</label>
-            <select name="profilName" id="profilName"
-                    formControlName="profilName"
+            <label for="profilIdx">Sélectionner un profil</label>
+            <select name="profilIdx" id="profilIdx"
+                    formControlName="profilIdx"
                     class="form-control list-space">
               <option value="0">-- Profil Collaborateur --</option>
               <option *ngFor="let profil of profilList"
@@ -98,6 +98,8 @@
   </div>
   <div class="jw-modal-background"></div>
 </div>
+
+<h5><strong>Nombre de collaborateurs : {{getRowsCollaborator()}}</strong> </h5>
 
 <table class="table table-striped">
   <thead>

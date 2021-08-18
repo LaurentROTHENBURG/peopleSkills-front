@@ -21,6 +21,7 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
 import {RouteEventsService} from "./services/route-events.service";
 
 
+
 const appRoutes = [
   // racine de l'application
   {path: '', component: AuthComponent},

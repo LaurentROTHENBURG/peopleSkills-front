@@ -53,6 +53,11 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     });
       };
 
+  //Affichage du nombre de skills présentes dans le tableau
+  public getRowsSkill() {
+    return this.skillList.length;
+  }
+
   refreshSkill() {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;

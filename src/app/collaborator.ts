@@ -8,6 +8,7 @@ export interface Collaborator {
   name: string;
   profession: string;
   startDate: Date;
+  profilIdx: number;
   departmentIdx: number;
   autoRating: number;
 }

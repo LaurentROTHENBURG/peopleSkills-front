@@ -31,11 +31,11 @@ export class CollaboratorService {
     return this.http.get<Profil []>('http://localhost:8080/profil');
   };
 
-  getAllDepartement():Observable<Department []> {
+  getAllDepartement(): Observable<Department []> {
     return this.http.get<Department []>('http://localhost:8080/department');
   };
 
-  updateCollaborator(collaborator : Collaborator | undefined) : Observable<Collaborator>{
+  updateCollaborator(collaborator: Collaborator | undefined): Observable<Collaborator> {
     return this.http.put<Collaborator>(this.baseUrl + 'update/', collaborator);
   };
 

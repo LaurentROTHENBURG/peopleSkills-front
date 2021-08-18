@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {CollaboratorService} from "../services/collaborator.service";
-import {Skill} from "../skill";
 import {Collaborator} from "../collaborator";
 import {Profil} from "../profil";
 import {Department} from "../department";
@@ -25,8 +24,8 @@ export class CollaboratorComponent implements OnInit {
     mail: '',
     matricule: '',
     name: '',
-    departmentName:'',
-    profilName:'',
+    departmentIdx: '',
+    profilName: '',
     profession: '',
     startDate: '',
     departementIdx: '',
@@ -38,6 +37,7 @@ export class CollaboratorComponent implements OnInit {
   collaboratorList: Collaborator[] = [];
   profilList: Profil[] = [];
   departmentList: Department[] = [];
+
 
   showCollaboratorModal: boolean = false;
   UpdateCollaboratorModal: boolean = false;
@@ -53,7 +53,7 @@ export class CollaboratorComponent implements OnInit {
     mail: '',
     matricule: '',
 
-    });
+  });
 
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
@@ -62,16 +62,22 @@ export class CollaboratorComponent implements OnInit {
     })
 
 // Affichage de la liste des profils
-    this.collaboratorService.getAllProfil().subscribe(result =>{
+    this.collaboratorService.getAllProfil().subscribe(result => {
       this.profilList = result;
     })
 
     // Affichage de la liste des departments
-    this.collaboratorService.getAllDepartement().subscribe(result=>{
+    this.collaboratorService.getAllDepartement().subscribe(result => {
       this.departmentList = result;
     });
 
   };
+
+  //Affichage du nombre de collaborator présents dans le tableau
+  public getRowsCollaborator() {
+    return this.collaboratorList.length;
+  }
+
 
   onCollaboratoratorEdit(collaborator: Collaborator) {
     this.updateCollaboratorForm.patchValue({
@@ -79,11 +85,11 @@ export class CollaboratorComponent implements OnInit {
       endDate: collaborator.endDate,
       startDate: collaborator.startDate,
       name: collaborator.name,
-      firstName : collaborator.firstName,
-      profession : collaborator.profession,
-      matricule : collaborator.matricule,
-      mail : collaborator.mail,
-      language : collaborator.language
+      firstName: collaborator.firstName,
+      profession: collaborator.profession,
+      matricule: collaborator.matricule,
+      mail: collaborator.mail,
+      language: collaborator.language
     })
   }
 
@@ -94,8 +100,23 @@ export class CollaboratorComponent implements OnInit {
   };
 
   onCollaboratorCreate() {
+
+    // this.createCollaboratorForm.patchValue({
+    //   collaboratorId: this.collaborator?.collaboratorId,
+    //   endDate: this.collaborator?.endDate,
+    //   startDate: this.collaborator?.startDate,
+    //   name: this.collaborator?.name,
+    //   firstName: this.collaborator?.firstName,
+    //   profession: this.collaborator?.profession,
+    //   matricule: this.collaborator?.matricule,
+    //   mail: this.collaborator?.mail,
+    //   language: this.collaborator?.language,
+    //   departementIdx: this.collaborator?.departmentIdx,
+    //   profilIdx: this.collaborator?.profilIdx,
+    //
+    // })
+
     this.collaborator = this.createCollaboratorForm.value;
-    console.log(this.createCollaboratorForm.value)
     this.collaboratorService.createCollaborator(this.collaborator).subscribe();
     this.createCollaboratorForm.reset({
         collaboratorName: '',
@@ -103,12 +124,11 @@ export class CollaboratorComponent implements OnInit {
       }
     )
     this.showCollaboratorModal = false;
-    console.log("j'enregistre et ferme le modal");
     this.refreshCollaborator();
 
   };
 
-  onCollaboratorUpdate(){
+  onCollaboratorUpdate() {
     this.collaborator = this.updateCollaboratorForm.value;
     this.collaboratorService.updateCollaborator(this.collaborator).subscribe();
     this.updateCollaboratorForm.reset({
@@ -118,7 +138,7 @@ export class CollaboratorComponent implements OnInit {
       startDate: '',
       name: ''
     })
-   this.UpdateCollaboratorModal=false;
+    this.UpdateCollaboratorModal = false;
     this.refreshCollaborator();
   }
 
@@ -129,7 +149,7 @@ export class CollaboratorComponent implements OnInit {
 
   openModalUpdate() {
     this.UpdateCollaboratorModal = true;
-    }
+  }
 
   closeModal() {
     this.showCollaboratorModal = false;
@@ -138,7 +158,6 @@ export class CollaboratorComponent implements OnInit {
   closeModalUpdate() {
     this.UpdateCollaboratorModal = false;
   };
-
 
 
 }
