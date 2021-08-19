@@ -18,7 +18,6 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
   };
 
   skillList: Skill[] = [];
-  // skillsSearchResult: Skill[] = [];
   skillsSearchResult: Collaborator[] = [];
 
   searchSkillForm = this.formBuilder.group({
@@ -39,6 +38,12 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
       this.skillsSearchResult = resultSkillSelected;
     })
   };
+
+  //Affichage du nombre de collaborateurs dans le tableau
+  public getRowsCollaborator() {
+    return this.skillsSearchResult.length;
+  }
+
 
   ngOnChanges() {
     console.log("Changement")

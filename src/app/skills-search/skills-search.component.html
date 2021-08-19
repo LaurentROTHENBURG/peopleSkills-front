@@ -14,6 +14,7 @@
     </select>
   </form>
 
+  <h5 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong> </h5>
 
   <table class="table table-striped"
          *ngIf="clickOnSearch">
