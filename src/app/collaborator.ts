@@ -1,3 +1,6 @@
+import {Profil} from "./profil";
+import {Department} from "./department";
+
 export interface Collaborator {
   collaboratorId: number;
   endDate: Date;
@@ -8,7 +11,7 @@ export interface Collaborator {
   name: string;
   profession: string;
   startDate: Date;
-  profilIdx: number;
-  departmentIdx: number;
   autoRating: number;
+  profil: Profil;
+  department: Department;
 }

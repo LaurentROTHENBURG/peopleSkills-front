@@ -28,7 +28,7 @@ export class CollaboratorComponent implements OnInit {
     profilName: '',
     profession: '',
     startDate: '',
-    departementIdx: '',
+    departement: '',
     profilIdx: ''
   })
 
@@ -100,21 +100,6 @@ export class CollaboratorComponent implements OnInit {
   };
 
   onCollaboratorCreate() {
-
-    // this.createCollaboratorForm.patchValue({
-    //   collaboratorId: this.collaborator?.collaboratorId,
-    //   endDate: this.collaborator?.endDate,
-    //   startDate: this.collaborator?.startDate,
-    //   name: this.collaborator?.name,
-    //   firstName: this.collaborator?.firstName,
-    //   profession: this.collaborator?.profession,
-    //   matricule: this.collaborator?.matricule,
-    //   mail: this.collaborator?.mail,
-    //   language: this.collaborator?.language,
-    //   departementIdx: this.collaborator?.departmentIdx,
-    //   profilIdx: this.collaborator?.profilIdx,
-    //
-    // })
 
     this.collaborator = this.createCollaboratorForm.value;
     this.collaboratorService.createCollaborator(this.collaborator).subscribe();

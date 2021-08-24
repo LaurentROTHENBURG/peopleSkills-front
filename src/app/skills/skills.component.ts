@@ -14,7 +14,7 @@ import {RouteEventsService} from "../services/route-events.service";
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit, OnChanges {
 
 
   constructor(private formBuilder: FormBuilder,
@@ -48,39 +48,38 @@ export class SkillsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
 
-
     this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
       this.collaboratorList = resultAllCollaborator;
-      console.log(resultAllCollaborator);
+
+      this.selectCollaboratorForm.get('selectCollaborator')?.setValue(collaboratorIdfromRoute);
+
+       this.onSelectCollaborator(collaboratorIdfromRoute);
     });
-
-
-
 
   }
 
+  onSelectCollaborator(collaboratorIdfromRoute: number) {
 
-  onSelectCollaborator(collaboratorId: number, collaboratorList: Collaborator[]) {
+    let index = this.collaboratorList.findIndex(i => i.collaboratorId == collaboratorIdfromRoute);
 
-    let index = collaboratorList.findIndex(i => i.collaboratorId == collaboratorId);
+    this.selectCollaboratorForm.get('collaboratorName')?.setValue(this.collaboratorList[index].name);
+    this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(this.collaboratorList[index].firstName);
+    this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(this.collaboratorList[index].profession);
+    this.selectCollaboratorForm.get('collaboratorMail')?.setValue(this.collaboratorList[index].mail);
+    this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(this.collaboratorList[index].matricule);
+    this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(this.collaboratorList[index].language);
 
-    this.selectCollaboratorForm.get('collaboratorName')?.setValue(collaboratorList[index].name);
-    this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(collaboratorList[index].firstName);
-    this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(collaboratorList[index].profession);
-    this.selectCollaboratorForm.get('collaboratorMail')?.setValue(collaboratorList[index].mail);
-    this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(collaboratorList[index].matricule);
-    this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(collaboratorList[index].language);
-
-    this.skillService.getSkillForOneCollaborator(collaboratorId).subscribe(resultSkillOneCollaborator => {
+    this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(resultSkillOneCollaborator => {
       this.skillListbyCollaborator = resultSkillOneCollaborator;
-      console.log(resultSkillOneCollaborator);
     });
 
-    this.pojectService.getProjectForOneCollaborator(collaboratorId).subscribe(resultProjectOneCollaborator => {
+    this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(resultProjectOneCollaborator => {
       this.projectListbyCollaborator = resultProjectOneCollaborator;
-      console.log(resultProjectOneCollaborator);
     });
   };
 
+  ngOnChanges() {
+    console.log("Changement")
+  };
 
 }//end

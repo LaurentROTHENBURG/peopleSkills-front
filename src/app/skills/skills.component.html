@@ -1,7 +1,7 @@
 <div class="blocSkill">
 
   <div class="leftPartSkill">
-    <h2>Fiche Collaborateur</h2>
+<!--    <h2>Fiche Collaborateur</h2>-->
     <!--    ***** Affichage de la liste de valeurs de sélection de l'utilisateur *****-->
     <form [formGroup]="selectCollaboratorForm">
 
@@ -9,8 +9,8 @@
       <select id="selectCollaborator" name="selectCollaborator"
               class="form-control"
               formControlName="selectCollaborator"
-              (change)="onSelectCollaborator(this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList)"
-              [routerLink]="['/skill',this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList]">
+              (change)="onSelectCollaborator(this.selectCollaboratorForm.get('selectCollaborator')?.value)"
+              [routerLink]="['/skill',this.selectCollaboratorForm.get('selectCollaborator')?.value]">
 
         <option value="0">-- collaborateur --</option>
         <option *ngFor="let collaborator of collaboratorList" value="{{collaborator.collaboratorId}}">
@@ -65,7 +65,7 @@
               data-toggle="tooltip"
               data-placement="bottom" title="Cliquez pour ajouter une compétence"
 
-              [routerLink]="['/skill/add-skill',this.selectCollaboratorForm.get('selectCollaborator')?.value,collaboratorList]">
+              [routerLink]="['/skill/add-skill',this.selectCollaboratorForm.get('selectCollaborator')?.value]">
 
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"

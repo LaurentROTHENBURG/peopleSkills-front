@@ -7,32 +7,33 @@
     <select id="skillSelected" name="skillSelected"
             class="form-control list-space"
             formControlName="skillSelected"
-            (click)="onSearchSkillSelected(this.searchSkillForm.get('skillSelected')?.value)">
+            (change)="onSearchSkillSelected(this.searchSkillForm.get('skillSelected')?.value)">
 
       <option value="0">-- Compétences --</option>
       <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
     </select>
   </form>
 
-  <h5 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong> </h5>
+  <h5 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h5>
 
   <table class="table table-striped"
          *ngIf="clickOnSearch">
     <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Poste</th>
-        <th>Email</th>
-        <th>Langue</th>
-        <th>Auto Evaluation</th>
-      </tr>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Poste</th>
+      <th>Email</th>
+      <th>Langue</th>
+      <th>Auto Evaluation</th>
+    </tr>
     </thead>
 
     <tbody>
-    <tr *ngFor = "let skillSearchResult of skillsSearchResult" >
-      <td>{{skillSearchResult.name}}</td>
-      <td>{{skillSearchResult.firstName}}</td>
+    <tr *ngFor="let skillSearchResult of skillsSearchResult">
+      <td><a [routerLink]="['/skill',skillSearchResult.collaboratorId]"> {{skillSearchResult.name}} </a></td>
+
+      <td width = 10%>{{skillSearchResult.firstName}}</td>
       <td>{{skillSearchResult.profession}}</td>
       <td>{{skillSearchResult.mail}}</td>
       <td>{{skillSearchResult.language}}</td>
