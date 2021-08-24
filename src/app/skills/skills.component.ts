@@ -53,9 +53,8 @@ export class SkillsComponent implements OnInit, OnChanges {
 
       this.selectCollaboratorForm.get('selectCollaborator')?.setValue(collaboratorIdfromRoute);
 
-       this.onSelectCollaborator(collaboratorIdfromRoute);
+      this.onSelectCollaborator(collaboratorIdfromRoute);
     });
-
   }
 
   onSelectCollaborator(collaboratorIdfromRoute: number) {

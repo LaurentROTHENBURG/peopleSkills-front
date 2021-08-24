@@ -21,10 +21,9 @@
         <form [formGroup]="createSkillForm"
               (ngSubmit)="onSkillCreate()">
           <h4>Création de Compétences</h4>
-          <input type="hidden" id="skillAreaIdx" formControlName="skillAreaIdx">
-          <input type="hidden" id="skillAreaIdx" formControlName="skillAreaIdx">
+<!--          <input type="hidden" id="skillAreaIdx" formControlName="skillAreaIdx">-->
 
-          <label for="skill-name">Compétence:</label>
+          <label for="skill-name">Renseigner le nom de la compétence:</label>
           <input type="text" id="skillName" class="form-control"
                  formControlName="name">
 

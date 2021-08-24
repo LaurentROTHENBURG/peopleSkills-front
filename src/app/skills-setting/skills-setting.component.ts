@@ -35,7 +35,8 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     name: '',
     startDate: '',
     endDate: '',
-    skillAreaIdx: 0
+    skillAreaId:'',
+    skillArea: this.formBuilder.group({skillAreaId:4})
   });
 
 
