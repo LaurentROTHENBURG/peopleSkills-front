@@ -23,10 +23,6 @@
           <div class="form-group">
             <input type="hidden" id="collaboratorId" formControlName="collaboratorId">
             <input type="hidden" id="endDate" formControlName="endDate">
-            <input type="hidden" id="startDate" formControlName="startDate">
-            <input type="hidden" id="departementIdx" formControlName="departementIdx">
-            <input type="hidden" id="profilIdx" formControlName="profilIdx">
-
 
             <label for="firstName">Prénom :</label>
             <input type="nom" id="firstName" class="form-control" formControlName="firstName">
@@ -34,24 +30,30 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
-            <label for="departmentIdx">Sélectionner un servive</label>
-            <select name="departmentIdx" id="departmentIdx"
-                    formControlName="departmentIdx"
+            <label for="department">Sélectionner un servive</label>
+            <select name="department" id="department"
+                    formControlName="department"
                     class="form-control list-space">
               <option value="0">-- Service --</option>
               <option *ngFor="let department of departmentList"
-                      value={{department.departmentId}}> {{department.name | uppercase}}</option>
+                      [ngValue]="department">
+                {{department.name | uppercase}}</option>
             </select>
 
-            <label for="profilIdx">Sélectionner un profil</label>
-            <select name="profilIdx" id="profilIdx"
-                    formControlName="profilIdx"
+            <!--          Liste de valeurs des profils-->
+
+            <label for="profil">Sélectionner un profil</label>
+            <select name="profil" id="profil"
+                    formControlName="profil"
                     class="form-control list-space">
               <option value="0">-- Profil Collaborateur --</option>
               <option *ngFor="let profil of profilList"
-                      value="{{profil.profilId}}"> {{profil.codification | uppercase}}</option>
+                      [ngValue]="profil">
+                {{profil.codification | uppercase}}</option>
             </select>
 
+            <label for="startDate">Date d'entrée :</label>
+            <input type="date" id="startDate" class="form-control" formControlName="startDate">
 
             <label for="mail">Mail :</label>
             <input type="text" id="mail" class="form-control" formControlName="mail">
@@ -65,7 +67,6 @@
             <label for="langage">Langue :</label>
             <input type="text" id="langage" class="form-control" formControlName="language">
 
-            <!--          Liste de valeurs des profils-->
 
             <button type="button" class="btn btn-warning mb-2 cancelValidBtn"
                     data-toggle="tooltip"
@@ -99,7 +100,7 @@
   <div class="jw-modal-background"></div>
 </div>
 
-<h5><strong>Nombre de collaborateurs : {{getRowsCollaborator()}}</strong> </h5>
+<h5><strong>Nombre de collaborateurs : {{getRowsCollaborator()}}</strong></h5>
 
 <table class="table table-striped">
   <thead>

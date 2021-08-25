@@ -21,7 +21,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   skill: Skill | undefined;
 
   skillList: Skill[] = [];
-  skillAreaList : Area[]= [];
+  skillAreaList: Area[] = [];
 
   skillForm = this.formBuilder.group({
     skillId: 0,
@@ -33,10 +33,9 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   createSkillForm = this.formBuilder.group({
     skillId: 0,
     name: '',
+    area: '',
     startDate: '',
-    endDate: '',
-    skillAreaId:'',
-    skillArea: this.formBuilder.group({skillAreaId:4})
+    endDate: ''
   });
 
 
@@ -49,10 +48,10 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       console.log(result);
     });
 
-    this.areaService.getAllArea().subscribe(result=>{
+    this.areaService.getAllArea().subscribe(result => {
       this.skillAreaList = result;
     });
-      };
+  };
 
   //Affichage du nombre de skills présentes dans le tableau
   public getRowsSkill() {
@@ -67,7 +66,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   onDeleteSkillById(skillId: number) {
     this.skillService.deleteSkillById(skillId).subscribe(() => {
-      console.log("Skill " + skillId + " est supprimé");
       this.refreshSkill();
     });
   }

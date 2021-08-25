@@ -21,26 +21,28 @@
         <form [formGroup]="createSkillForm"
               (ngSubmit)="onSkillCreate()">
           <h4>Création de Compétences</h4>
-<!--          <input type="hidden" id="skillAreaIdx" formControlName="skillAreaIdx">-->
 
-          <label for="skill-name">Renseigner le nom de la compétence:</label>
-          <input type="text" id="skillName" class="form-control"
+          <label for="name">Renseigner le nom de la compétence:</label>
+          <input type="text" id="name" class="form-control"
                  formControlName="name">
 
-          <label for="skilAreaName">Domaine de compétence de rattachement : </label>
-          <select name="skilAreaName" id="skilAreaName"
-                  formControlName="skilAreaName"
+          <label for="area">Domaine de compétence de rattachement : </label>
+          <select name="area" id="area"
+                  formControlName="area"
                   class="form-control list-space">
             <option value="0">-- Domaine de Compétence --</option>
             <option *ngFor="let area of skillAreaList"
-                    value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
+                    [ngValue]="area">
+              {{area.name | uppercase}}</option>
           </select>
 
-          <label for="skill-date-start">Date Début :</label>
-          <input type="date" id="skillDateStart" class="form-control"
+          <label for="startDate">Date Début :</label>
+          <input type="date" id="startDate" class="form-control"
                  formControlName="startDate">
-          <label for="skill-date-end">Date de Fin :</label>
-          <input type="date" id="skillDateEnd" class="form-control" formControlName="endDate">
+
+          <label for="endDate">Date de Fin :</label>
+          <input type="date" id="endDate" class="form-control"
+                 formControlName="endDate">
 
 
           <button type="button" class="btn btn-warning mb-2 cancelValidBtn"

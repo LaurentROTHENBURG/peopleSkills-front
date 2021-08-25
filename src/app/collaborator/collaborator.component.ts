@@ -20,16 +20,14 @@ export class CollaboratorComponent implements OnInit {
     collaboratorId: 0,
     endDate: '',
     firstName: '',
-    language: '',
-    mail: '',
-    matricule: '',
     name: '',
-    departmentIdx: '',
-    profilName: '',
-    profession: '',
+    department: '',
+    profil: '',
     startDate: '',
-    departement: '',
-    profilIdx: ''
+    mail: '',
+    profession: '',
+    matricule: '',
+    language: '',
   })
 
   collaborator: Collaborator | undefined;
@@ -110,7 +108,6 @@ export class CollaboratorComponent implements OnInit {
     )
     this.showCollaboratorModal = false;
     this.refreshCollaborator();
-
   };
 
   onCollaboratorUpdate() {

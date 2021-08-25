@@ -6,7 +6,6 @@ export interface Skill {
   name: string;
   startDate: Date;
   endDate: Date;
-  firstName: string;
+  area: Area;
   collaboratorSkill: CollaboratorSkill;
-  skillArea: Area;
 }
