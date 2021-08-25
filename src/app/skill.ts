@@ -1,11 +1,11 @@
 import {CollaboratorSkill} from "./collaboratorSkill";
-import {Area} from "./area";
+import {SkillArea} from "./skillArea";
 
 export interface Skill {
   skillId: number;
   name: string;
   startDate: Date;
   endDate: Date;
-  area: Area;
+  skilArea: SkillArea;
   collaboratorSkill: CollaboratorSkill;
 }

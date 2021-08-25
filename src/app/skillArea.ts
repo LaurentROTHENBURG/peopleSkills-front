@@ -1,4 +1,4 @@
-export interface Area {
+export interface SkillArea {
   skillAreaId: number;
   endDate: Date;
   name: string;

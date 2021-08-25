@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
-import {Area} from "../area";
+import {SkillArea} from "../skillArea";
 import {AreaService} from "../services/area.service";
 import {Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
@@ -33,7 +33,7 @@ export class AddSkillComponent implements OnInit {
 
 
   skillList: Skill[] = [];
-  areaList: Area[] = [];
+  areaList: SkillArea[] = [];
   collaboratorDetail !: Collaborator;
 
   addSelectSkillForm = this.formBuilder.group({

@@ -2,7 +2,7 @@ import {Component, OnInit, OnChanges} from '@angular/core';
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
 import {FormBuilder} from "@angular/forms";
-import {Area} from "../area";
+import {SkillArea} from "../skillArea";
 import {AreaService} from "../services/area.service";
 
 @Component({
@@ -21,7 +21,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   skill: Skill | undefined;
 
   skillList: Skill[] = [];
-  skillAreaList: Area[] = [];
+  skillAreaList: SkillArea[] = [];
 
   skillForm = this.formBuilder.group({
     skillId: 0,
@@ -33,7 +33,7 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   createSkillForm = this.formBuilder.group({
     skillId: 0,
     name: '',
-    area: '',
+    skillArea: '',
     startDate: '',
     endDate: ''
   });

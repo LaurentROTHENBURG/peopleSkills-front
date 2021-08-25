@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Skill} from "../skill";
-import {Area} from "../area";
+import {SkillArea} from "../skillArea";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AreaService {
   constructor(private http: HttpClient) { }
 
   getAllArea(){
-    return this.http.get<Area[]>(this.baseUrl)
+    return this.http.get<SkillArea[]>(this.baseUrl)
   }
 
 

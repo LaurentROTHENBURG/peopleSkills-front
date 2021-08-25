@@ -40,7 +40,8 @@ export class SkillsComponent implements OnInit, OnChanges {
     collaboratorMatricule: '',
     collaboratorLanguage: '',
     collaboratorDepartment: '',
-    collaboratorManager: ''
+    collaboratorManager: '',
+    name:'',
   });
 
   ngOnInit(): void {

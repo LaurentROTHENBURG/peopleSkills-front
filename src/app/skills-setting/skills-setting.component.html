@@ -22,18 +22,20 @@
               (ngSubmit)="onSkillCreate()">
           <h4>Création de Compétences</h4>
 
+          <input type="hidden" id="skillId" formControlName="skillId">
+
           <label for="name">Renseigner le nom de la compétence:</label>
           <input type="text" id="name" class="form-control"
                  formControlName="name">
 
-          <label for="area">Domaine de compétence de rattachement : </label>
-          <select name="area" id="area"
-                  formControlName="area"
+          <label for="skillArea">Domaine de compétence de rattachement : </label>
+          <select name="skillArea" id="skillArea"
+                  formControlName="skillArea"
                   class="form-control list-space">
             <option value="0">-- Domaine de Compétence --</option>
-            <option *ngFor="let area of skillAreaList"
-                    [ngValue]="area">
-              {{area.name | uppercase}}</option>
+            <option *ngFor="let skillArea of skillAreaList"
+                    [ngValue]="skillArea">
+              {{skillArea.name | uppercase}}</option>
           </select>
 
           <label for="startDate">Date Début :</label>
