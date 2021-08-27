@@ -2,82 +2,94 @@
   <H4> Ajout de compétences : {{collaboratorDetail.firstName}}
     {{collaboratorDetail.name | uppercase }}
   </H4>
-  <ng-container>
+</ng-container>
 
 
-    <!--***** Affichage des liste de valeurs *****-->
-    <div class="addAction">
+<!--***** Affichage des liste de valeurs *****-->
+<div class="addAction">
 
-      <form [formGroup]="addSelectSkillForm">
-        <div class="form-group">
-          <!--Affichage de la liste de valeurs domaine de competences-->
-          <label for="aereaSelect">Sélectionner un domaine</label>
-          <select name="aereaSelect" id="aereaSelect"
-                  formControlName="aereaSelect"
-                  class="form-control list-space"
-                  (change)="onAreaChange()">
+  <form [formGroup]="addSelectSkillForm">
+    <div class="form-group">
 
-            <option value="0">-- Domaine de Compétences --</option>
-            <option *ngFor="let area of areaList" value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
-            <option></option>
-          </select>
-        </div>
+      <!--Affichage de la liste de valeurs domaine de competences-->
+      <label for="skillArea">Sélectionner un domaine</label>
+      <select name="skillArea" id="skillArea"
+              formControlName="skillArea"
+              class="form-control list-space"
+              (change)="onAreaChange()">
 
-        <!--        ***** Formulaire pour enregistrement de la compétence *****-->
-        <form [formGroup]="addSkillForOneCollaboratorForm" (ngSubmit)="onAddSkillForOneCollaborator()">
-
-          <!--Affichage de la liste de valeurs des compétences-->
-          <div class="form-group">
-            <label for="skillSelect">Sélectionner une compétence</label>
-            <select name="skillSelect" id="skillSelect"
-                    class="form-control list-space"
-                    (change)="selectedSkillId(skillSelect.value)" #skillSelect>
-
-              <option value="0">-- Compétences --</option>
-              <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
-            </select>
-          </div>
-
-
-          <!--  *****Auto Evaluation *****-->
-          <div class="form-group">
-            <label for="evaluation">Auto Evaluation de la compétence</label>
-            <input id="evaluation" type="number"
-                   placeholder="Renseigner une note sur 5"
-                   max=5
-                   min=0
-                   class="form-control list-space"
-                   formControlName="autoRating">
-          </div>
-          <!--***** Affichage des boutons de validation et d'annulation *****-->
-
-          <div class="cancelValidBtn">
-
-            <button type="button" class="btn btn-warning mb-2 btn-space"
-                    data-toggle="tooltip"
-                    data-placement="bottom" title="Cliquez pour annuler"
-                    [routerLink]="['/skill',collaboratorDetail.collaboratorId]">
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
-              </svg>
-              Annuler
-            </button>
-
-            <button type="submit" class="btn btn-success mb-2 btn-space"
-                    data-toggle="tooltip"
-                    data-placement="bottom" title="Cliquez pour enregistrer"
-                    (click)="onAddSkillForOneCollaborator()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
-                   viewBox="0 0 16 16">
-                <path
-                  d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-              </svg>
-              Enregistrer
-            </button>
-          </div>
-        </form>
-      </form>
+        <option value="0">-- Domaine de Compétences --</option>
+        <option *ngFor="let area of areaList"
+                value="{{area.skillAreaId}}"> {{area.name | uppercase}}</option>
+      </select>
     </div>
+
+    <!--        ***** Formulaire pour enregistrement de la compétence *****-->
+    <form [formGroup]="addSkillForOneCollaboratorForm" (ngSubmit)="onAddSkillForOneCollaborator()">
+
+      <input type="hidden" id="collaboratorId" formControlName="collaboratorId">
+
+      <!--Affichage de la liste de valeurs des compétences-->
+      <div class="form-group">
+        <label for="skill">Sélectionner une compétence</label>
+        <select name="skill" id="skill"
+                formControlName="skill"
+                class="form-control list-space"
+                (change)="selectedSkillId(skillSelect.value)" #skillSelect>
+
+          <option value="0">-- Compétences --</option>
+          <option *ngFor="let skill of skillList"
+                  value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+        </select>
+      </div>
+
+
+      <!--  *****Auto Evaluation *****-->
+      <div class="form-group">
+        <label for="autoRating">Auto Evaluation de la compétence</label>
+        <input id="autoRating" type="number"
+               placeholder="Renseigner une note sur 5"
+               max=5
+               min=0
+               class="form-control list-space"
+               formControlName="autoRating">
+      </div>
+
+      <!--***** Affichage des boutons de validation et d'annulation *****-->
+      <div class="cancelValidBtn">
+
+        <ng-container *ngIf="collaboratorDetail">
+          <button type="button" class="btn btn-warning mb-2 btn-space"
+                  data-toggle="tooltip"
+                  data-placement="bottom" title="Cliquez pour annuler"
+
+                  [routerLink]="['/skill',collaboratorDetail.collaboratorId]">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
+                 viewBox="0 0 16 16">
+              <path
+                d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+            </svg>
+            Annuler
+          </button>
+
+
+          <button type="submit" class="btn btn-success mb-2 btn-space"
+                  data-toggle="tooltip"
+                  data-placement="bottom" title="Cliquez pour enregistrer"
+                  (click)="onAddSkillForOneCollaborator()"
+                  [routerLink]="['/skill',collaboratorDetail.collaboratorId]">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+                 viewBox="0 0 16 16">
+              <path
+                d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+            </svg>
+            Enregistrer
+          </button>
+        </ng-container>
+
+      </div>
+    </form>
+  </form>
+</div>

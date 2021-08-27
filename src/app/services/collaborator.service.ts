@@ -35,13 +35,15 @@ export class CollaboratorService {
     return this.http.get<Department []>('http://localhost:8080/department');
   };
 
+  getCollaboratorById(collaboratorId: number): Observable<Collaborator> {
+    return this.http.get<Collaborator>(this.baseUrl + collaboratorId);
+  };
+
   updateCollaborator(collaborator: Collaborator | undefined): Observable<Collaborator> {
     return this.http.put<Collaborator>(this.baseUrl + 'update/', collaborator);
   };
 
-  getCollaboratorById(collaboratorId: number): Observable<Collaborator> {
-    return this.http.get<Collaborator>(this.baseUrl + collaboratorId);
-  };
+
 
 
 }//end
