@@ -26,7 +26,7 @@
 
     <!--        ***** Formulaire pour enregistrement de la compétence *****-->
     <form [formGroup]="addSkillForOneCollaboratorForm" (ngSubmit)="onAddSkillForOneCollaborator()">
-
+      <input type="hidden" id="collaboratorSkillId" formControlName="collaboratorSkillId">
       <input type="hidden" id="collaboratorId" formControlName="collaboratorId">
 
       <!--Affichage de la liste de valeurs des compétences-->
@@ -39,7 +39,8 @@
 
           <option value="0">-- Compétences --</option>
           <option *ngFor="let skill of skillList"
-                  value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
+                  [ngValue]="skill">
+            {{skill.name | uppercase}}</option>
         </select>
       </div>
 
@@ -74,7 +75,7 @@
           </button>
 
 
-          <button type="submit" class="btn btn-success mb-2 btn-space"
+          <button type="button" class="btn btn-success mb-2 btn-space"
                   data-toggle="tooltip"
                   data-placement="bottom" title="Cliquez pour enregistrer"
                   (click)="onAddSkillForOneCollaborator()"

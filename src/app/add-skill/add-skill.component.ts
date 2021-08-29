@@ -45,6 +45,7 @@ export class AddSkillComponent implements OnInit {
   })
 
   addSkillForOneCollaboratorForm = this.formBuilder.group({
+    collaboratorSkillId:'',
     collaboratorId: '',
     skill: '',
     autoRating: ''
