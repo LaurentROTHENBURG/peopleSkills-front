@@ -113,7 +113,9 @@ export class CollaboratorComponent implements OnInit {
 
   onCollaboratorUpdate() {
     this.collaborator = this.updateCollaboratorForm.value;
-    this.collaboratorService.updateCollaborator(this.collaborator).subscribe();
+    this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
+      this.refreshCollaborator()
+    });
     this.updateCollaboratorForm.reset({
       collaboratorId: '',
       endDate: '',
@@ -122,7 +124,6 @@ export class CollaboratorComponent implements OnInit {
       name: ''
     })
     this.UpdateCollaboratorModal = false;
-    this.refreshCollaborator();
   }
 
 

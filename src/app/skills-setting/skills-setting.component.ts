@@ -81,14 +81,16 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   onSkillUpdate() {
     this.skill = this.skillForm.value;
-    this.skillService.updateSKill(this.skill).subscribe();
+    this.skillService.updateSKill(this.skill).subscribe(() => {
+      this.refreshSkill()
+    });
     this.skillForm.reset({
       skill_name: '',
       startDate: '',
       endDate: ''
     })
     this.showSkillUpdateModal = false;
-    this.refreshSkill();
+
   };
 
   onSkillCreate() {
