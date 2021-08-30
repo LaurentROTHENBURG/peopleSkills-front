@@ -45,7 +45,6 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
     return this.skillsSearchResult.length;
   }
 
-
   ngOnChanges() {
     console.log("Changement")
   }

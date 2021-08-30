@@ -100,14 +100,15 @@ export class CollaboratorComponent implements OnInit {
   onCollaboratorCreate() {
 
     this.collaborator = this.createCollaboratorForm.value;
-    this.collaboratorService.createCollaborator(this.collaborator).subscribe();
+    this.collaboratorService.createCollaborator(this.collaborator).subscribe(() => {
+      this.refreshCollaborator()
+    });
     this.createCollaboratorForm.reset({
         collaboratorName: '',
         collaboratorFirstName: ''
       }
     )
     this.showCollaboratorModal = false;
-    this.refreshCollaborator();
   };
 
   onCollaboratorUpdate() {
