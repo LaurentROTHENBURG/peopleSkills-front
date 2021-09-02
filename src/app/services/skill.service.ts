@@ -21,20 +21,24 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId);
   };
 
-  getSkillForOneCollaborator(collaboratorId: number) : Observable<Skill[]>{
+  getSkillForOneCollaborator(collaboratorId: number): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId);
   };
 
-  getSkillsForCollaborators(skillId: number) : Observable<Skill[]>{
+  getSkillsForCollaborators(skillId: number): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.baseUrl + 'search/' + skillId);
+  }
+
+  getPatrimoineSkill() {
+    return this.http.get(this.baseUrl + '/patrimoineSkill')
   }
 
   createSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.post<Skill>(this.baseUrl + "post/", skill);
   };
 
-  createSKillForOneCollaborator(collaboratorSkill: CollaboratorSkill | undefined) : Observable<CollaboratorSkill>{
-    return this.http.post<CollaboratorSkill>("http://localhost:8080/collaborator_skill/post", collaboratorSkill );
+  createSKillForOneCollaborator(collaboratorSkill: CollaboratorSkill | undefined): Observable<CollaboratorSkill> {
+    return this.http.post<CollaboratorSkill>("http://localhost:8080/collaborator_skill/post", collaboratorSkill);
   };
 
   updateSKill(skill: Skill | undefined): Observable<Skill> {

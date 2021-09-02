@@ -19,6 +19,7 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import {RouteEventsService} from "./services/route-events.service";
+import { SkillsStatComponent } from './skills-stat/skills-stat.component';
 
 
 
@@ -38,6 +39,7 @@ const appRoutes = [
   {path: 'skill/project-detail/:projectId', component: ProjectDetailComponent},
   {path: 'skillsSearch', component: SkillsSearchComponent},
   {path: 'skillsSetting', component: SkillsSettingComponent},
+  {path: 'skillOverview', component: SkillsStatComponent},
   {path: 'not-found', component: FourOhFourComponent},
   {path: '**', redirectTo: '/not-found'}
 ]
@@ -56,6 +58,7 @@ const appRoutes = [
     ProjectComponent,
     ProjectDetailComponent,
     CollaboratorComponent,
+    SkillsStatComponent,
   ],
   imports: [
     CommonModule,

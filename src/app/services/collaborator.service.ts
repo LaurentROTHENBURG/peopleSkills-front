@@ -39,11 +39,17 @@ export class CollaboratorService {
     return this.http.get<Collaborator>(this.baseUrl + collaboratorId);
   };
 
+  getCountCollaboratorActif() {
+    return this.http.get(this.baseUrl + 'countcollaborator');
+  }
+
   updateCollaborator(collaborator: Collaborator | undefined): Observable<Collaborator> {
     return this.http.put<Collaborator>(this.baseUrl + 'update/', collaborator);
   };
 
-
+  updateEndDateCollaborator(collaborator: Collaborator) {
+    return this.http.put(this.baseUrl + 'update/byId/' + collaborator.collaboratorId, collaborator);
+  }
 
 
 }//end

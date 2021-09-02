@@ -41,8 +41,9 @@ export class SkillsComponent implements OnInit, OnChanges {
     collaboratorLanguage: '',
     collaboratorDepartment: '',
     collaboratorManager: '',
-    name:'',
+    name: '',
   });
+
 
   ngOnInit(): void {
 
@@ -56,6 +57,7 @@ export class SkillsComponent implements OnInit, OnChanges {
 
       this.onSelectCollaborator(collaboratorIdfromRoute);
     });
+
   }
 
   onSelectCollaborator(collaboratorIdfromRoute: number) {

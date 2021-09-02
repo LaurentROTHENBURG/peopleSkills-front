@@ -1,0 +1,18 @@
+<div class="displayPatrimoineSkill">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Skill</th>
+      <th scope="col">Nombre de compétence</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let patrimoineSkill of patrimoineSkills; index as i">
+      <td scope="row">{{ i + 1 }}</td>
+      <td>      {{ patrimoineSkill[0] }}   </td>
+      <td>{{ patrimoineSkill[1]}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

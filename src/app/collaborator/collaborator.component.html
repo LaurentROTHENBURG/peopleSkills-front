@@ -102,9 +102,13 @@
 
 <h5><strong>Nombre de collaborateurs : {{getRowsCollaborator()}}</strong></h5>
 
+<h5><strong>Nombre de collaborateurs actifs : {{countCollaboratorActif}}</strong></h5>
+
+
 <table class="table table-striped">
   <thead>
   <tr>
+    <th scope="col">#</th>
     <th>Nom</th>
     <th>Prénom</th>
     <th>Profession</th>
@@ -119,7 +123,8 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let collaborator of collaboratorList">
+  <tr *ngFor="let collaborator of collaboratorList; index as i">
+    <th scope="row">{{ i + 1 }}</th>
     <td><span id="name" contenteditable>{{collaborator.name | uppercase}}</span></td>
     <td><span id="firstName" contenteditable>{{collaborator.firstName}}</span></td>
     <td><span id="profession" contenteditable>{{collaborator.profession}}</span></td>
@@ -127,7 +132,10 @@
     <td><span id="mail" contenteditable>{{collaborator.mail}}</span></td>
     <td><span id="language" contenteditable>{{collaborator.language}}</span></td>
     <td><span id="startDate" contenteditable>{{collaborator.startDate}}</span></td>
-    <td><span id="endDate" contenteditable>{{collaborator.endDate}}</span></td>
+    <td><input  #dateEndCollaborator type="text"
+                class="form-control"
+               (change)="updateDateEndCollaborator(dateEndCollaborator.value, collaborator)" value="{{collaborator.endDate}}">
+      </td>
 
     <button id="btn-modif" class="btn btn-primary mb-2"
             data-toggle="tooltip"

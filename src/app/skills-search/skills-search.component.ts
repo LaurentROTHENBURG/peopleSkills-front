@@ -18,6 +18,7 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
               private collaboratorService: CollaboratorService) {
   };
 
+
   skillList: Skill[] = [];
   skillsSearchResult: Collaborator[] = [];
 
@@ -25,12 +26,14 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
     skillSelected: ''
   });
 
+  flagSkillPatrimoine : boolean = false;
   clickOnSearch: boolean = false;
 
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
     })
+
   }
 
   onSearchSkillSelected(skillId: number) {
@@ -63,5 +66,6 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
 
     new ngxCsv(this.skillsSearchResult, "peopleSkill-download", options);
   }
+
 
 }//end

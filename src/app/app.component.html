@@ -7,9 +7,19 @@
     <div class="container fluid">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active"><a routerLink="authentification">Authentification</a></li>
-        <li routerLinkActive="active"><a routerLink="collaboratorSetting">Setting Collaborators</a></li>
-        <li routerLinkActive="active"><a routerLink="skillsSetting">Setting Skills </a></li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="collaboratorSetting">Setting Collaborators</a></li>
+            <li><a routerLink="skillsSetting">Setting Skills</a></li>
+          </ul>
+        </li>
+
+
         <li routerLinkActive="active"><a routerLink="skill">Access To Skills</a></li>
+        <li routerLinkActive="active"><a routerLink="skillOverview">OverView</a></li>
         <li routerLinkActive="active"><a routerLink="skillsSearch">Search</a></li>
 
 

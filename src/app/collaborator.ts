@@ -1,5 +1,6 @@
 import {Profil} from "./profil";
 import {Department} from "./department";
+import {CollaboratorSkill} from "./collaboratorSkill";
 
 export interface Collaborator {
   collaboratorId: number;
@@ -11,7 +12,8 @@ export interface Collaborator {
   name: string;
   profession: string;
   startDate: Date;
-  autoRating: number;
+   autoRating: number;
+  // collaboratorSkill: CollaboratorSkill;
   profil: Profil;
   department: Department;
 }

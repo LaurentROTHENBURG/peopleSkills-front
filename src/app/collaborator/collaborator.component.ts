@@ -35,7 +35,7 @@ export class CollaboratorComponent implements OnInit {
   collaboratorList: Collaborator[] = [];
   profilList: Profil[] = [];
   departmentList: Department[] = [];
-
+  countCollaboratorActif: any;
 
   showCollaboratorModal: boolean = false;
   UpdateCollaboratorModal: boolean = false;
@@ -56,7 +56,9 @@ export class CollaboratorComponent implements OnInit {
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
       this.collaboratorList = result;
-      console.log(result);
+      this.collaboratorService.getCountCollaboratorActif().subscribe(result => {
+        this.countCollaboratorActif = result;
+      })
     })
 
 // Affichage de la liste des profils
@@ -143,5 +145,10 @@ export class CollaboratorComponent implements OnInit {
     this.UpdateCollaboratorModal = false;
   };
 
+  updateDateEndCollaborator(newEndDate: any, collaborator: Collaborator) {
+    console.log(newEndDate);
+    collaborator.endDate = newEndDate;
+    this.collaboratorService.updateEndDateCollaborator(collaborator).subscribe();
+  };
 
 }

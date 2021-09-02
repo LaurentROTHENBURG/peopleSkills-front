@@ -1,3 +1,4 @@
+
 <!--Affichage de la liste de valeurs des compétences-->
 
 <div class="form-group centredList">
@@ -5,7 +6,7 @@
 
     <label for="skillSelected">Sélectionner une compétence</label>
     <select id="skillSelected" name="skillSelected"
-
+            class="form-control"
             formControlName="skillSelected"
             (change)="onSearchSkillSelected(this.searchSkillForm.get('skillSelected')?.value)">
 
@@ -14,7 +15,7 @@
     </select>
   </form>
 
-  <h5 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h5>
+  <h6 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h6>
 
   <table class="table table-striped"
          *ngIf="clickOnSearch">
@@ -44,7 +45,7 @@
       <td>{{skillSearchResult.profession}}</td>
       <td>{{skillSearchResult.mail}}</td>
       <td>{{skillSearchResult.language}}</td>
-      <td>{{skillSearchResult.autoRating}}</td>
+      <!--      <td>{{skillSearchResult.autoRating}}</td>-->
     </tr>
 
     </tbody>
@@ -65,10 +66,8 @@
     Export To CSV
   </button>
 
+
 </div>
-
-
-
 
 
 
