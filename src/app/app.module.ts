@@ -20,6 +20,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import {RouteEventsService} from "./services/route-events.service";
 import { SkillsStatComponent } from './skills-stat/skills-stat.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -65,7 +66,8 @@ const appRoutes = [
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgxPaginationModule
   ],
   providers: [
     AuthService,RouteEventsService

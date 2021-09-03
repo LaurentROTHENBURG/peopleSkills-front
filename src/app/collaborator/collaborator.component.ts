@@ -50,8 +50,11 @@ export class CollaboratorComponent implements OnInit {
     profession: '',
     mail: '',
     matricule: '',
-
   });
+
+  totalLength: any;
+  page:number =1;
+
 
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
@@ -96,6 +99,7 @@ export class CollaboratorComponent implements OnInit {
   refreshCollaborator() {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
       this.collaboratorList = result;
+      this.totalLength = result.length;
     })
   };
 
@@ -146,7 +150,6 @@ export class CollaboratorComponent implements OnInit {
   };
 
   updateDateEndCollaborator(newEndDate: any, collaborator: Collaborator) {
-    console.log(newEndDate);
     collaborator.endDate = newEndDate;
     this.collaboratorService.updateEndDateCollaborator(collaborator).subscribe();
   };

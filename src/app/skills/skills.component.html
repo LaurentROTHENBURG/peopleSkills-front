@@ -1,6 +1,6 @@
 <div class="blocSkill">
 
-  <div class="leftPartSkill">
+  <div class="leftPartSkill" >
     <!--    <h2>Fiche Collaborateur</h2>-->
     <!--    ***** Affichage de la liste de valeurs de sélection de l'utilisateur *****-->
     <form [formGroup]="selectCollaboratorForm">
@@ -19,9 +19,11 @@
 
 
       <!--      ***** Affichage du détail du collaborateur *****-->
-      <div class="form-group">
+
+      <div class="form-group" *ngIf="collaboratorList">
         <label for="name">Nom</label>
-        <input id="name" type="text" readonly="disabled" class="form-control" formControlName="collaboratorName">
+        <input id="name" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorName">
       </div>
 
       <div class="form-group">
@@ -52,7 +54,6 @@
         <input id="language" type="text" readonly="disabled" class="form-control"
                formControlName="collaboratorLanguage">
       </div>
-
 
     </form>
   </div>

@@ -52,9 +52,7 @@ export class SkillsComponent implements OnInit, OnChanges {
 
     this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
       this.collaboratorList = resultAllCollaborator;
-
       this.selectCollaboratorForm.get('selectCollaborator')?.setValue(collaboratorIdfromRoute);
-
       this.onSelectCollaborator(collaboratorIdfromRoute);
     });
 
@@ -73,12 +71,14 @@ export class SkillsComponent implements OnInit, OnChanges {
 
     this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(resultSkillOneCollaborator => {
       this.skillListbyCollaborator = resultSkillOneCollaborator;
-    });
+    })
+    console.log(this.skillListbyCollaborator);
 
     this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(resultProjectOneCollaborator => {
       this.projectListbyCollaborator = resultProjectOneCollaborator;
     });
   };
+
 
   ngOnChanges() {
     console.log("Changement")

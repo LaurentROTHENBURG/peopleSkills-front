@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Skill} from "../skill";
 import {CollaboratorSkill} from "../collaboratorSkill";
+import {Collaborator} from "../collaborator";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class SkillService {
   updateSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.put<Skill>(this.baseUrl + "update/", skill);
   };
+
+
+  updateEndDateSkill(skill: Skill) {
+    return this.http.put(this.baseUrl + 'update/byId/' + skill.skillId, skill);
+  };
+
 
   deleteSkillById(skillId: number): Observable<any> {
     return this.http.delete(this.baseUrl + "delete/" + skillId);

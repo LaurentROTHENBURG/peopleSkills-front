@@ -42,10 +42,13 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
 
+  totalLength: any;
+  page: number = 1;
+
   ngOnInit(): void {
     this.skillService.getAllSkill().subscribe(result => {
       this.skillList = result;
-      console.log(result);
+      this.totalLength = result.length;
     });
 
     this.areaService.getAllArea().subscribe(result => {
@@ -126,5 +129,9 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
     console.log("Changement")
   };
 
+  updateDateEndSkill(newEndDate: any, skill: Skill) {
+    skill.endDate = newEndDate;
+    this.skillService.updateEndDateSkill(skill).subscribe();
+  };
 
 }//end

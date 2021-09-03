@@ -49,7 +49,7 @@ export class CollaboratorService {
 
   updateEndDateCollaborator(collaborator: Collaborator) {
     return this.http.put(this.baseUrl + 'update/byId/' + collaborator.collaboratorId, collaborator);
-  }
+  };
 
 
 }//end

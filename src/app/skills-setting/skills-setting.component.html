@@ -46,7 +46,6 @@
           <input type="date" id="endDate" class="form-control"
                  formControlName="endDate">
 
-
           <button type="button" class="btn btn-warning mb-2 cancelValidBtn"
                   data-toggle="tooltip"
                   data-placement="bottom" title="Cliquez pour annuler"
@@ -91,7 +90,7 @@
           <label for="skill-name">Compétence : </label>
           <input type="text" id="skill-name" class="form-control" formControlName="name">
           <label for="skill-date-start">Date Début : </label>
-          <input type="date" id="skill-date-start"  class="form-control" formControlName="startDate">
+          <input type="date" id="skill-date-start" class="form-control" formControlName="startDate">
           <label for="skill-date-end">Date de Fin :</label>
           <input type="date" id="skill-date-end" class="form-control" formControlName="endDate">
 
@@ -125,13 +124,13 @@
   <div class="jw-modal-background"></div>
 </div>
 
-<h5><strong>Nombre de compétences : {{getRowsSkill()}}</strong> </h5>
+<h5><strong>Nombre de compétences : {{getRowsSkill()}}</strong></h5>
 
 <table class="table table-striped">
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th>Compétences</th>
+    <th class="skill">Compétences</th>
     <th>Date Début</th>
     <th>Date Fin</th>
     <th>Actions</th>
@@ -139,11 +138,17 @@
   </thead>
 
   <tbody>
-  <tr *ngFor="let skill of skillList; index as i">
+  <tr
+    *ngFor="let skill of skillList
+    | paginate: { itemsPerPage: 8, currentPage: page, totalItems : totalLength };
+    index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td><span id="name" contenteditable>{{skill.name | uppercase}}</span></td>
     <td><span id="startDate" contenteditable>{{skill.startDate}}</span></td>
-    <td><span id="endDate" >{{skill.endDate}}</span></td>
+    <td><input #dateEndSkill type="date"
+               class="form-control"
+               (change)="updateDateEndSkill(dateEndSkill.value, skill)" value="{{skill.endDate}}">
+    </td>
 
     <button id="btn-modifSkill" class="btn btn-primary mb-2"
             data-toggle="tooltip"
@@ -174,5 +179,9 @@
     </button>
   </tbody>
 </table>
+
+<div>
+  <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+</div>
 
 
