@@ -236,3 +236,11 @@ body.jw-modal-open {
 .btnExport {
   margin-left: 82%;
 }
+
+/******DashBoard******/
+.displayPatrimoineSkill {
+  width: 50%;
+  margin-top: 2%;
+  min-height: 45em;
+  color: rgb(88, 19, 116);
+}

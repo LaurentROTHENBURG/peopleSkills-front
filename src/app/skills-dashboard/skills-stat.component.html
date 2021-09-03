@@ -1,3 +1,11 @@
+
+<a [routerLink]="['/collaboratorSetting']">
+  Nombre de collaborateurs actifs : </a><strong>{{countCollaboratorActif}}</strong>
+
+<p>Total de compétences dans l'Equipe : <strong>{{countCollaboratorSkill}}</strong></p>
+
+
+
 <div class="displayPatrimoineSkill">
   <table class="table table-striped">
     <thead>
@@ -9,10 +17,11 @@
     </thead>
     <tbody>
     <tr *ngFor="let patrimoineSkill of patrimoineSkills; index as i">
-      <td scope="row">{{ i + 1 }}</td>
+      <th scope="row">{{ i + 1 }}</th>
       <td>      {{ patrimoineSkill[0] }}   </td>
       <td>{{ patrimoineSkill[1]}}</td>
     </tr>
     </tbody>
   </table>
 </div>
+

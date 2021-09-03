@@ -33,6 +33,9 @@ export class SkillService {
   getPatrimoineSkill() {
     return this.http.get(this.baseUrl + '/patrimoineSkill')
   }
+  getCountCollaboratorSkill() {
+    return this.http.get('http://localhost:8080/collaborator_skill/countCollaboratorSkill')
+  }
 
   createSKill(skill: Skill | undefined): Observable<Skill> {
     return this.http.post<Skill>(this.baseUrl + "post/", skill);

@@ -53,12 +53,13 @@ export class CollaboratorComponent implements OnInit {
   });
 
   totalLength: any;
-  page:number =1;
+  page: number = 1;
 
 
   ngOnInit(): void {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
       this.collaboratorList = result;
+      this.totalLength = result.length;
       this.collaboratorService.getCountCollaboratorActif().subscribe(result => {
         this.countCollaboratorActif = result;
       })
@@ -99,12 +100,10 @@ export class CollaboratorComponent implements OnInit {
   refreshCollaborator() {
     this.collaboratorService.getAllCollaborator().subscribe(result => {
       this.collaboratorList = result;
-      this.totalLength = result.length;
     })
   };
 
   onCollaboratorCreate() {
-
     this.collaborator = this.createCollaboratorForm.value;
     this.collaboratorService.createCollaborator(this.collaborator).subscribe(() => {
       this.refreshCollaborator()
