@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Collaborator} from "../collaborator";
 import {CollaboratorService} from "../services/collaborator.service";
 import {CollaboratorSkill} from "../collaboratorSkill";
+import {LogicalFileSystem} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 @Component({
   selector: 'app-add-skill',
@@ -45,9 +46,9 @@ export class AddSkillComponent implements OnInit {
   })
 
   addSkillForOneCollaboratorForm = this.formBuilder.group({
-    collaboratorSkillId:'',
-    collaboratorId: '',
-    skill: '',
+    collaboratorSkillId: '',
+    collaboratorIdx: '',
+    skillId: '',
     autoRating: ''
   })
 
@@ -77,29 +78,23 @@ export class AddSkillComponent implements OnInit {
     }
   }
 
-
   onAddSkillForOneCollaborator() {
+      this.collaboratorSkill = {
+      autoRating: this.addSkillForOneCollaboratorForm.get('autoRating')?.value,
+      // @ts-ignore
+      collaborators:{
+        // @ts-ignore
+        collaboratorId: this.collaboratorDetail.collaboratorId
+      },
+      // @ts-ignore
+      skills :{
+        // @ts-ignore
+        skillId: this.addSkillForOneCollaboratorForm.get('skillId')?.value
 
-this.collaboratorSkill=this.addSkillForOneCollaboratorForm.value;
-this.skillService.createSKillForOneCollaborator(this.collaboratorSkill).subscribe();
-
-
-    // const formValue = this.addSkillForOneCollaboratorForm.value;
-    // console.log("valeur de autoRating " + formValue['autoRating']);
-
-    //autorating
-    // console.log('valeur autorating :  ' + this.addSkillForOneCollaboratorForm.value.autoRating);
-
-    //Id du collaborateur collaborator_idx
-    // const routeParams = this.route.snapshot.paramMap;
-    // const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
-    // console.log('id du collaborateur : ' + collaboratorIdfromRoute)
-
-    //id du skill skill_idx
-    // console.log('id du skill : ' + this.addSkillForOneCollaboratorForm.get('skillSelect')?.value.skillList);
-    //
-    //
-    // this.router.navigate(['/skill']);
+      }
+    }
+    console.log(this.collaboratorSkill);
+    this.skillService.createSKillForOneCollaborator(this.collaboratorSkill).subscribe();
 
   }
 

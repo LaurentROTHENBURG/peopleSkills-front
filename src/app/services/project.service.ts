@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Project} from "../project";
 import {Skill} from "../skill";
+import {CollaboratorSkill} from "../collaboratorSkill";
+import {CollaboratorProject} from "../collaboratorProject";
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +26,10 @@ export class ProjectService {
   createProject(project : Project | undefined) : Observable<Project>{
     return this.http.post<Project>(this.baseUrl + "post/", project);
   }
+
+  createCollaboratorProject(collaboratorProject: CollaboratorProject | undefined): Observable<CollaboratorProject> {
+    return this.http.post<CollaboratorProject>("http://localhost:8080/collaborator_project/post", collaboratorProject);
+  };
+
 
 }//end

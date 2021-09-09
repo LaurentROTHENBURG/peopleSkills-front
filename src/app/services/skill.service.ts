@@ -26,10 +26,6 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId);
   };
 
-  getSkillsForCollaborators(skillId: number): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.baseUrl + 'search/' + skillId);
-  }
-
   getPatrimoineSkill() {
     return this.http.get(this.baseUrl + '/patrimoineSkill')
   }
@@ -49,11 +45,9 @@ export class SkillService {
     return this.http.put<Skill>(this.baseUrl + "update/", skill);
   };
 
-
   updateEndDateSkill(skill: Skill) {
     return this.http.put(this.baseUrl + 'update/byId/' + skill.skillId, skill);
   };
-
 
   deleteSkillById(skillId: number): Observable<any> {
     return this.http.delete(this.baseUrl + "delete/" + skillId);

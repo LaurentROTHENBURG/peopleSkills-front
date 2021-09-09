@@ -22,8 +22,6 @@ import {RouteEventsService} from "./services/route-events.service";
 import { SkillsStatComponent } from './skills-dashboard/skills-stat.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
-
-
 const appRoutes = [
   // racine de l'application
   {path: '', component: AuthComponent},
@@ -67,7 +65,7 @@ const appRoutes = [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [
     AuthService,RouteEventsService

@@ -1,13 +1,12 @@
+<H4 *ngIf="collaboratorDetail"> Ajout d'expériences projet : {{collaboratorDetail.firstName}}
+  {{collaboratorDetail.name | uppercase }}
+</H4>
 
-<ng-container *ngIf="collaboratorDetail">
-  <H4> Ajout d'expériences projet : {{collaboratorDetail.firstName}}
-    {{collaboratorDetail.name | uppercase }}
-  </H4>
-  <ng-container>
 
 <div class="addAction">
   <form [formGroup]="addSelectProjectForm">
     <input type="hidden" id="project-id" formControlName="projectId">
+
     <label for="nameProject">Nom du projet</label>
     <input id="nameProject" type="text"
            placeholder="Renseigner un nom de projet"
@@ -16,12 +15,25 @@
 
     <label for="descriptionProject">Description du projet</label>
     <textarea id="descriptionProject"
-           placeholder="Renseigner quelques mots pour décrire le projet"
-           class="form-control list-space"
-           formControlName="description"></textarea>
+              placeholder="Renseigner quelques mots pour décrire le projet"
+              class="form-control list-space"
+              formControlName="description"></textarea>
 
-    <label for="startDateProject">Date début</label>
-    <input id="startDateProject" type="date"
+<!--    <label for="functionProject">Fonction</label>-->
+<!--    <textarea id="functionProject"-->
+<!--              placeholder="Renseigner votre fonction occupée dans le projet"-->
+<!--              class="form-control list-space"-->
+<!--              formControlName="function"></textarea>-->
+
+    <label for="speciality">Spécialité</label>
+    <textarea id="speciality"
+              placeholder="Renseigner votre fonction occupée dans le projet"
+              class="form-control list-space"
+              formControlName="speciality"></textarea>
+
+
+    <label for="startDate">Date début</label>
+    <input id="startDate" type="date"
            placeholder="Renseigner la date début d'intervention"
            class="form-control list-space"
            formControlName="startDate">
@@ -35,34 +47,39 @@
 
     <!--***** Affichage des boutons de validation et d'annulation *****-->
 
-    <div class="cancelValidBtn">
+    <div *ngIf="collaboratorDetail" class="cancelValidBtn">
 
       <!--***** Annulation permet de revenir à la fiche skill *****-->
-      <button type="button" class="btn btn-warning mb-2 btn-space"
-              title="Cliquez pour annuler"
+      <button type="button" class="btn btn-primary mb-2 btn-space"
+              title="Retour"
               [routerLink]="['/skill',collaboratorDetail.collaboratorId]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
-             viewBox="0 0 16 16">
-          <path
-            d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+             class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+                d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
         </svg>
-        Annuler
+        Back
       </button>
 
       <button type="button" class="btn btn-success mb-2 btn-space"
-              title="Cliquez pour enregistrer"
-              routerLink="/skill"
-              (click)="onAddProject()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg"
+              title="Ajouter"
+              (click)="onAddProject()"
+              (click)="onAddCollaboratorProject()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
              viewBox="0 0 16 16">
-          <path
-            d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+          <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
         </svg>
-        Enregistrer
+        Ajouter Projet
       </button>
-
-
 
     </div>
   </form>
+</div>
+
+<div class="containerBadge" >
+  <h4 class="text-center" *ngFor="let projectInput of projectList">
+  <span class="badge badgeProject">
+    {{projectInput.name}}
+  </span>
+  </h4>
 </div>

@@ -1,6 +1,6 @@
 <div class="blocSkill">
 
-  <div class="leftPartSkill" >
+  <div class="leftPartSkill">
     <!--    <h2>Fiche Collaborateur</h2>-->
     <!--    ***** Affichage de la liste de valeurs de sélection de l'utilisateur *****-->
     <form [formGroup]="selectCollaboratorForm">
@@ -20,17 +20,18 @@
 
       <!--      ***** Affichage du détail du collaborateur *****-->
 
-      <div class="form-group" *ngIf="collaboratorList">
-        <label for="name">Nom</label>
-        <input id="name" type="text" readonly="disabled" class="form-control"
-               formControlName="collaboratorName">
-      </div>
+        <div class="form-group" *ngIf="collaboratorList">
+          <label for="name">Nom</label>
+          <input id="name" type="text" readonly="disabled" class="form-control"
+                 formControlName="collaboratorName">
+        </div>
 
-      <div class="form-group">
-        <label for="firstName">Prénom</label>
-        <input id="firstName" type="text" readonly="disabled" class="form-control"
-               formControlName="collaboratorFirstName">
-      </div>
+        <div class="form-group">
+          <label for="firstName">Prénom</label>
+          <input id="firstName" type="text" readonly="disabled" class="form-control"
+                 formControlName="collaboratorFirstName">
+        </div>
+
 
       <div class="form-group">
         <label for="profession">Poste</label>
@@ -43,11 +44,11 @@
         <input id="mail" type="text" readonly="disabled" class="form-control" formControlName="collaboratorMail">
       </div>
 
-      <div class="form-group">
-        <label for="matricule">Matricule</label>
-        <input id="matricule" type="text" readonly="disabled" class="form-control"
-               formControlName="collaboratorMatricule">
-      </div>
+<!--      <div class="form-group">-->
+<!--        <label for="matricule">Matricule</label>-->
+<!--        <input id="matricule" type="text" readonly="disabled" class="form-control"-->
+<!--               formControlName="collaboratorMatricule">-->
+<!--      </div>-->
 
       <div class="form-group">
         <label for="language">Langue</label>
@@ -62,7 +63,7 @@
   <div class="rightPartSkill">
 
     <h2 class="project">Compétences
-      <button class="btn btn-primary mb-2 right"
+      <button class="btn btn-secondary mb-2 right"
               data-toggle="tooltip"
               data-placement="bottom" title="Cliquez pour ajouter une compétence"
 
@@ -101,7 +102,7 @@
   <!--  ***** Affichage expérience projet *****-->
   <div class="rightPartSkill">
     <h2 class="project">Expérience Projet
-      <button class="btn btn-primary mb-2 right"
+      <button class="btn btn-secondary mb-2 right"
               data-toggle="tooltip"
               data-placement="bottom" title="Cliquez pour ajouter un projet"
               type="submit"

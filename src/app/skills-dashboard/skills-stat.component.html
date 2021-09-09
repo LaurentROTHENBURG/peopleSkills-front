@@ -1,9 +1,14 @@
+<h5>
 
-<a [routerLink]="['/collaboratorSetting']">
-  Nombre de collaborateurs actifs : </a><strong>{{countCollaboratorActif}}</strong>
+  <strong>Nombre de collaborateurs actifs : </strong>
+  <strong> <a [routerLink]="['/collaboratorSetting']">
+    {{countCollaboratorActif}}
+  </a> </strong>
+</h5>
 
-<p>Total de compétences dans l'Equipe : <strong>{{countCollaboratorSkill}}</strong></p>
-
+<h5>
+  <strong>Total de compétences dans l'Equipe : {{countCollaboratorSkill}}</strong>
+</h5>
 
 
 <div class="displayPatrimoineSkill">
@@ -24,4 +29,3 @@
     </tbody>
   </table>
 </div>
-

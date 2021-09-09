@@ -8,6 +8,7 @@ import {ProjectService} from "../services/project.service";
 import {Project} from "../project";
 import {ActivatedRoute} from "@angular/router";
 import {RouteEventsService} from "../services/route-events.service";
+import {findIndex} from "rxjs/operators";
 
 @Component({
   selector: 'app-skills',
@@ -61,17 +62,18 @@ export class SkillsComponent implements OnInit, OnChanges {
   onSelectCollaborator(collaboratorIdfromRoute: number) {
 
     let index = this.collaboratorList.findIndex(i => i.collaboratorId == collaboratorIdfromRoute);
+    if (this.collaboratorList.findIndex(i => i.collaboratorId == collaboratorIdfromRoute) != -1) {
+      this.selectCollaboratorForm.get('collaboratorName')?.setValue(this.collaboratorList[index].name);
+      this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(this.collaboratorList[index].firstName);
+      this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(this.collaboratorList[index].profession);
+      this.selectCollaboratorForm.get('collaboratorMail')?.setValue(this.collaboratorList[index].mail);
+      this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(this.collaboratorList[index].matricule);
+      this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(this.collaboratorList[index].language);
 
-    this.selectCollaboratorForm.get('collaboratorName')?.setValue(this.collaboratorList[index].name);
-    this.selectCollaboratorForm.get('collaboratorFirstName')?.setValue(this.collaboratorList[index].firstName);
-    this.selectCollaboratorForm.get('collaboratorProfession')?.setValue(this.collaboratorList[index].profession);
-    this.selectCollaboratorForm.get('collaboratorMail')?.setValue(this.collaboratorList[index].mail);
-    this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(this.collaboratorList[index].matricule);
-    this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(this.collaboratorList[index].language);
-
-    this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(resultSkillOneCollaborator => {
-      this.skillListbyCollaborator = resultSkillOneCollaborator;
-    })
+      this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(resultSkillOneCollaborator => {
+        this.skillListbyCollaborator = resultSkillOneCollaborator;
+      })
+    }
     console.log(this.skillListbyCollaborator);
 
     this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(resultProjectOneCollaborator => {
