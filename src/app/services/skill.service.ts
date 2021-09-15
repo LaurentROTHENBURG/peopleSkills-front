@@ -21,9 +21,13 @@ export class SkillService {
   getSkillbyArea(skillAreaId: number): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId);
   };
+  //
+  // getSkillForOneCollaborator(collaboratorId: number): Observable<Skill[]> {
+  //   return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId);
+  // };
 
   getSkillForOneCollaborator(collaboratorId: number): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId);
+    return this.http.get<Skill[]>('http://localhost:8080/collaborator_skill/' + collaboratorId);
   };
 
   getPatrimoineSkill() {
