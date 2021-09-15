@@ -6,6 +6,7 @@ import {Collaborator} from "../collaborator";
 import {ActivatedRoute} from "@angular/router";
 import {CollaboratorService} from "../services/collaborator.service";
 import {CollaboratorProject} from "../collaboratorProject";
+import {last} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-project',
@@ -23,12 +24,12 @@ export class AddProjectComponent implements OnInit {
   collaboratorDetail !: Collaborator;
 
   addSelectProjectForm = this.formBuilder.group({
-    projectId: '0',
+    // projectId: '0',
     description: '',
     name: '',
     startDate: '',
     endDate: '',
-    speciality:'',
+    speciality: '',
   });
 
   project: Project | undefined;
@@ -48,32 +49,35 @@ export class AddProjectComponent implements OnInit {
 
   }
 
+   lastId: Object | undefined;
+
   onAddProject() {
     //Insertion dans la table projet
     this.project = this.addSelectProjectForm.value;
     this.projectService.createProject(this.project).subscribe();
 
-    //Affichage du nom du projet sous le formulaire
-    this.projectList.push(this.project as Project);
+    this.projectService.getLastIdProjet().subscribe(result=>{
+      this.lastId = result;
+    })
+    console.log('le dernir ID de projet est : '+this.lastId )
 
-  }
 
-  onAddCollaboratorProject() {
     //Insertion dans la table collaborator_project
     this.collaboratorProject = {
       endDate: this.addSelectProjectForm.get('endDate')?.value,
       startDate: this.addSelectProjectForm.get('startDate')?.value,
-      speciality : this.addSelectProjectForm.get('speciality')?.value,
+      speciality: this.addSelectProjectForm.get('speciality')?.value,
       // @ts-ignore
       collaborator: {
         collaboratorId: this.collaboratorDetail.collaboratorId
       },
       // @ts-ignore
       project: {
-        projectId: 2
+        projectId: this.lastId
       }
     }
 
+    //reset des valeurs du formulaire
     this.projectService.createCollaboratorProject(this.collaboratorProject).subscribe();
     this.addSelectProjectForm.reset({
       projectId: '0',
@@ -82,6 +86,36 @@ export class AddProjectComponent implements OnInit {
       startDate: '',
       endDate: ''
     })
+
+    //Affichage du nom du projet sous le formulaire
+    this.projectList.push(this.project as Project);
+
   }
 
-}
+  // onAddCollaboratorProject() {
+  //   //Insertion dans la table collaborator_project
+  //   this.collaboratorProject = {
+  //     endDate: this.addSelectProjectForm.get('endDate')?.value,
+  //     startDate: this.addSelectProjectForm.get('startDate')?.value,
+  //     speciality : this.addSelectProjectForm.get('speciality')?.value,
+  //     // @ts-ignore
+  //     collaborator: {
+  //       collaboratorId: this.collaboratorDetail.collaboratorId
+  //     },
+  //     // @ts-ignore
+  //     project: {
+  //       projectId: this.project?.projectId
+  //     }
+  //   }
+  //
+  //   this.projectService.createCollaboratorProject(this.collaboratorProject).subscribe();
+  //   this.addSelectProjectForm.reset({
+  //     projectId: '0',
+  //     description: '',
+  //     name: '',
+  //     startDate: '',
+  //     endDate: ''
+  //   })
+  // }
+
+}//end

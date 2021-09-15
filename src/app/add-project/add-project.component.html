@@ -5,7 +5,7 @@
 
 <div class="addAction">
   <form [formGroup]="addSelectProjectForm">
-    <input type="hidden" id="project-id" formControlName="projectId">
+<!--    <input type="hidden" id="project-id" formControlName="projectId">-->
 
     <label for="nameProject">Nom du projet</label>
     <input id="nameProject" type="text"
@@ -19,18 +19,11 @@
               class="form-control list-space"
               formControlName="description"></textarea>
 
-<!--    <label for="functionProject">Fonction</label>-->
-<!--    <textarea id="functionProject"-->
-<!--              placeholder="Renseigner votre fonction occupée dans le projet"-->
-<!--              class="form-control list-space"-->
-<!--              formControlName="function"></textarea>-->
-
     <label for="speciality">Spécialité</label>
     <textarea id="speciality"
               placeholder="Renseigner votre fonction occupée dans le projet"
               class="form-control list-space"
               formControlName="speciality"></textarea>
-
 
     <label for="startDate">Date début</label>
     <input id="startDate" type="date"
@@ -64,7 +57,7 @@
       <button type="button" class="btn btn-success mb-2 btn-space"
               title="Ajouter"
               (click)="onAddProject()"
-              (click)="onAddCollaboratorProject()">
+              >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
              viewBox="0 0 16 16">
           <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>

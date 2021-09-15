@@ -255,6 +255,7 @@ body.jw-modal-open {
 .displayPatrimoineSkill {
   width: 50%;
   margin-top: 2%;
+  margin-left: 5%;
   min-height: 45em;
   color: rgb(88, 19, 116);
 }

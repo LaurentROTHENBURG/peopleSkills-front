@@ -5,6 +5,7 @@ import {Project} from "../project";
 import {Skill} from "../skill";
 import {CollaboratorSkill} from "../collaboratorSkill";
 import {CollaboratorProject} from "../collaboratorProject";
+import {Collaborator} from "../collaborator";
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +24,18 @@ export class ProjectService {
     return this.http.get<Project>(this.baseUrl + projectId);
   };
 
+  getLastIdProjet(){
+    return this.http.get(this.baseUrl + 'lastIdProject');
+  };
+
   createProject(project : Project | undefined) : Observable<Project>{
     return this.http.post<Project>(this.baseUrl + "post/", project);
-  }
+  };
 
   createCollaboratorProject(collaboratorProject: CollaboratorProject | undefined): Observable<CollaboratorProject> {
     return this.http.post<CollaboratorProject>("http://localhost:8080/collaborator_project/post", collaboratorProject);
   };
+
 
 
 }//end
