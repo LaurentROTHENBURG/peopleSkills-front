@@ -7,23 +7,22 @@ import {SkillService} from "../services/skill.service";
 import {ProjectService} from "../services/project.service";
 import {Project} from "../project";
 import {ActivatedRoute} from "@angular/router";
-import {RouteEventsService} from "../services/route-events.service";
-import {findIndex} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit, OnChanges {
+export class SkillsComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
               private collaboratorService: CollaboratorService,
               private skillService: SkillService,
               private route: ActivatedRoute,
-              private pojectService: ProjectService,
-              private routeEventService: RouteEventsService) {
+              private pojectService: ProjectService
+  ) {
   }
 
   skillListbyCollaborator: Skill[] = [];
@@ -41,26 +40,23 @@ export class SkillsComponent implements OnInit, OnChanges {
     collaboratorMatricule: '',
     collaboratorLanguage: '',
     collaboratorDepartment: '',
-    collaboratorManager: '',
-    name: '',
+
   });
 
 
   ngOnInit(): void {
-
     const routeParams = this.route.snapshot.paramMap;
     const collaboratorIdfromRoute = Number(routeParams.get('collaboratorId'));
 
-    this.collaboratorService.getAllCollaborator().subscribe(resultAllCollaborator => {
-      this.collaboratorList = resultAllCollaborator;
+    this.collaboratorService.getCollaboratorDateEndIsNull().subscribe(result => {
+      this.collaboratorList = result;
       this.selectCollaboratorForm.get('selectCollaborator')?.setValue(collaboratorIdfromRoute);
       this.onSelectCollaborator(collaboratorIdfromRoute);
     });
-
-  }
+    }
 
   onSelectCollaborator(collaboratorIdfromRoute: number) {
-
+    console.log('collaborator liste : ' + this.collaboratorList);
     let index = this.collaboratorList.findIndex(i => i.collaboratorId == collaboratorIdfromRoute);
     if (this.collaboratorList.findIndex(i => i.collaboratorId == collaboratorIdfromRoute) != -1) {
       this.selectCollaboratorForm.get('collaboratorName')?.setValue(this.collaboratorList[index].name);
@@ -69,21 +65,15 @@ export class SkillsComponent implements OnInit, OnChanges {
       this.selectCollaboratorForm.get('collaboratorMail')?.setValue(this.collaboratorList[index].mail);
       this.selectCollaboratorForm.get('collaboratorMatricule')?.setValue(this.collaboratorList[index].matricule);
       this.selectCollaboratorForm.get('collaboratorLanguage')?.setValue(this.collaboratorList[index].language);
+      this.selectCollaboratorForm.get('collaboratorDepartment')?.setValue(this.collaboratorList[index]["department"].name);
 
-      this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(resultSkillOneCollaborator => {
-        this.skillListbyCollaborator = resultSkillOneCollaborator;
+      this.skillService.getSkillForOneCollaborator(collaboratorIdfromRoute).subscribe(result => {
+        this.skillListbyCollaborator = result;
       })
     }
-    console.log(this.skillListbyCollaborator);
-
     this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(resultProjectOneCollaborator => {
       this.projectListbyCollaborator = resultProjectOneCollaborator;
     });
-  };
-
-
-  ngOnChanges() {
-    console.log("Changement")
   };
 
 }//end

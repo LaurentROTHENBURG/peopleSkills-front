@@ -18,7 +18,6 @@ import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { CollaboratorComponent } from './collaborator/collaborator.component';
-import {RouteEventsService} from "./services/route-events.service";
 import { SkillsStatComponent } from './skills-dashboard/skills-stat.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -68,7 +67,7 @@ const appRoutes = [
     NgxPaginationModule,
   ],
   providers: [
-    AuthService,RouteEventsService
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

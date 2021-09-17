@@ -10,7 +10,7 @@ import {AreaService} from "../services/area.service";
   templateUrl: './skills-setting.component.html',
   styleUrls: ['./skills-setting.component.css']
 })
-export class SkillsSettingComponent implements OnInit, OnChanges {
+export class SkillsSettingComponent implements OnInit {
 
   constructor(private skillService: SkillService,
               private formBuilder: FormBuilder,
@@ -19,7 +19,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
   }
 
   skill: Skill | undefined;
-
   skillList: Skill[] = [];
   skillAreaList: SkillArea[] = [];
 
@@ -41,7 +40,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
-
   totalLength: any;
   page: number = 1;
 
@@ -50,7 +48,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
       this.skillList = result;
       this.totalLength = result.length;
     });
-
     this.areaService.getAllArea().subscribe(result => {
       this.skillAreaList = result;
     });
@@ -123,10 +120,6 @@ export class SkillsSettingComponent implements OnInit, OnChanges {
 
   closeModalUpdate() {
     this.showSkillUpdateModal = false;
-  };
-
-  ngOnChanges() {
-    console.log("Changement")
   };
 
   updateDateEndSkill(newEndDate: any, skill: Skill) {

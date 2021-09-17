@@ -18,14 +18,19 @@ export class SkillService {
     return this.http.get<Skill[]>(this.baseUrl);
   };
 
+  getSkillDateEndIsNull():  Observable<Skill[]>{
+    return this.http.get<Skill[]>(this.baseUrl + 'skillDateEndIsNull');
+  }
+
   getSkillbyArea(skillAreaId: number): Observable<Skill[]> {
     return this.http.get<Skill[]>(this.baseUrl + 'byArea/' + skillAreaId);
   };
-  //
+
   // getSkillForOneCollaborator(collaboratorId: number): Observable<Skill[]> {
   //   return this.http.get<Skill[]>(this.baseUrl + 'byCollaborator/' + collaboratorId);
   // };
 
+  // Requete sur collaborator_skill puis collaborator
   getSkillForOneCollaborator(collaboratorId: number): Observable<Skill[]> {
     return this.http.get<Skill[]>('http://localhost:8080/collaborator_skill/' + collaboratorId);
   };

@@ -49,7 +49,7 @@ export class AddProjectComponent implements OnInit {
 
   }
 
-   lastId: Object | undefined;
+   lastId: object | undefined;
 
   onAddProject() {
     //Insertion dans la table projet
@@ -59,7 +59,7 @@ export class AddProjectComponent implements OnInit {
     this.projectService.getLastIdProjet().subscribe(result=>{
       this.lastId = result;
     })
-    console.log('le dernir ID de projet est : '+this.lastId )
+    console.log('le dernir ID de projet est : '+ this.lastId )
 
 
     //Insertion dans la table collaborator_project
@@ -73,7 +73,7 @@ export class AddProjectComponent implements OnInit {
       },
       // @ts-ignore
       project: {
-        projectId: this.lastId
+        projectId: 1
       }
     }
 
@@ -91,31 +91,5 @@ export class AddProjectComponent implements OnInit {
     this.projectList.push(this.project as Project);
 
   }
-
-  // onAddCollaboratorProject() {
-  //   //Insertion dans la table collaborator_project
-  //   this.collaboratorProject = {
-  //     endDate: this.addSelectProjectForm.get('endDate')?.value,
-  //     startDate: this.addSelectProjectForm.get('startDate')?.value,
-  //     speciality : this.addSelectProjectForm.get('speciality')?.value,
-  //     // @ts-ignore
-  //     collaborator: {
-  //       collaboratorId: this.collaboratorDetail.collaboratorId
-  //     },
-  //     // @ts-ignore
-  //     project: {
-  //       projectId: this.project?.projectId
-  //     }
-  //   }
-  //
-  //   this.projectService.createCollaboratorProject(this.collaboratorProject).subscribe();
-  //   this.addSelectProjectForm.reset({
-  //     projectId: '0',
-  //     description: '',
-  //     name: '',
-  //     startDate: '',
-  //     endDate: ''
-  //   })
-  // }
 
 }//end

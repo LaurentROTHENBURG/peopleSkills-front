@@ -19,19 +19,23 @@
 
 
       <!--      ***** Affichage du détail du collaborateur *****-->
+<!--        <div class="form-group" *ngIf="collaboratorList">-->
+<!--          <label for="name">Nom</label>-->
+<!--          <input id="name" type="text" readonly="disabled" class="form-control"-->
+<!--                 formControlName="collaboratorName">-->
+<!--        </div>-->
 
-        <div class="form-group" *ngIf="collaboratorList">
-          <label for="name">Nom</label>
-          <input id="name" type="text" readonly="disabled" class="form-control"
-                 formControlName="collaboratorName">
-        </div>
+<!--        <div class="form-group">-->
+<!--          <label for="firstName">Prénom</label>-->
+<!--          <input id="firstName" type="text" readonly="disabled" class="form-control"-->
+<!--                 formControlName="collaboratorFirstName">-->
+<!--        </div>-->
 
-        <div class="form-group">
-          <label for="firstName">Prénom</label>
-          <input id="firstName" type="text" readonly="disabled" class="form-control"
-                 formControlName="collaboratorFirstName">
-        </div>
-
+      <div class="form-group">
+        <label for="matricule">Matricule</label>
+        <input id="matricule" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorMatricule">
+      </div>
 
       <div class="form-group">
         <label for="profession">Poste</label>
@@ -44,11 +48,11 @@
         <input id="mail" type="text" readonly="disabled" class="form-control" formControlName="collaboratorMail">
       </div>
 
-<!--      <div class="form-group">-->
-<!--        <label for="matricule">Matricule</label>-->
-<!--        <input id="matricule" type="text" readonly="disabled" class="form-control"-->
-<!--               formControlName="collaboratorMatricule">-->
-<!--      </div>-->
+      <div class="form-group">
+        <label for="collaboratorDepartment">Département</label>
+        <input id="collaboratorDepartment" type="text" readonly="disabled" class="form-control"
+               formControlName="collaboratorDepartment">
+      </div>
 
       <div class="form-group">
         <label for="language">Langue</label>
@@ -83,10 +87,9 @@
 
     <h3>
       <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborator">
-        {{skillByCollaborator.name}}
+        {{skillByCollaborator.skills.name}}
         <span class="badge badge-light">
-<!--          {{skillByCollaborator.autoRating}}-->
-           4</span>
+          {{skillByCollaborator.autoRating}}</span>
 
       </button>
     </h3>

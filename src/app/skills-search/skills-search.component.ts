@@ -11,7 +11,7 @@ import {ngxCsv} from "ngx-csv";
   templateUrl: './skills-search.component.html',
   styleUrls: ['./skills-search.component.css']
 })
-export class SkillsSearchComponent implements OnInit, OnChanges {
+export class SkillsSearchComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private skillService: SkillService,
@@ -30,7 +30,7 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
   clickOnSearch: boolean = false;
 
   ngOnInit(): void {
-    this.skillService.getAllSkill().subscribe(result => {
+    this.skillService.getSkillDateEndIsNull().subscribe(result => {
       this.skillList = result;
     })
 
@@ -38,18 +38,15 @@ export class SkillsSearchComponent implements OnInit, OnChanges {
 
   onSearchSkillSelected(skillId: number) {
     this.clickOnSearch = true;
-    this.collaboratorService.getSkillsForCollaborators(skillId).subscribe(resultSkillSelected => {
-      this.skillsSearchResult = resultSkillSelected;
+    this.collaboratorService.getSkillsForCollaborators(skillId).subscribe(result => {
+      this.skillsSearchResult = result;
+      console.log('resultat recherche : ' + this.skillsSearchResult);
     })
   };
 
   //Affichage du nombre de collaborateurs dans le tableau
   public getRowsCollaborator() {
     return this.skillsSearchResult.length;
-  }
-
-  ngOnChanges() {
-    console.log("Changement")
   }
 
   download(){
