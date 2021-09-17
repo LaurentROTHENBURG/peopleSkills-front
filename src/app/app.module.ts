@@ -20,6 +20,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { SkillsStatComponent } from './skills-dashboard/skills-stat.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ChartsModule } from 'ng2-charts';
 
 const appRoutes = [
   // racine de l'application
@@ -65,6 +66,7 @@ const appRoutes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxPaginationModule,
+    ChartsModule
   ],
   providers: [
     AuthService
