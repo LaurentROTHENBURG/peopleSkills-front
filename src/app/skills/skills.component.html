@@ -17,20 +17,6 @@
           {{collaborator.name | uppercase}} {{collaborator.firstName}} </option>
       </select>
 
-
-      <!--      ***** Affichage du détail du collaborateur *****-->
-<!--        <div class="form-group" *ngIf="collaboratorList">-->
-<!--          <label for="name">Nom</label>-->
-<!--          <input id="name" type="text" readonly="disabled" class="form-control"-->
-<!--                 formControlName="collaboratorName">-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--          <label for="firstName">Prénom</label>-->
-<!--          <input id="firstName" type="text" readonly="disabled" class="form-control"-->
-<!--                 formControlName="collaboratorFirstName">-->
-<!--        </div>-->
-
       <div class="form-group">
         <label for="matricule">Matricule</label>
         <input id="matricule" type="text" readonly="disabled" class="form-control"
@@ -87,7 +73,7 @@
 
     <h3>
       <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborator">
-        {{skillByCollaborator.skills.name}}
+        {{skillByCollaborator.skills.name | uppercase}}
         <span class="badge badge-light">
           {{skillByCollaborator.autoRating}}</span>
 
@@ -131,7 +117,7 @@
             [routerLink]="['/skill/project-detail', projectByCollaborator.projectId]">
 
 
-      {{projectByCollaborator.name}}
+      {{projectByCollaborator.name | uppercase}}
 
       <span class="badge badge-light">
 

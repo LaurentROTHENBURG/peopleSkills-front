@@ -37,7 +37,6 @@ export class SkillsSettingComponent implements OnInit {
     endDate: ''
   });
 
-
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
   totalLength: any;
@@ -96,7 +95,10 @@ export class SkillsSettingComponent implements OnInit {
   onSkillCreate() {
     this.skill = this.createSkillForm.value;
     this.skillService.createSKill(this.skill).subscribe(() => {
-      this.refreshSkill()
+      this.refreshSkill();
+    }, () => {
+      console.error("Erreur lors de la création");
+      //coder ici la fonction d'affichage d'erreur
     });
     this.createSkillForm.reset({
       skill_name: '',

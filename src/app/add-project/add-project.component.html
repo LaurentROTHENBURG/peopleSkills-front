@@ -71,7 +71,7 @@
 <div class="containerBadge" >
   <h4 class="text-center" *ngFor="let projectInput of projectList">
   <span class="badge badgeProject">
-    {{projectInput.name}}
+    {{projectInput.name | uppercase}}
   </span>
   </h4>
 </div>

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {Skill} from "../skill";
 import {CollaboratorSkill} from "../collaboratorSkill";
-import {Collaborator} from "../collaborator";
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class SkillService {
   };
 
   getPatrimoineSkill() {
-    return this.http.get(this.baseUrl + '/patrimoineSkill');
+    return this.http.get(this.baseUrl + '/overViewSkill');
   }
   getCountCollaboratorSkill() {
     return this.http.get('http://localhost:8080/collaborator_skill/countCollaboratorSkill');
