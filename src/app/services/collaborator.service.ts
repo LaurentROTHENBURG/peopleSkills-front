@@ -5,12 +5,13 @@ import {Collaborator} from "../collaborator";
 import {Profil} from "../profil";
 import {Department} from "../department";
 import {Project} from "../project";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollaboratorService {
-  baseUrl = 'http://localhost:8080/collaborator/'
+  baseUrl = environment.rootApiUrl + 'collaborator/';
 
   constructor(private http: HttpClient) {
   }
@@ -32,11 +33,11 @@ export class CollaboratorService {
   };
 
   getAllProfil(): Observable<Profil []> {
-    return this.http.get<Profil []>('http://localhost:8080/profil');
+    return this.http.get<Profil []>(environment.rootApiUrl +'profil');
   };
 
   getAllDepartement(): Observable<Department []> {
-    return this.http.get<Department []>('http://localhost:8080/department');
+    return this.http.get<Department []>(environment.rootApiUrl +'department');
   };
 
   getCollaboratorById(collaboratorId: number): Observable<Collaborator> {

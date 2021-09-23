@@ -6,12 +6,13 @@ import {Skill} from "../skill";
 import {CollaboratorSkill} from "../collaboratorSkill";
 import {CollaboratorProject} from "../collaboratorProject";
 import {Collaborator} from "../collaborator";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  baseUrl = 'http://localhost:8080/project/'
+  baseUrl = environment.rootApiUrl + 'project/'
 
   constructor(private http: HttpClient) {
   }
@@ -33,7 +34,7 @@ export class ProjectService {
   };
 
   createCollaboratorProject(collaboratorProject: CollaboratorProject | undefined): Observable<CollaboratorProject> {
-    return this.http.post<CollaboratorProject>("http://localhost:8080/collaborator_project/post", collaboratorProject);
+    return this.http.post<CollaboratorProject>(environment.rootApiUrl + "collaborator_project/post", collaboratorProject);
   };
 
 

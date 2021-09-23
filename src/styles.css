@@ -85,7 +85,7 @@ h6{
 
 /******Authentification******/
 .centredList {
-  width: 45%;
+  width: 49%;
   margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
@@ -273,4 +273,8 @@ body.jw-modal-open {
 
 .badgeProject{
   background-color: rgb(88, 19, 116);
+}
+
+.center{
+  text-align: center;
 }

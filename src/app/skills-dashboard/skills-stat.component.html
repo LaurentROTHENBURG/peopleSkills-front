@@ -7,8 +7,6 @@
 </h5>
 
 
-
-
 <div class="displayPatrimoineSkill">
   <strong>Liste des compétences : {{countCollaboratorSkill}}</strong>
   <table class="table table-striped">
@@ -16,15 +14,30 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Skill</th>
-      <th scope="col">Nombre de compétence</th>
+      <th scope="col" class="center">Nombre de compétence</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let patrimoineSkill of patrimoineSkills; index as i">
       <th scope="row">{{ i + 1 }}</th>
       <td>      {{ patrimoineSkill[0] }}   </td>
-      <td>{{ patrimoineSkill[1]}}</td>
+      <td class="center">{{ patrimoineSkill[1]}}</td>
     </tr>
     </tbody>
   </table>
+</div>
+
+
+<div>
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+
+  </div>
 </div>
