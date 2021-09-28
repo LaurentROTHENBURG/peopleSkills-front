@@ -278,3 +278,9 @@ body.jw-modal-open {
 .center{
   text-align: center;
 }
+
+.chart{
+  display: block;
+  width: 1100px;
+  height: 2000px
+}

@@ -3,8 +3,7 @@ import {FormBuilder} from "@angular/forms";
 import {SkillService} from "../services/skill.service";
 import {CollaboratorService} from "../services/collaborator.service";
 import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
-import {Label} from "ng2-charts";
-import {LogicalFileSystem} from "@angular/compiler-cli/src/ngtsc/file_system";
+import {Color, Colors, Label} from "ng2-charts";
 
 @Component({
   selector: 'app-skills-stat',
@@ -13,20 +12,59 @@ import {LogicalFileSystem} from "@angular/compiler-cli/src/ngtsc/file_system";
 })
 export class SkillsStatComponent implements OnInit {
 
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {
+      xAxes: [{}], yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public barChartLabels: Label[] = [];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins: any;
+  public barChartData: ChartDataSets[] = [
+    {data: [], label: 'Nbre Compétences'}
+  ];
+  public barChartColors: Colors[] = [
+    { //all colors in order
+      backgroundColor: ['#d13537']
+    }
+  ]
+
+  countSkills: any;
+  countCollaboratorActif: any;
+  countCollaboratorSkill: any;
+  skill: any;
 
   constructor(private formBuilder: FormBuilder,
               private skillService: SkillService,
               private collaboratorService: CollaboratorService) {
   }
 
-  patrimoineSkills: any;
-  countCollaboratorActif: any;
-  countCollaboratorSkill: any;
-
   ngOnInit(): void {
-    this.skillService.getPatrimoineSkill().subscribe(result => {
-      this.patrimoineSkills = result;
-      console.log("objet patrimoineskills :" + this.patrimoineSkills)
+    this.skillService.getCountSkill().subscribe(result => {
+      this.countSkills = result;
+
+      for (let countSkill of this.countSkills) {
+        this.barChartLabels.push(countSkill[0]);
+        // this.barChartColors.backgroundColor = ['#d13537']
+                   // @ts-ignore
+        this.barChartData[0].data.push(countSkill[1]);
+      }
+
+
+
     })
     this.collaboratorService.getCountCollaboratorActif().subscribe(result => {
       this.countCollaboratorActif = result;
@@ -36,30 +74,5 @@ export class SkillsStatComponent implements OnInit {
     });
   }
 
-  xChart = this.skillService.getPatrimoineSkill().subscribe(result => {
-    this.patrimoineSkills = result;
-
-  })
-
-  //ngchart
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
-    scales: {xAxes: [{}], yAxes: [{}]},
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-      }
-    }
-  };
-
-  // barChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  barChartLabels: Label[] = ['1'];
-  barChartType: ChartType = 'bar';
-  barChartData: ChartDataSets[] = [
-    {data: [65, 59, 80, 81, 56, 55, 60, 75, 65], label: 'Series A'},
-
-  ];
 
 }//end

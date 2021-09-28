@@ -32,7 +32,7 @@ export class SkillService {
     return this.http.get<Skill[]>(environment.rootApiUrl + 'collaborator_skill/' + collaboratorId);
   };
 
-  getPatrimoineSkill() {
+  getCountSkill() {
     return this.http.get(this.baseUrl + '/overViewSkill');
   }
   getCountCollaboratorSkill() {

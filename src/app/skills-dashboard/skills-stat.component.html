@@ -18,26 +18,24 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let patrimoineSkill of patrimoineSkills; index as i">
+    <tr *ngFor="let countSkill of countSkills; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td>      {{ patrimoineSkill[0] }}   </td>
-      <td class="center">{{ patrimoineSkill[1]}}</td>
+      <td>      {{ countSkill[0] }}   </td>
+      <td class="center">{{ countSkill[1]}}</td>
     </tr>
     </tbody>
   </table>
 </div>
 
-
-<div>
-  <div>
-    <div style="display: block">
-      <canvas baseChart
-              [datasets]="barChartData"
-              [labels]="barChartLabels"
-              [options]="barChartOptions"
-              [chartType]="barChartType">
-      </canvas>
-    </div>
-
-  </div>
+<div class="chart">
+  <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          [colors]="barChartColors">
+    [plugins]="barChartPlugins"
+  </canvas>
 </div>
