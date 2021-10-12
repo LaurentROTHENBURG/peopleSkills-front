@@ -4,17 +4,16 @@
   <form [formGroup]="searchSkillForm">
 
     <label for="skillSelected">Sélectionner une compétence</label>
-    <select id="skillSelected" name="skillSelected"
+    <select id="skillSelected"
             class="form-control"
             formControlName="skillSelected"
             (change)="onSearchSkillSelected(this.searchSkillForm.get('skillSelected')?.value)">
 
-      <option value="0">-- Compétences --</option>
       <option *ngFor="let skill of skillList" value="{{skill.skillId}}">{{skill.name | uppercase}}</option>
     </select>
   </form>
 
-  <h6 *ngIf="skillList"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h6>
+  <h6 *ngIf="clickOnSearch"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h6>
 
   <table class="table table-striped"
          *ngIf="clickOnSearch">
@@ -27,7 +26,6 @@
       <th class="center">Email</th>
       <th class="center">Langue</th>
       <th class="center">DSI</th>
-      <!--      <th>Auto Evaluation</th>-->
     </tr>
     </thead>
 
@@ -46,7 +44,6 @@
       <td>{{skillSearchResult.mail}}</td>
       <td>{{skillSearchResult.language}}</td>
       <td>{{skillSearchResult.department.name}}</td>
-
     </tr>
 
     </tbody>

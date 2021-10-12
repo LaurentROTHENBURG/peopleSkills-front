@@ -11,9 +11,5 @@ export class AppComponent {
   constructor() {
   }
 
-  displayAppUser(event: any){
-    console.log(event);
-  }
-
 
 }//end

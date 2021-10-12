@@ -255,10 +255,9 @@ body.jw-modal-open {
 .displayPatrimoineSkill {
   width: 50%;
   margin-top: 2%;
-  margin-left: 5%;
-  min-height: 45em;
+  margin-right: 5%;
   color: rgb(88, 19, 116);
-}
+  }
 
 
 .containerBadge{
@@ -281,6 +280,13 @@ body.jw-modal-open {
 
 .chart{
   display: block;
-  width: 1100px;
-  height: 2000px
+  width: 50%;
+  height: 2000px;
+  margin-top: 8%;
+}
+
+
+.textDashboard{
+  margin-left: 12.4%;
+  color: rgb(88, 19, 116);
 }

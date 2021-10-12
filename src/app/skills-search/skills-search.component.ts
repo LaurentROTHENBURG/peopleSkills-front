@@ -26,7 +26,6 @@ export class SkillsSearchComponent implements OnInit {
     skillSelected: ''
   });
 
-  flagSkillPatrimoine : boolean = false;
   clickOnSearch: boolean = false;
 
   ngOnInit(): void {
@@ -37,11 +36,10 @@ export class SkillsSearchComponent implements OnInit {
   }
 
   onSearchSkillSelected(skillId: number) {
-    this.clickOnSearch = true;
     this.collaboratorService.getSkillsForCollaborators(skillId).subscribe(result => {
       this.skillsSearchResult = result;
-      console.log('resultat recherche : ' + this.skillsSearchResult);
     })
+    this.clickOnSearch = true;
   };
 
   //Affichage du nombre de collaborateurs dans le tableau
@@ -49,7 +47,7 @@ export class SkillsSearchComponent implements OnInit {
     return this.skillsSearchResult.length;
   }
 
-  download(){
+  download() {
     var options = {
       fieldSeparator: ',',
       quoteStrings: '"',

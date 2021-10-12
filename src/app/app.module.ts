@@ -12,7 +12,6 @@ import {SkillsSearchComponent} from './skills-search/skills-search.component';
 import {FourOhFourComponent} from './four-oh-four/four-oh-four.component';
 import {AddSkillComponent} from './add-skill/add-skill.component';
 import {AuthComponent} from './auth/auth.component';
-import {AuthService} from "./services/auth";
 import { AreaSkillComponent } from './area-skill/area-skill.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectComponent } from './project/project.component';
@@ -21,6 +20,7 @@ import { CollaboratorComponent } from './collaborator/collaborator.component';
 import { SkillsStatComponent } from './skills-dashboard/skills-stat.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ChartsModule } from 'ng2-charts';
+import {AuthService} from "./services/auth";
 
 const appRoutes = [
   // racine de l'application
@@ -68,9 +68,8 @@ const appRoutes = [
     NgxPaginationModule,
     ChartsModule
   ],
-  providers: [
-    AuthService
-  ],
+  providers: [AuthService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

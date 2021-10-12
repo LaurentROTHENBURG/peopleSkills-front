@@ -6,7 +6,6 @@ import {Collaborator} from "../collaborator";
 import {ActivatedRoute} from "@angular/router";
 import {CollaboratorService} from "../services/collaborator.service";
 import {CollaboratorProject} from "../collaboratorProject";
-import {last} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-project',
@@ -18,7 +17,8 @@ export class AddProjectComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private projectService: ProjectService,
               private route: ActivatedRoute,
-              private collaboratorService: CollaboratorService) {
+              private collaboratorService: CollaboratorService
+              ) {
   }
 
   collaboratorDetail !: Collaborator;
@@ -55,7 +55,6 @@ export class AddProjectComponent implements OnInit {
     this.project = this.addSelectProjectForm.value;
     this.projectService.createProject(this.project).subscribe(result => {
       this.lastId = result;
-      console.log('le dernir ID de projet est : ' + this.lastId);
       this.addCollaboratorProject();
     });
   }
@@ -75,7 +74,6 @@ export class AddProjectComponent implements OnInit {
         projectId: this.lastId
       }
     }
-    console.log(this.collaboratorProject);
     //reset des valeurs du formulaire
     this.projectService.createCollaboratorProject(this.collaboratorProject).subscribe();
     this.addSelectProjectForm.reset({

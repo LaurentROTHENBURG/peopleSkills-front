@@ -1,41 +1,42 @@
-<h5>
+<div class="textDashboard">
 
   <strong>Nombre de collaborateurs : </strong>
   <strong> <a [routerLink]="['/collaboratorSetting']">
     {{countCollaboratorActif}}
   </a> </strong>
-</h5>
-
-
-<div class="displayPatrimoineSkill">
-  <strong>Liste des compétences : {{countCollaboratorSkill}}</strong>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Skill</th>
-      <th scope="col" class="center">Nombre de compétence</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let countSkill of countSkills; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>      {{ countSkill[0] }}   </td>
-      <td class="center">{{ countSkill[1]}}</td>
-    </tr>
-    </tbody>
-  </table>
 </div>
 
-<div class="chart">
-  <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType"
-          [colors]="barChartColors">
-    [plugins]="barChartPlugins"
-  </canvas>
+<div class="container">
+    <div class="displayPatrimoineSkill">
+    <strong>Liste des compétences : {{countCollaboratorSkill}}</strong>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Skill</th>
+        <th scope="col" class="center">Nombre de compétence</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let countSkill of countSkills; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>      {{ countSkill[0] }}   </td>
+        <td class="center">{{ countSkill[1]}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [colors]="barChartColors">
+      [plugins]="barChartPlugins"
+    </canvas>
+  </div>
 </div>

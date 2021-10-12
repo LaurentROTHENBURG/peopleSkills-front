@@ -36,11 +36,8 @@ export class SkillsStatComponent implements OnInit {
   public barChartData: ChartDataSets[] = [
     {data: [], label: 'Nbre Compétences'}
   ];
-  public barChartColors: Colors[] = [
-    { //all colors in order
-      backgroundColor: ['#d13537']
-    }
-  ]
+  public barChartColors: Colors[] = []
+
 
   countSkills: any;
   countCollaboratorActif: any;
@@ -58,21 +55,23 @@ export class SkillsStatComponent implements OnInit {
 
       for (let countSkill of this.countSkills) {
         this.barChartLabels.push(countSkill[0]);
-        // this.barChartColors.backgroundColor = ['#d13537']
-                   // @ts-ignore
+                          // @ts-ignore
         this.barChartData[0].data.push(countSkill[1]);
+        this.barChartColors = [
+          {
+            backgroundColor: 'rgba(220, 198, 224, 1)',
+          },
+        ];
       }
-
-
-
     })
+
     this.collaboratorService.getCountCollaboratorActif().subscribe(result => {
       this.countCollaboratorActif = result;
     })
+
     this.skillService.getCountCollaboratorSkill().subscribe(result => {
       this.countCollaboratorSkill = result;
     });
+
   }
-
-
 }//end
