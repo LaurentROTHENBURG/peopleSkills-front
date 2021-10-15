@@ -1,0 +1,39 @@
+<div class="centredList">
+  <form (ngSubmit)="onConnect()" [formGroup]="loginForm">
+    <div class="form-field">
+      <label for="username">Entrez votre votre nom d'utilisateur</label>
+      <input type="text" class="form-control" id="username" autocomplete="username" formControlName="username">
+      <div class="form-error" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+        <div *ngIf="username?.errors?.required">
+          Le username est requis
+        </div>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="password">Saisissez votre Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      <div class="form-error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+        <div *ngIf="password?.errors?.required">
+          Le mot de passe est requis
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonCentred">
+      <button class="btn btn-success buttonCentred"
+              title="Cliquez pour accéder à l'application"
+              type="submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock"
+             viewBox="0 0 16 16">
+          <path
+            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+        </svg>
+        Se connecter
+      </button>
+
+
+    </div>
+
+  </form>
+</div>

@@ -254,10 +254,17 @@ body.jw-modal-open {
 /******DashBoard******/
 .displayPatrimoineSkill {
   width: 50%;
-  margin-top: 2%;
   margin-right: 5%;
   color: rgb(88, 19, 116);
   }
+
+.total{
+  color: steelblue;
+  font-size: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
 
 .containerBadge{
@@ -287,6 +294,8 @@ body.jw-modal-open {
 
 
 .textDashboard{
-  margin-left: 12.4%;
+  width : 200em;
   color: rgb(88, 19, 116);
+
 }
+

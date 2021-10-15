@@ -1,20 +1,27 @@
-<div class="textDashboard">
+<div class="container">
+  <div class="textDashboard">
 
-  <strong>Nombre de collaborateurs : </strong>
-  <strong> <a [routerLink]="['/collaboratorSetting']">
+    <strong>Nombre total de collaborateurs : </strong>
+    <br/><strong class="total"> <a [routerLink]="['/collaboratorSetting']">
     {{countCollaboratorActif}}
   </a> </strong>
+  </div>
+  <div class="textDashboard">
+    <strong>Nombre de compétences recensées : </strong>
+    <br/><strong class="total">{{countCollaboratorSkill}}</strong>
+  </div>
 </div>
+<hr>
 
 <div class="container">
-    <div class="displayPatrimoineSkill">
-    <strong>Liste des compétences : {{countCollaboratorSkill}}</strong>
+  <div class="displayPatrimoineSkill">
     <table class="table table-striped">
       <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Skill</th>
-        <th scope="col" class="center">Nombre de compétence</th>
+        <th scope="col" class="center">Nombre de compétences ({{countCollaboratorSkill}})</th>
+
       </tr>
       </thead>
       <tbody>

@@ -33,7 +33,7 @@ export class SkillService {
   };
 
   getCountSkill() {
-    return this.http.get(this.baseUrl + '/overViewSkill');
+    return this.http.get(this.baseUrl + 'overViewSkill');
   }
   getCountCollaboratorSkill() {
     return this.http.get(environment.rootApiUrl + 'collaborator_skill/countCollaboratorSkill');
