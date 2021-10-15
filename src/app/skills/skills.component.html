@@ -72,9 +72,10 @@
     <!--  ***** liste des Compétences pour un collaborateur *****-->
 
     <h3>
-      <button type="button" class="btn btn-primary" *ngFor="let skillByCollaborator of skillListbyCollaborator">
+      <button type="button" class="btn btn-primary skill" *ngFor="let skillByCollaborator of skillListbyCollaborator">
         {{skillByCollaborator.skills.name | uppercase}}
-        <span class="badge badge-light">
+        <span [ngClass]="{'badge':true
+        }">
           {{skillByCollaborator.autoRating}}</span>
 
       </button>

@@ -14,4 +14,8 @@ export class AppComponent {
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  logout(): void {
+    sessionStorage.clear();
+  }
+
 }//end

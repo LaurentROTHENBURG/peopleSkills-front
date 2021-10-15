@@ -146,6 +146,10 @@ containerListCollaborator{
   font-size: 0.8em;
 }
 
+.skill{
+  margin-top: 20px;
+}
+
 .right {
   margin-left: 65%;
 }
@@ -279,6 +283,14 @@ body.jw-modal-open {
 
 .badgeProject{
   background-color: rgb(88, 19, 116);
+}
+
+.badge-succes{
+
+}
+
+.badge-failed{
+
 }
 
 .center{
