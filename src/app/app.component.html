@@ -1,5 +1,8 @@
 <!--Nom de l'application-->
+<div class="container">
 <h1>People Skills</h1>
+  <div class="login">Welcome {{getUser()}} !</div>
+</div>
 
 <div class="container-fluid">
 
@@ -24,8 +27,11 @@
 
         <li routerLinkActive="active"><a (click)="logout()" routerLink="login">Logout</a></li>
 
+
       </ul>
     </div>
+
+
   </nav>
 </div>
 

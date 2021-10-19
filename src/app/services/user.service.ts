@@ -12,7 +12,7 @@ import {User} from "../model/user";
 })
 export class UserService {
 
-  static readonly JWT_STORAGE_KEY = environment.rootApiUrl + 'JWT_PEOPLESKILLS_API';
+  static readonly JWT_STORAGE_KEY = 'JWT_PEOPLESKILLS_API';
   private readonly AUTH_ENDPOINT = environment.rootApiUrl + 'authentication';
   private readonly USER_ENDPOINT = environment.rootApiUrl + '/admin/users';
 

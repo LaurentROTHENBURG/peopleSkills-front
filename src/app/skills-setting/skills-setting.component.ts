@@ -39,6 +39,7 @@ export class SkillsSettingComponent implements OnInit {
 
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
+  showAlertViolationContrainte: boolean = false;
   totalLength: any;
   page: number = 1;
 
@@ -58,15 +59,23 @@ export class SkillsSettingComponent implements OnInit {
   }
 
   refreshSkill() {
-    this.skillService.getAllSkill().subscribe(result => {
-      this.skillList = result;
-    })
+    this.skillService.getAllSkill().subscribe(
+      result => {
+        this.skillList = result;
+      }
+    )
   };
 
   onDeleteSkillById(skillId: number) {
-    this.skillService.deleteSkillById(skillId).subscribe(() => {
-      this.refreshSkill();
-    });
+    this.skillService.deleteSkillById(skillId).subscribe(
+      () => {
+        this.refreshSkill();
+      },
+      error => {
+        // alert("Suppression impossible - violation de contraintes");
+        this.showAlertViolationContrainte = true;
+      }
+    );
   }
 
   onSkillEdit(skill: Skill) {
@@ -94,12 +103,14 @@ export class SkillsSettingComponent implements OnInit {
 
   onSkillCreate() {
     this.skill = this.createSkillForm.value;
-    this.skillService.createSKill(this.skill).subscribe(() => {
-      this.refreshSkill();
-    }, () => {
-      console.error("Erreur lors de la création");
-      //coder ici la fonction d'affichage d'erreur
-    });
+    this.skillService.createSKill(this.skill).subscribe(
+      () => {
+        this.refreshSkill();
+      },
+      () => {
+        alert("Erreur lors de la création");
+        //coder ici la fonction d'affichage d'erreur
+      });
     this.createSkillForm.reset({
       skill_name: '',
       startDate: '',
@@ -118,6 +129,7 @@ export class SkillsSettingComponent implements OnInit {
 
   closeModal() {
     this.showSkillSettingModal = false;
+    this.showAlertViolationContrainte = false;
   };
 
   closeModalUpdate() {

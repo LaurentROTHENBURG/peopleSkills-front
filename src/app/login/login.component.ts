@@ -20,14 +20,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+  };
 
   onConnect() {
     this.userService.signIn({
       username: this.username?.value,
       password: this.password?.value
-    }).subscribe(() => this.router.navigate(['']));
-  }
+    }).subscribe(
+      () => this.router.navigate(['']),
+      error => alert("Erreur de connexion"));};
 
   get username() {
     return this.loginForm.get('username');
@@ -35,5 +36,5 @@ export class LoginComponent implements OnInit {
 
   get password() {
     return this.loginForm.get('password');
-  }
-}
+  };
+}//end

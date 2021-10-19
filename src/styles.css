@@ -1,6 +1,6 @@
 h1 {
   color: rgb(88, 19, 116);
-  padding-left: 10%;
+  padding-left: 3%;
   font-size: 2em;
 }
 
@@ -78,7 +78,7 @@ h6{
   overflow-x: scroll
 }
 
-.btn-primary, .btn-success {
+.btn-primary, .btn-success, .btnCancelMessage {
   margin-right: 3%;
 
 }
@@ -236,7 +236,7 @@ jw-modal {
   bottom: 0;
   left: 0;
   /* semi-transparent black  */
-  background-color: #000;
+  background-color: grey;
   opacity: 0.75;
   /* z-index must be below .jw-modal and above everything else  */
   z-index: 900;
@@ -308,6 +308,19 @@ body.jw-modal-open {
 .textDashboard{
   width : 200em;
   color: rgb(88, 19, 116);
-
 }
 
+
+/******Message Error******/
+.error{
+  font-size: 1.5em;
+  color: orange;
+  text-align: center;
+}
+
+.login{
+  color: rgb(88, 19, 116);
+  padding-left: 65%;
+  padding-top: 2.5%;
+  font-size: 0.8em;
+}
