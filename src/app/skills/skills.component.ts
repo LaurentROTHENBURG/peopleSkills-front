@@ -71,8 +71,8 @@ export class SkillsComponent implements OnInit {
         this.skillListbyCollaborator = result;
       })
     }
-    this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(resultProjectOneCollaborator => {
-      this.projectListbyCollaborator = resultProjectOneCollaborator;
+    this.pojectService.getProjectForOneCollaborator(collaboratorIdfromRoute).subscribe(result => {
+      this.projectListbyCollaborator = result;
     });
   };
 
