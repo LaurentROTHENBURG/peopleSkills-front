@@ -11,7 +11,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class CollaboratorService {
-  baseUrl = environment.rootApiUrl + 'collaborator/';
+  baseUrl = environment.rootApiUrl + 'collaborators/';
 
   constructor(private http: HttpClient) {
   }

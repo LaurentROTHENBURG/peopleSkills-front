@@ -8,7 +8,7 @@
       <path
         d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
     </svg>
-    Add Collaborator
+    Ajouter un collaborateur
   </button>
 </div>
 
@@ -30,7 +30,7 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
-            <label for="department">Sélectionner un servive</label>
+            <label for="department">Sélectionner un service</label>
             <select name="department" id="department"
                     formControlName="department"
                     class="form-control list-space">
@@ -56,7 +56,11 @@
             <input type="date" id="startDate" class="form-control" formControlName="startDate">
 
             <label for="mail">Mail :</label>
-            <input type="text" id="mail" class="form-control" formControlName="mail">
+            <input type="email"
+                   id="mail" class="form-control"
+                   placeholder="laurent.laffont@skills.fr"
+                   formControlName="mail"
+                   onsubmit="return VerifMail();">
 
             <label for="profession">Poste :</label>
             <input type="text" id="profession" class="form-control" formControlName="profession">
@@ -108,7 +112,7 @@
 <table class="table table-striped withMarge">
   <thead>
   <tr>
-    <th scope="col">#</th>
+    <!--    <th scope="col">#</th>-->
     <th>Nom</th>
     <th>Prénom</th>
     <th>Profession</th>
@@ -126,7 +130,7 @@
   <tr *ngFor="let collaborator of collaboratorList
   | paginate: { itemsPerPage: 8, currentPage: page, totalItems : totalLength };
   index as i">
-    <th scope="row">{{ i + 1 }}</th>
+    <!--    <th scope="row">{{ i + 1 }}</th>-->
     <td><span id="name" contenteditable>{{collaborator.name | uppercase}}</span></td>
     <td><span id="firstName" contenteditable>{{collaborator.firstName}}</span></td>
     <td><span id="profession" contenteditable>{{collaborator.profession}}</span></td>
@@ -231,3 +235,4 @@
 <div>
   <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
 </div>
+

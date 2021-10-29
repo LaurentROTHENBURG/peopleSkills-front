@@ -65,7 +65,7 @@ export class CollaboratorComponent implements OnInit {
       })
     })
 
-// Affichage de la liste des profils
+// Affichage de la liste des profils utilisateurs
     this.collaboratorService.getAllProfil().subscribe(result => {
       this.profilList = result;
     })
@@ -152,5 +152,7 @@ export class CollaboratorComponent implements OnInit {
     collaborator.endDate = newEndDate;
     this.collaboratorService.updateEndDateCollaborator(collaborator).subscribe();
   };
+
+
 
 }

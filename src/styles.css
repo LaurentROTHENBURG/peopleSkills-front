@@ -28,12 +28,12 @@ h4 {
   font-weight: bold;
 }
 
-h5{
+h5 {
   color: rgb(88, 19, 116);
   margin-left: 5%;
 }
 
-h6{
+h6 {
   margin-top: 4%;
   color: rgb(88, 19, 116);
 }
@@ -86,7 +86,7 @@ h6{
 /******Authentification******/
 .centredList {
   width: 45%;
-  margin-top: 2%;
+  margin-top: 4%;
   margin-left: auto;
   margin-right: auto;
   min-height: 45em;
@@ -94,7 +94,7 @@ h6{
 }
 
 
-.withMarge{
+.withMarge {
   width: 90%;
   margin-top: 2%;
   margin-left: auto;
@@ -106,6 +106,14 @@ h6{
   margin-right: auto;
   margin-top: 3%;
   text-align: center;
+}
+
+.containerCentred {
+  display: flex;
+  flex-direction: row;
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /******Fiche de compétences du collaborateur*****/
@@ -125,7 +133,7 @@ h6{
   margin-top: 1%;
 }
 
-containerListCollaborator{
+containerListCollaborator {
   display: flex;
   flex-direction: row;
 }
@@ -146,7 +154,7 @@ containerListCollaborator{
   font-size: 0.8em;
 }
 
-.skill{
+.skill {
   margin-top: 20px;
 }
 
@@ -194,14 +202,15 @@ containerListCollaborator{
   margin-right: auto;
   min-height: 25em;
 }
-.formCreateSmallLarger{
+
+.formCreateSmallLarger {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .btnRight {
-  margin-left: 85%;
+  margin-left: 80%;
   margin-top: 0%;
   margin-bottom: 0%;
 }
@@ -209,7 +218,9 @@ containerListCollaborator{
 /******Style for modal******/
 jw-modal {
   /* modals are hidden by default */
-  display: none;}
+  display: none;
+}
+
 .jw-modal {
   /* modal container fixed across whole screen */
   position: fixed;
@@ -220,7 +231,9 @@ jw-modal {
   /* z-index must be higher than .jw-modal-background */
   z-index: 1000;
   /* enables scrolling for tall modals */
-  overflow: auto;}
+  overflow: auto;
+}
+
 .jw-modal-body {
   padding: 20px;
   background: #fff;
@@ -247,7 +260,7 @@ body.jw-modal-open {
   overflow: hidden;
 }
 
-.btn btn-info mb-2{
+.btn btn-info mb-2 {
   margin-top: 50%;
 }
 
@@ -260,9 +273,9 @@ body.jw-modal-open {
   width: 50%;
   margin-right: 5%;
   color: rgb(88, 19, 116);
-  }
+}
 
-.total{
+.total {
   color: steelblue;
   font-size: 3em;
   margin-left: auto;
@@ -271,7 +284,7 @@ body.jw-modal-open {
 }
 
 
-.containerBadge{
+.containerBadge {
   margin-top: 1%;
   display: flex;
   flex-direction: row;
@@ -281,23 +294,23 @@ body.jw-modal-open {
   margin-right: auto;
 }
 
-.badgeProject{
+.badgeProject {
   background-color: rgb(88, 19, 116);
 }
 
-.badge-succes{
+.badge-succes {
 
 }
 
-.badge-failed{
+.badge-failed {
 
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.chart{
+.chart {
   display: block;
   width: 50%;
   height: 2000px;
@@ -305,34 +318,51 @@ body.jw-modal-open {
 }
 
 
-.textDashboard{
-  width : 200em;
+.textDashboard {
+  width: 200em;
   color: rgb(88, 19, 116);
 }
 
 
 /******Message Error******/
-.error{
-  font-size: 1.5em;
-  color: orange;
+.error {
+  font-size: 1.2em;
+  color: dimgrey;
   text-align: center;
 }
 
-.login{
+.login {
   color: rgb(88, 19, 116);
   padding-left: 65%;
   padding-top: 2.5%;
   font-size: 0.8em;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 40%;
+  font-size: 0.8em;
+}
+
+
+
+
 @media all and (max-width: 800px) {
- .login {
-   padding-left: 20%
+  .login {
+    padding-left: 20%
   }
-h1{
-  font-size: 1.5em;
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .navbar-default {
+    height: 270px;
+  }
+
+  .right {
+    margin-left: 5%;
+  }
 }
-.navbar-default{
-  height: 270px;
-}
-}
+

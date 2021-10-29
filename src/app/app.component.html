@@ -1,7 +1,7 @@
 <!--Nom de l'application-->
 <div class="container">
-<h1>People Skills</h1>
-  <div class="login">Welcome {{getUser()}} !</div>
+  <h1>People Skills</h1>
+  <div class="login">Bonjour {{getUser()}} !</div>
 </div>
 
 <div class="container-fluid">
@@ -10,30 +10,31 @@
   <nav class="navbar navbar-default">
     <div class="container fluid">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="login">Login</a></li>
+        <li routerLinkActive="active"><a routerLink="login">Connexion</a></li>
 
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Paramétrage
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="collaboratorSetting">Collaborators setting</a></li>
-            <li><a routerLink="skillsSetting">Skills setting</a></li>
+            <li><a routerLink="collaboratorSetting">Collaborateurs</a></li>
+            <li><a routerLink="skillsSetting">Compétences</a></li>
           </ul>
         </li>
 
-        <li routerLinkActive="active"><a routerLink="skill">Access To Skills</a></li>
-        <li routerLinkActive="active"><a routerLink="skillOverview">DashBoard</a></li>
-        <li routerLinkActive="active"><a routerLink="skillsSearch">Search</a></li>
+        <li routerLinkActive="active"><a routerLink="skill">Accès aux Compétences</a></li>
+        <li routerLinkActive="active"><a routerLink="skillOverview">Tableau de bord</a></li>
+        <li routerLinkActive="active"><a routerLink="skillsSearch">Recherches</a></li>
 
-        <li routerLinkActive="active"><a (click)="logout()" routerLink="login">Logout</a></li>
-
-
+        <li routerLinkActive="active"><a (click)="logout()" routerLink="login">Déconnexion</a></li>
       </ul>
     </div>
-
 
   </nav>
 </div>
 
-
 <router-outlet></router-outlet>
+
+<footer class="footer">
+  <hr>
+  <em>PeopleSkills - V1.0.0 - 29/10/2021 - <a>Mentions légales RGPD</a></em>
+</footer>

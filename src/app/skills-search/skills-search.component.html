@@ -13,7 +13,8 @@
     </select>
   </form>
 
-  <h6 *ngIf="clickOnSearch"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong></h6>
+  <h6 *ngIf="clickOnSearch"><strong>Nombre de profils collaborateurs identifiés : {{getRowsCollaborator()}}</strong>
+  </h6>
 
   <table class="table table-striped"
          *ngIf="clickOnSearch">
@@ -31,7 +32,8 @@
 
     <tbody>
     <tr *ngFor="let skillSearchResult of skillsSearchResult">
-      <td><a [routerLink]="['/skill',skillSearchResult.collaboratorId]">
+      <td><a [routerLink]="['/skill',skillSearchResult.collaboratorId]"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-binoculars-fill"
              viewBox="0 0 16 16">
           <path

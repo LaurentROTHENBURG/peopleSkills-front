@@ -48,7 +48,10 @@ const appRoutes = [
     data: {roles: ["ROLE_ADMIN","ROLE_CREATOR"]}
     },
 
-  {path: 'authentification', component: AuthComponent},
+  {
+    path: 'authentification',
+    component: AuthComponent
+  },
 
   {
     path: 'skill',
@@ -56,6 +59,7 @@ const appRoutes = [
     canActivate: [AuthGuard],
     data: {roles: ["ROLE_READER",  "ROLE_ADMIN"]}
   },
+
   {
     path: 'skill/:collaboratorId',
     component: SkillsComponent,
@@ -75,6 +79,7 @@ const appRoutes = [
     canActivate: [AuthGuard],
     data: {roles: ["ROLE_READER", "ROLE_ADMIN"]}
   },
+
   {
     path: 'skillsSearch',
     component: SkillsSearchComponent,
