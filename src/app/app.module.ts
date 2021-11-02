@@ -23,6 +23,7 @@ import {AuthService} from "./services/auth.service";
 import {JwtInterceptor} from "./jwt.interceptor";
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "./auth.guard";
+import { ProfilComponent } from './profil/profil.component';
 
 
 const appRoutes = [
@@ -47,6 +48,13 @@ const appRoutes = [
     canActivate: [AuthGuard],
     data: {roles: ["ROLE_ADMIN","ROLE_CREATOR"]}
     },
+
+  {
+    path: 'profilSetting',
+    component: ProfilComponent,
+    canActivate: [AuthGuard],
+    data: {roles: ["ROLE_ADMIN","ROLE_CREATOR"]}
+  },
 
   {
     path: 'authentification',
@@ -108,6 +116,7 @@ const appRoutes = [
     CollaboratorComponent,
     SkillsStatComponent,
     LoginComponent,
+    ProfilComponent,
   ],
   imports: [
     CommonModule,

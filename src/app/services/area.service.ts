@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment";
 })
 export class AreaService {
 
-  baseUrl = environment.rootApiUrl + 'skill_area'
+  baseUrl = environment.rootApiUrl + 'skill_areas'
 
   constructor(private http: HttpClient) { }
 

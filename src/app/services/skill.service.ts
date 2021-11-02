@@ -10,7 +10,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class SkillService {
-  baseUrl = environment.rootApiUrl + 'skill/'
+  baseUrl = environment.rootApiUrl + 'skills/'
 
   constructor(private http: HttpClient) {
   }

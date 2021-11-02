@@ -1,3 +1,4 @@
+<!--Bouton pour ajouter un collaborateur-->
 <div class="btnRight">
   <button class="btn btn-primary mb-2"
           (click)="openModal()"
@@ -12,6 +13,7 @@
   </button>
 </div>
 
+<!--fenêtre pour ajouter un collaborateur-->
 <div *ngIf="showCollaboratorModal">
   <div class="jw-modal" id="collaboratorModal">
     <div class="jw-modal-body">
@@ -30,6 +32,7 @@
             <label for="name">Nom :</label>
             <input type="nom" id="name" class="form-control" formControlName="name">
 
+            <!--          Liste de valeurs des départements-->
             <label for="department">Sélectionner un service</label>
             <select name="department" id="department"
                     formControlName="department"
@@ -52,15 +55,16 @@
                 {{profil.codification | uppercase}}</option>
             </select>
 
+
             <label for="startDate">Date d'entrée :</label>
             <input type="date" id="startDate" class="form-control" formControlName="startDate">
+
 
             <label for="mail">Mail :</label>
             <input type="email"
                    id="mail" class="form-control"
                    placeholder="laurent.laffont@skills.fr"
-                   formControlName="mail"
-                   onsubmit="return VerifMail();">
+                   formControlName="mail">
 
             <label for="profession">Poste :</label>
             <input type="text" id="profession" class="form-control" formControlName="profession">
@@ -68,14 +72,21 @@
             <label for="matricule">Matricule :</label>
             <input type="text" id="matricule" class="form-control" formControlName="matricule">
 
-            <label for="langage">Langue :</label>
-            <input type="text" id="langage" class="form-control" formControlName="language">
-
+            <!--            Liste de valeurs des codes langues-->
+            <label for="langue">Langue :</label>
+            <select name="langue" id="langue"
+                    formControlName="langue"
+                    class="form-control list-space">
+              <option value="0">-- Langues --</option>
+              <option *ngFor="let langue of langueList"
+                      [ngValue]="langue">{{langue.codification}} - {{langue.name | uppercase}}</option>
+            </select>
 
             <button type="button" class="btn btn-warning mb-2 cancelValidBtn"
                     data-toggle="tooltip"
                     data-placement="bottom" title="Cliquez pour annuler"
-                    (click)="closeModal()">
+                    (click)="closeModal()"
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg"
                    viewBox="0 0 16 16">
                 <path
@@ -108,17 +119,17 @@
 
 <h5><strong>Nombre de collaborateurs actifs : {{countCollaboratorActif}}</strong></h5>
 
+<!--Affichage des collaborateurs-->
 
 <table class="table table-striped withMarge">
   <thead>
   <tr>
-    <!--    <th scope="col">#</th>-->
     <th>Nom</th>
     <th>Prénom</th>
     <th>Profession</th>
     <th>Matricule</th>
     <th>Mail</th>
-    <th>Langue</th>
+    <!--    <th>Langue</th>-->
     <th>Date Entrée</th>
     <th>Date Fin</th>
     <th>Actions</th>
@@ -136,13 +147,16 @@
     <td><span id="profession" contenteditable>{{collaborator.profession}}</span></td>
     <td><span id="matricule" contenteditable>{{collaborator.matricule}}</span></td>
     <td><span id="mail" contenteditable>{{collaborator.mail}}</span></td>
-    <td><span id="language" contenteditable>{{collaborator.language}}</span></td>
+    <!--    <td><span id="language" contenteditable>FR</span></td>-->
+    <!--    <td><span id="language" contenteditable>{{collaborator.langue.name}}</span></td>-->
     <td><span id="startDate" contenteditable>{{collaborator.startDate}}</span></td>
     <td><input #dateEndCollaborator type="date"
                class="form-control"
                (change)="updateDateEndCollaborator(dateEndCollaborator.value, collaborator)"
                value="{{collaborator.endDate}}">
     </td>
+
+    <!--    Modification des données d'un collaborateur-->
 
     <button id="btn-modif" class="btn btn-primary mb-2"
             data-toggle="tooltip"
@@ -188,9 +202,17 @@
           <label for="collaborator-mail">Mail : </label>
           <input type="text" id="collaborator-mail" class="form-control" formControlName="mail">
 
-          <label for="collaborator-language">Langue : </label>
-          <input type="text" id="collaborator-language" class="form-control" formControlName="language">
+          <!--          <label for="collaborator-language">Langue : </label>-->
+          <!--          <input type="text" id="collaborator-language" class="form-control" formControlName="language">-->
 
+          <!--          <label for="langue">Langue :</label>-->
+          <!--          <select name="langue" id="langue"-->
+          <!--                  formControlName="language"-->
+          <!--                  class="form-control list-space">-->
+          <!--            <option value="0">&#45;&#45; Langues &#45;&#45;</option>-->
+          <!--            <option *ngFor="let langue of langueList"-->
+          <!--                    [ngValue]="langue">{{langue.codification}} - {{langue.name | uppercase}}</option>-->
+          <!--          </select>-->
 
           <label for="collaborator-startDate">date entrée : </label>
           <input type="text" id="collaborator-startDate" class="form-control" formControlName="startDate">

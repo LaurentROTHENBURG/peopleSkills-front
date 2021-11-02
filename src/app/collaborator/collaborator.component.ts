@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {CollaboratorService} from "../services/collaborator.service";
 import {Collaborator} from "../collaborator";
 import {Profil} from "../profil";
 import {Department} from "../department";
+import {Langue} from "../langue";
+import {ProfilService} from "../services/profil.service";
+import {LangueService} from "../services/langue.service";
+import {DepartmentService} from "../services/department.service";
 
 @Component({
   selector: 'app-collaborator',
@@ -13,21 +17,24 @@ import {Department} from "../department";
 export class CollaboratorComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-              private collaboratorService: CollaboratorService) {
+              private collaboratorService: CollaboratorService,
+              private profilService: ProfilService,
+              private langueService: LangueService,
+              private departmentService: DepartmentService) {
   }
 
   createCollaboratorForm = this.formBuilder.group({
     collaboratorId: 0,
     endDate: '',
-    firstName: '',
-    name: '',
-    department: '',
-    profil: '',
-    startDate: '',
-    mail: '',
-    profession: '',
-    matricule: '',
-    language: '',
+    firstName: ['', Validators.required],
+    name: ['', Validators.required],
+    department: ['', Validators.required],
+    profil: ['', Validators.required],
+    startDate: ['', Validators.required],
+    mail: ['', Validators.email],
+    profession: ['', Validators.required],
+    matricule: ['', Validators.required],
+    langue: '',
   })
 
   collaborator: Collaborator | undefined;
@@ -35,6 +42,7 @@ export class CollaboratorComponent implements OnInit {
   collaboratorList: Collaborator[] = [];
   profilList: Profil[] = [];
   departmentList: Department[] = [];
+  langueList: Langue[] = [];
   countCollaboratorActif: any;
 
   showCollaboratorModal: boolean = false;
@@ -43,13 +51,14 @@ export class CollaboratorComponent implements OnInit {
   updateCollaboratorForm = this.formBuilder.group({
     collaboratorId: 0,
     endDate: '',
-    firstName: '',
-    startDate: '',
-    name: '',
-    language: '',
-    profession: '',
-    mail: '',
-    matricule: '',
+    firstName: ['', Validators.required],
+    startDate: ['', Validators.required],
+    name: ['', Validators.required],
+    profession: ['', Validators.required],
+    mail: ['', Validators.email],
+    matricule: ['', Validators.required],
+    // language: '',
+    // langueIdx:1
   });
 
   totalLength: any;
@@ -66,14 +75,19 @@ export class CollaboratorComponent implements OnInit {
     })
 
 // Affichage de la liste des profils utilisateurs
-    this.collaboratorService.getAllProfil().subscribe(result => {
+    this.profilService.getAllProfil().subscribe(result => {
       this.profilList = result;
     })
 
-    // Affichage de la liste des departments
-    this.collaboratorService.getAllDepartement().subscribe(result => {
+    // Affichage de la liste des departements
+    this.departmentService.getAllDepartement().subscribe(result => {
       this.departmentList = result;
     });
+
+    // Affichage de la liste des langues
+    this.langueService.getAllLangue().subscribe(result => {
+      this.langueList = result;
+    })
 
   };
 
@@ -93,8 +107,9 @@ export class CollaboratorComponent implements OnInit {
       profession: collaborator.profession,
       matricule: collaborator.matricule,
       mail: collaborator.mail,
-      language: collaborator.language
+      // language: collaborator.langue.codification,
     })
+    console.log("code langue : " + collaborator.langue.codification)
   }
 
   refreshCollaborator() {
@@ -109,14 +124,24 @@ export class CollaboratorComponent implements OnInit {
       this.refreshCollaborator()
     });
     this.createCollaboratorForm.reset({
-        collaboratorName: '',
-        collaboratorFirstName: ''
+        endDate: '',
+        firstName: '',
+        name: '',
+        department: '',
+        profil: '',
+        startDate: '',
+        mail: '',
+        profession: '',
+        matricule: '',
+        langue: ''
       }
     )
     this.showCollaboratorModal = false;
   };
 
   onCollaboratorUpdate() {
+    if (this.updateCollaboratorForm.invalid) return;
+
     this.collaborator = this.updateCollaboratorForm.value;
     this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
       this.refreshCollaborator()
@@ -142,6 +167,20 @@ export class CollaboratorComponent implements OnInit {
 
   closeModal() {
     this.showCollaboratorModal = false;
+    this.createCollaboratorForm.reset({
+        endDate: '',
+        firstName: '',
+        name: '',
+        department: '',
+        profil: '',
+        startDate: '',
+        mail: '',
+        profession: '',
+        matricule: '',
+        langue: ''
+      }
+    )
+
   }
 
   closeModalUpdate() {
@@ -152,7 +191,6 @@ export class CollaboratorComponent implements OnInit {
     collaborator.endDate = newEndDate;
     this.collaboratorService.updateEndDateCollaborator(collaborator).subscribe();
   };
-
 
 
 }

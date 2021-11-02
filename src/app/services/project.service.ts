@@ -12,7 +12,7 @@ import {environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class ProjectService {
-  baseUrl = environment.rootApiUrl + 'project/'
+  baseUrl = environment.rootApiUrl + 'projects/'
 
   constructor(private http: HttpClient) {
   }

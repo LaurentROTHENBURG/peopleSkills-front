@@ -2,10 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Collaborator} from "../collaborator";
-import {Profil} from "../profil";
-import {Department} from "../department";
-import {Project} from "../project";
 import {environment} from "../../environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +28,6 @@ export class CollaboratorService {
 
   createCollaborator(collaborator: Collaborator | undefined): Observable<Collaborator> {
     return this.http.post<Collaborator>(this.baseUrl + 'post/', collaborator);
-  };
-
-  getAllProfil(): Observable<Profil []> {
-    return this.http.get<Profil []>(environment.rootApiUrl +'profil');
-  };
-
-  getAllDepartement(): Observable<Department []> {
-    return this.http.get<Department []>(environment.rootApiUrl +'department');
   };
 
   getCollaboratorById(collaboratorId: number): Observable<Collaborator> {

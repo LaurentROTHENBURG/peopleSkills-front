@@ -1,0 +1,22 @@
+<table class="table table-striped withMarge">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th>Codification</th>
+    <th>Langue</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <tr *ngFor="let profil of profilList; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{profil.codification}}</td>
+    <td>{{profil.language}}</td>
+
+  </tr>
+
+  </tbody>
+
+</table>

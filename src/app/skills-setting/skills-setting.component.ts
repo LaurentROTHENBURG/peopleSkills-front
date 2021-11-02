@@ -1,7 +1,7 @@
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {Skill} from "../skill";
 import {SkillService} from "../services/skill.service";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {SkillArea} from "../skillArea";
 import {AreaService} from "../services/area.service";
 
@@ -24,22 +24,22 @@ export class SkillsSettingComponent implements OnInit {
 
   skillForm = this.formBuilder.group({
     skillId: 0,
-    name: '',
-    startDate: '',
+    name: ['',Validators.required],
+    startDate: ['',Validators.required],
     endDate: ''
   });
 
   createSkillForm = this.formBuilder.group({
     skillId: 0,
-    name: '',
-    skillArea: '',
-    startDate: '',
+    name: ['',Validators.required],
+    skillArea: ['',Validators.required],
+    startDate: ['',Validators.required],
     endDate: ''
   });
 
   showSkillSettingModal: boolean = false;
   showSkillUpdateModal: boolean = false;
-  showAlertViolationContrainte: boolean = false;
+  showAlertException: boolean = false;
   totalLength: any;
   page: number = 1;
 
@@ -73,10 +73,11 @@ export class SkillsSettingComponent implements OnInit {
       },
       error => {
         // alert("Suppression impossible - violation de contraintes");
-        this.showAlertViolationContrainte = true;
+        this.showAlertException = true;
       }
     );
   }
+
 
   onSkillEdit(skill: Skill) {
     this.skillForm.patchValue({
@@ -129,7 +130,7 @@ export class SkillsSettingComponent implements OnInit {
 
   closeModal() {
     this.showSkillSettingModal = false;
-    this.showAlertViolationContrainte = false;
+    this.showAlertException = false;
   };
 
   closeModalUpdate() {
