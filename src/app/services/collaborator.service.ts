@@ -22,7 +22,7 @@ export class CollaboratorService {
     return this.http.get<Collaborator []>(this.baseUrl + 'collaboratorDateEndIsNull');
   }
 
-  getSkillsForCollaborators(skillId: number): Observable<Collaborator[]> {
+  getCollaboratorsFromSkill(skillId: number): Observable<Collaborator[]> {
     return this.http.get<Collaborator[]>(this.baseUrl + 'search/' + skillId);
   }
 

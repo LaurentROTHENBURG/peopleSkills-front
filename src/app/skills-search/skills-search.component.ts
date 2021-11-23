@@ -36,10 +36,13 @@ export class SkillsSearchComponent implements OnInit {
   }
 
   onSearchSkillSelected(skillId: number) {
-    this.collaboratorService.getSkillsForCollaborators(skillId).subscribe(result => {
-      this.skillsSearchResult = result;
-    })
-    this.clickOnSearch = true;
+    this.collaboratorService.getCollaboratorsFromSkill(skillId).subscribe(
+      result => {
+        this.skillsSearchResult = result;
+        this.clickOnSearch = true;
+      },
+      error => alert("Erreur")
+    )
   };
 
   //Affichage du nombre de collaborateurs dans le tableau
@@ -49,17 +52,17 @@ export class SkillsSearchComponent implements OnInit {
 
   download() {
     var options = {
-      fieldSeparator: ',',
+      fieldSeparator: ';',
       quoteStrings: '"',
       decimalseparator: '.',
       showLabels: true,
       showTitle: true,
-      title: 'Export PeopleSkil',
+      title: 'Export PeopleSkills',
       useBom: true,
-      headers: ["Nom", "Pénom", "Poste", "Email", "Langue", "Auto-Evaluation"]
+      headers: ["Nom", "Pénom", "Poste", "Email", "Langue", "Auto-Evaluation", "Profession", "Date Entrée", "Date Sortie"]
     };
 
-    new ngxCsv(this.skillsSearchResult, "peopleSkill-download", options);
+    new ngxCsv(this.skillsSearchResult, "peopleSkills-download", options);
   }
 
 

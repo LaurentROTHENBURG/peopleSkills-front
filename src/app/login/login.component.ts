@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]]
   });
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) {
+  connected = false;
+
+  constructor(private userService: UserService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -28,7 +32,8 @@ export class LoginComponent implements OnInit {
       password: this.password?.value
     }).subscribe(
       () => this.router.navigate(['']),
-      error => alert("Erreur de connexion"));};
+      error => alert("Erreur de connexion"));
+  };
 
   get username() {
     return this.loginForm.get('username');
@@ -37,4 +42,5 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   };
+
 }//end

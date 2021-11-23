@@ -34,7 +34,7 @@ export class CollaboratorComponent implements OnInit {
     mail: ['', Validators.email],
     profession: ['', Validators.required],
     matricule: ['', Validators.required],
-    langue: '',
+    langue: ['', Validators.required],
   })
 
   collaborator: Collaborator | undefined;
@@ -121,7 +121,7 @@ export class CollaboratorComponent implements OnInit {
   onCollaboratorCreate() {
     this.collaborator = this.createCollaboratorForm.value;
     this.collaboratorService.createCollaborator(this.collaborator).subscribe(() => {
-      this.refreshCollaborator()
+      this.refreshCollaborator();
     });
     this.createCollaboratorForm.reset({
         endDate: '',

@@ -74,4 +74,5 @@ export class SkillsStatComponent implements OnInit {
     });
 
   }
+
 }//end

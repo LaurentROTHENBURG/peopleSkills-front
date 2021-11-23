@@ -93,8 +93,7 @@ export class AddSkillComponent implements OnInit {
 
       }
     }
-    console.log(this.collaboratorSkill);
-    this.skillService.createSKillForOneCollaborator(this.collaboratorSkill).subscribe();
+      this.skillService.createSKillForOneCollaborator(this.collaboratorSkill).subscribe();
 
   }
 
