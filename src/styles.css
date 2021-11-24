@@ -1,3 +1,15 @@
+/*ajout body pour gestion du footer*/
+body {
+  margin: 0;
+  min-height: 100vh; /* C'est ça qui fait que la page est minimum sur toute la hauteur */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex:1; /* C'est ça qui fait que le main prend toute la place */
+}
+
 h1 {
   color: rgb(88, 19, 116);
   padding-left: 3%;
@@ -89,7 +101,7 @@ h6 {
   margin-top: 4%;
   margin-left: auto;
   margin-right: auto;
-  min-height: 45em;
+  min-height: 38em;
   color: rgb(88, 19, 116);
 }
 
@@ -131,6 +143,7 @@ h6 {
   border: 1px solid #DCDCDC;
   padding: 10px;
   margin-top: 1%;
+
 }
 
 containerListCollaborator {
@@ -146,6 +159,7 @@ containerListCollaborator {
   padding: 10px;
   margin-top: 1%;
   background-color: #f8f9fa;
+
 }
 
 .badge {
@@ -339,9 +353,8 @@ body.jw-modal-open {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  right: 40%;
+  text-align: center;
+  padding: 1rem;
   font-size: 0.8em;
 }
 

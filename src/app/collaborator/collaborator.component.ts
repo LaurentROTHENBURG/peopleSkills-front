@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {CollaboratorService} from "../services/collaborator.service";
 import {Collaborator} from "../collaborator";
 import {Profil} from "../profil";
@@ -31,7 +31,10 @@ export class CollaboratorComponent implements OnInit {
     department: ['', Validators.required],
     profil: ['', Validators.required],
     startDate: ['', Validators.required],
-    mail: ['', Validators.email],
+    mail: new FormControl('', [
+      Validators.required,
+      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+
     profession: ['', Validators.required],
     matricule: ['', Validators.required],
     langue: ['', Validators.required],
@@ -118,70 +121,89 @@ export class CollaboratorComponent implements OnInit {
     })
   };
 
+// getter pour contrôler la validité du champ mail
+  get mail() {
+    return this.createCollaboratorForm.get('mail')
+  }
+
   onCollaboratorCreate() {
-    this.collaborator = this.createCollaboratorForm.value;
-    this.collaboratorService.createCollaborator(this.collaborator).subscribe(() => {
-      this.refreshCollaborator();
-    });
-    this.createCollaboratorForm.reset({
-        endDate: '',
-        firstName: '',
-        name: '',
-        department: '',
-        profil: '',
-        startDate: '',
-        mail: '',
-        profession: '',
-        matricule: '',
-        langue: ''
-      }
-    )
-    this.showCollaboratorModal = false;
+    if (this.createCollaboratorForm.valid) {
+      this.collaborator = this.createCollaboratorForm.value;
+      this.collaboratorService.createCollaborator(this.collaborator).subscribe(() => {
+        this.refreshCollaborator();
+      });
+      this.createCollaboratorForm.reset({
+          endDate: '',
+          firstName: '',
+          name: '',
+          department: '',
+          profil: '',
+          startDate: '',
+          mail: '',
+          profession: '',
+          matricule: '',
+          langue: ''
+        }
+      )
+      this.showCollaboratorModal = false;
+    }
+
+    if (this.mail?.invalid) {
+      alert("Adresse mail invalide")
+    } else {
+      alert("Erreur de saisie - vérifier la complète saisie des champs" +
+        " ainsi que la structure de l'adresse mail")
+    }
   };
 
   onCollaboratorUpdate() {
-    if (this.updateCollaboratorForm.invalid) return;
+    if (this.updateCollaboratorForm.valid) {
+      this.collaborator = this.updateCollaboratorForm.value;
+      this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
+        this.refreshCollaborator()
+      });
+      this.updateCollaboratorForm.reset({
+        collaboratorId: '',
+        endDate: '',
+        firstName: '',
+        startDate: '',
+        name: ''
+      })
+      this.UpdateCollaboratorModal = false;
+    }
 
-    this.collaborator = this.updateCollaboratorForm.value;
-    this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
-      this.refreshCollaborator()
-    });
-    this.updateCollaboratorForm.reset({
-      collaboratorId: '',
-      endDate: '',
-      firstName: '',
-      startDate: '',
-      name: ''
-    })
-    this.UpdateCollaboratorModal = false;
-  }
+    if (this.mail?.invalid) {
+      alert("Adresse mail invalide")
+    } else {
+      alert("Erreur de saisie")
+    }
+
+  };
 
 
   openModal() {
     this.showCollaboratorModal = true;
-  }
+  };
 
   openModalUpdate() {
     this.UpdateCollaboratorModal = true;
-  }
+  };
 
   closeModal() {
     this.showCollaboratorModal = false;
     this.createCollaboratorForm.reset({
-        endDate: '',
-        firstName: '',
-        name: '',
-        department: '',
-        profil: '',
-        startDate: '',
-        mail: '',
-        profession: '',
-        matricule: '',
-        langue: ''
-      }
-    )
-
-  }
+      endDate: '',
+      firstName: '',
+      name: '',
+      department: '',
+      profil: '',
+      startDate: '',
+      mail: '',
+      profession: '',
+      matricule: '',
+      langue: ''
+    })
+  };
 
   closeModalUpdate() {
     this.UpdateCollaboratorModal = false;
