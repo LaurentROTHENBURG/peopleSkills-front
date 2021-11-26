@@ -148,35 +148,32 @@ export class CollaboratorComponent implements OnInit {
       this.showCollaboratorModal = false;
     }
 
-    if (this.mail?.invalid) {
-      alert("Adresse mail invalide")
-    } else {
-      alert("Erreur de saisie - vérifier la complète saisie des champs" +
-        " ainsi que la structure de l'adresse mail")
+    else {
+      alert("Erreur de saisie - vérifiez l'adresse mail")
     }
   };
 
   onCollaboratorUpdate() {
-    if (this.updateCollaboratorForm.valid) {
-      this.collaborator = this.updateCollaboratorForm.value;
-      this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
-        this.refreshCollaborator()
-      });
-      this.updateCollaboratorForm.reset({
-        collaboratorId: '',
-        endDate: '',
-        firstName: '',
-        startDate: '',
-        name: ''
-      })
-      this.UpdateCollaboratorModal = false;
-    }
+    // if (this.updateCollaboratorForm.valid) {
+    this.collaborator = this.updateCollaboratorForm.value;
+    this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
+      this.refreshCollaborator()
+    });
+    this.updateCollaboratorForm.reset({
+      collaboratorId: '',
+      endDate: '',
+      firstName: '',
+      startDate: '',
+      name: ''
+    })
+    this.UpdateCollaboratorModal = false;
+    // }
 
-    if (this.mail?.invalid) {
-      alert("Adresse mail invalide")
-    } else {
-      alert("Erreur de saisie")
-    }
+    // if (this.mail?.invalid) {
+    //   alert("Adresse mail invalide")
+    // } else {
+    //   alert("Erreur de saisie")
+    // }
 
   };
 
