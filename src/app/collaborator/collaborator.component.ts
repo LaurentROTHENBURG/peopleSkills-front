@@ -146,34 +146,28 @@ export class CollaboratorComponent implements OnInit {
         }
       )
       this.showCollaboratorModal = false;
-    }
-
-    else {
+    } else {
       alert("Erreur de saisie - vérifiez l'adresse mail")
     }
   };
 
   onCollaboratorUpdate() {
-    // if (this.updateCollaboratorForm.valid) {
-    this.collaborator = this.updateCollaboratorForm.value;
-    this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
-      this.refreshCollaborator()
-    });
-    this.updateCollaboratorForm.reset({
-      collaboratorId: '',
-      endDate: '',
-      firstName: '',
-      startDate: '',
-      name: ''
-    })
-    this.UpdateCollaboratorModal = false;
-    // }
-
-    // if (this.mail?.invalid) {
-    //   alert("Adresse mail invalide")
-    // } else {
-    //   alert("Erreur de saisie")
-    // }
+    if (this.updateCollaboratorForm.valid) {
+      this.collaborator = this.updateCollaboratorForm.value;
+      this.collaboratorService.updateCollaborator(this.collaborator).subscribe(() => {
+        this.refreshCollaborator()
+      });
+      this.updateCollaboratorForm.reset({
+        collaboratorId: '',
+        endDate: '',
+        firstName: '',
+        startDate: '',
+        name: ''
+      })
+      this.UpdateCollaboratorModal = false;
+    } else {
+      alert("Erreur de saisie - vérifiez l'adresse mail")
+    }
 
   };
 
